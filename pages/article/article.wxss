@@ -1,0 +1,32 @@
+/* article.wxss */
+page{
+  background: #fff;
+}
+.head-image{
+  height: 400rpx;
+  width: 100%;
+}
+.head-image image{
+  height: 100%;
+  width: 100%;
+}
+.article-main-header{
+  display: flex;
+  height: 60rpx;
+  color: #EC5463;
+  background-color: #fff;
+  font-size: 32rpx;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 0;
+}
+
+.article-main-categories{
+  margin: 20rpx 0;
+}
+
+.article-content{
+  margin: 20rpx 20rpx;
+  font-size: 1rem;
+  text-indent:2em;
+}

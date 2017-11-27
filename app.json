@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/category/category",
+    "pages/template/template",
+    "pages/my/my",
+    "pages/article/article",
+    "pages/activity/activity",
+    "pages/show/show"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ff0000",
+    "navigationBarTextStyle": "#FF9900",
+    "navigationBarTitleText": "聚会呗",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  }
+}
