@@ -5,28 +5,22 @@
 <view class="page">
     <view class="page__bd">
         <form bindsubmit="submitForm">
-          <view class="weui-cells__title">文本框</view>
+          <view class="weui-cells__title">活动内容</view>
+          
           <view class="weui-cells weui-cells_after-title">
+          
               <view class="weui-cell weui-cell_input">
                   <view class="weui-cell__bd">
-                      <input class="weui-input" placeholder="活动主题" />
+                      <input class="weui-input" placeholder="聚会主题" />
                   </view>
               </view>
           
               <view class="weui-cell">
                   <view class="weui-cell__bd">
-                      <textarea class="weui-textarea" placeholder="描述" style="height: 3.3em" />
+                      <textarea class="weui-textarea" placeholder="补充描述，上传背景图片，让更多的人参与活动..." style="height: 3.3em" />
                       <view class="weui-textarea-counter">0/200</view>
-                  </view>
-              </view>
-          
-              <view class="weui-cell">
-                  <view class="weui-cell__bd">
+                      
                       <view class="weui-uploader">
-                          <view class="weui-uploader__hd">
-                              <view class="weui-uploader__title">图片上传</view>
-                              <view class="weui-uploader__info">{{files.length}}/2</view>
-                          </view>
                           <view class="weui-uploader__bd">
                               <view class="weui-uploader__files" id="uploaderFiles">
                                   <block wx:for="{{files}}" wx:key="*this">
@@ -35,16 +29,10 @@
                                       </view>
                                   </block>
                                   <view class="weui-uploader__file">
-                                      <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                                      <image class="weui-uploader__img" src="../../assets/images/pic_160.png" mode="aspectFill" />
                                   </view>
-                                  <view class="weui-uploader__file">
-                                      <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
-                                  </view>
-                                  <view class="weui-uploader__file">
-                                      <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
-                                  </view>
-                                  <view class="weui-uploader__file weui-uploader__file_status">
-                                      <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                                  <!-- <view class="weui-uploader__file weui-uploader__file_status">
+                                      <image class="weui-uploader__img" src="../../assets/images/pic_160.png" mode="aspectFill" />
                                       <view class="weui-uploader__file-content">
                                           <icon type="warn" size="23" color="#F43530"></icon>
                                       </view>
@@ -52,7 +40,7 @@
                                   <view class="weui-uploader__file weui-uploader__file_status">
                                       <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
                                       <view class="weui-uploader__file-content">50%</view>
-                                  </view>
+                                  </view> -->
                               </view>
                               <view class="weui-uploader__input-box">
                                   <view class="weui-uploader__input" bindtap="chooseImage"></view>
@@ -61,8 +49,45 @@
                       </view>
                   </view>
               </view>
+              
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">时间</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                        <view class="weui-input">{{date}}</view>
+                    </picker>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                        <view class="weui-input">{{time}}</view>
+                    </picker>
+                </view>
+                
+              </view>
+              
           </view>
           
+          <view class="weui-cells__title">活动地点 {{address}}</view>
+          <view class="weui-cells weui-cells_after-title">
+              <view bindtap="chooseLocation" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__bd">{{title}}</view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access">打开地图</view>
+              </view>
+          </view>
+
+          <view class="weui-cells__title">参与人数</view>
+          <view class="page__bd">
+              <slider show-value value="50" max="150"/>
+          </view>
+          
+
+          
+
+          
+            
+
         	<view class="weui-cells__title">性别</view>
 		    <view class="weui-cells weui-cells_after-title">
 		        <radio-group name="gender" bindchange="radioChange">

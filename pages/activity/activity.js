@@ -1,5 +1,8 @@
 import { $wuxToptips } from '../../components/wux'
 import WxValidate from '../../assets/plugins/WxValidate'
+var gourmet_address = "";
+var gourmet_title = "";
+var geopoint = null;
 
 Page({
   data: {
@@ -39,7 +42,9 @@ Page({
         value: '0004',
       },
     ],
-    files: []
+    files: [],
+    date: "2016-09-01",
+    time: "12:01",
   },
   onLoad() {
     this.initValidate()
@@ -152,6 +157,37 @@ Page({
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: this.data.files // 需要预览的图片http链接列表
+    })
+  },
+  bindDateChange: function (e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  bindTimeChange: function (e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
+  chooseLocation: function () {
+    var that = this;
+    wx.chooseLocation({
+      success: function (ret) {
+        console.log('chooseLocation', ret)
+        gourmet_address = ret.address;
+        gourmet_title = ret.name;
+        that.setData({
+          address: gourmet_address
+          , title: gourmet_title
+        })
+        geopoint = {
+          latitude: +ret.latitude //数值
+          , longitude: +ret.longitude //数值
+        }
+      }
+      , cancel: function () {
+        geopoint = null;//退出之后对象清空
+      }
     })
   }
 })
