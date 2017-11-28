@@ -1,0 +1,11 @@
+.weui-uploader__input-box {
+  border-radius:5px;
+}
+.weui-uploader__file{
+  border-radius:5px;
+}
+.loear-uploder__tips {
+  line-height:77px;
+  color:#bbb;
+  font-size:14px;
+}

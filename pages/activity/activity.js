@@ -3,7 +3,6 @@ import WxValidate from '../../assets/plugins/WxValidate'
 var gourmet_address = "";
 var gourmet_title = "";
 var geopoint = null;
-
 Page({
   data: {
     form: {
@@ -47,7 +46,10 @@ Page({
     time: "12:01",
   },
   onLoad() {
-    this.initValidate()
+    this.initValidate();
+    this.setData({
+      title: '地图定位'
+    })
   },
   showToptips(error) {
     const hideToptips = $wuxToptips.show({
@@ -79,10 +81,6 @@ Page({
       gender: {
         required: true,
       },
-      assistance: {
-        required: true,
-        assistance: true,
-      },
       tel: {
         required: true,
         tel: true,
@@ -95,9 +93,6 @@ Page({
         gender: {
           required: '请选择性别',
         },
-        assistance: {
-          required: '请勾选1-2个敲码助手',
-        },
         tel: {
           required: '请输入手机号',
           tel: '请输入正确的手机号',
@@ -107,10 +102,6 @@ Page({
           idcard: '请输入正确的身份证号码',
         },
       })
-
-    this.WxValidate.addMethod('assistance', (value, param) => {
-      return this.WxValidate.optional(value) || (value.length >= 1 && value.length <= 2)
-    }, '请勾选1-2个敲码助手')
   },
   radioChange(e) {
     const value = e.detail.value
@@ -119,25 +110,6 @@ Page({
     this.setData({
       radio: radio,
       'form.gender': value,
-    })
-  },
-  checkboxChange(e) {
-    const values = e.detail.value
-    const checkbox = this.data.checkbox
-
-    for (let i = 0, lenI = checkbox.length; i < lenI; ++i) {
-      checkbox[i].checked = !1
-      for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
-        if (checkbox[i].value == values[j]) {
-          checkbox[i].checked = !0
-          break
-        }
-      }
-    }
-
-    this.setData({
-      checkbox: checkbox,
-      'form.assistance': values,
     })
   },
   chooseImage: function (e) {
@@ -180,6 +152,7 @@ Page({
           address: gourmet_address
           , title: gourmet_title
         })
+        title = gourmet_title;
         geopoint = {
           latitude: +ret.latitude //数值
           , longitude: +ret.longitude //数值
