@@ -5,6 +5,12 @@ Page({
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
     index: 3,
     opened: !1,
+    isExpandSource: false
+  },
+  bindViewSourceEvent() {
+    this.setData({
+      isExpandSource: !this.data.isExpandSource
+    });
   },
   onLoad() {
     this.initButton()

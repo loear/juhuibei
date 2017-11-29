@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "聚会呗"
+  "navigationBarTitleText": "聚会呗",
+  "usingComponents": {
+    "example": "../../packages/@minui/wxc-example/dist/index",
+    "example-demo": "../../packages/@minui/wxc-example-demo/dist/index",
+    "example-md": "../../packages/@minui/wxc-example-md/dist/index"
+  }
 }

@@ -38,3 +38,6 @@ button[type="primary"] {
   color:#FFFFFF;
   background-color:#ff0000;
 }
+.loear-right{
+  text-align: right;
+}
