@@ -8,14 +8,14 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="聚会主题" />
+                <input class="weui-input" placeholder="聚会主题"/>
             </view>
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd">
-              <textarea class="weui-textarea" placeholder="补充描述，上传背景图片，让更多的人参与活动..." style="height: 3.3em" />
-              <view class="weui-textarea-counter">0/200</view>
-                
+              <view class="textarea-wrp">
+                <textarea bindblur="bindTextAreaBlur" auto-height class="weui-textarea" placeholder="活动详情" style="height: 3.3em" placeholder-class="placeholder" />
+              </view>
               <view class="weui-uploader">
                 <view class="weui-uploader__bd">
                   <view class="weui-uploader__files" id="uploaderFiles">
@@ -36,14 +36,14 @@
         <!-- 时间 -->
         <view class="weui-cell weui-cell_input" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-            <view class="weui-label">时间</view>
+            <view class="weui-label">聚会时间</view>
           </view>
-          <view class="weui-cell__bd">
+          <view class="weui-cell__bd loear-data">
             <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
               <view class="weui-input">{{date}}</view>
             </picker>
           </view>
-          <view class="weui-cell__bd">
+          <view class="loear-time">
             <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
               <view class="weui-input">{{time}}</view>
             </picker>
@@ -51,14 +51,11 @@
         </view>
         <!-- 地点 -->
         <view bindtap="chooseLocation" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__bd">地点</view>
+          <view class="weui-cell__bd">聚会地点</view>
           <view class="weui-cell__ft weui-cell__ft_in-access">{{title}}</view>
         </view>
       </view>
-      <!-- 人数 -->
-      <view class="weui-cells__title">预计人数</view>
-      <slider show-value value="50" max="150"/>
-     
+
         <view class="button-sp-area">
           <button class="weui-btn" type="primary" formType="submit">提交</button>
         </view>
