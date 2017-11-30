@@ -105,8 +105,10 @@
 
       <view class="loear-submit-space"></view>
       <view class="loear-submit">
-        <view class="button-sp-area ">
-          <button class="weui-btn" type="primary" formType="submit">提交</button>
+        <view class="button-sp-area">
+          <button class="loear-btn" formType="submit" hover-class="active-state">
+            <icon type="success_no_circle" size="30" color="#fff" class='loear-icon'></icon>
+          </button>
         </view>
       </view>
     </form>

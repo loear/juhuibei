@@ -34,10 +34,6 @@
   border-left:1px dashed #ddd;
   margin-left:10px;
 }
-button[type="primary"] {
-  color:#FFFFFF;
-  background-color:#FF4444;
-}
 .loear-right{
   text-align: right;
   width:100%;
@@ -48,11 +44,26 @@ button[type="primary"] {
   text-align: center;
   width: 100%;
   padding: 10px 0;
-  background-color: #fff;
 }
 .loear-submit .button-sp-area{
-  margin-top:0;
+  margin:0 auto;
+  width:100%
 }
 .loear-submit-space{
   height: 30px;
+}
+.loear-btn{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  z-index:1500;
+  background-color:#ff4444;
+  text-align: center;
+  color:#fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+}
+.loear-icon{
+  position: absolute;
+  left: 10px;
+  top:10px;
 }
