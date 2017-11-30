@@ -9,8 +9,8 @@
     "pages/show/show"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ff0000",
-    "navigationBarTextStyle": "#FF9900",
+    "navigationBarBackgroundColor": "#FF4444",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "聚会呗",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",

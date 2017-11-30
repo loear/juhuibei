@@ -36,8 +36,23 @@
 }
 button[type="primary"] {
   color:#FFFFFF;
-  background-color:#ff0000;
+  background-color:#FF4444;
 }
 .loear-right{
   text-align: right;
+  width:100%;
+}
+.loear-submit{
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #fff;
+}
+.loear-submit .button-sp-area{
+  margin-top:0;
+}
+.loear-submit-space{
+  height: 30px;
 }

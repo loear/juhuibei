@@ -48,7 +48,8 @@ Page({
   onLoad() {
     this.initValidate();
     this.setData({
-      title: '地图定位'
+      title: '地图定位',
+      isAgree: true,
     })
   },
   showToptips(error) {
@@ -162,5 +163,10 @@ Page({
         geopoint = null;//退出之后对象清空
       }
     })
+  },
+  bindAgreeChange: function (e) {
+    this.setData({
+      isAgree: !!e.detail.value.length
+    });
   }
 })

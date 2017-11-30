@@ -56,17 +56,27 @@
         </view>
       </view>
 
-      <view class="weui-cells">
+      <view class="weui-cells__title">限制条件</view>
+      <view class="weui-cells weui-cells_after-title">
+        <!--人数上限-->
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-            <view class="weui-label">截止时间</view>
+            <view class="weui-label">人数上限</view>
           </view>
-          <input class="weui-input loear-right" type="number" placeholder="2~98" placeholder-class='loear-right'/>
+          <input class="weui-input loear-right" type="number" placeholder="50" placeholder-class='loear-right'/>
+        </view>
+        <!--指定微信群-->
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">限定微信群 <icon type="info" size="23" color="#ff4444"></icon>
+          </view>
+          <view class="weui-cell__ft">
+              <switch checked color="#ff4444" />
+          </view>
         </view>
         <!-- 时间 -->
         <view class="weui-cell weui-cell_input" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-            <view class="weui-label">截止时间</view>
+            <view class="weui-label">截止报名时间</view>
           </view>
           <view class="weui-cell__bd loear-data">
             <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
@@ -80,9 +90,24 @@
           </view>
         </view>
       </view>
+      
+       <checkbox-group bindchange="bindAgreeChange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
 
-      <view class="button-sp-area">
-        <button class="weui-btn" type="primary" formType="submit">提交</button>
+      <view class="loear-submit-space"></view>
+      <view class="loear-submit">
+        <view class="button-sp-area ">
+          <button class="weui-btn" type="primary" formType="submit">提交</button>
+        </view>
       </view>
     </form>
   </view>
