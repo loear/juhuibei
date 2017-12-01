@@ -1,0 +1,5 @@
+{
+  "npm": {
+    "dest": "dist/packages"
+  }
+}

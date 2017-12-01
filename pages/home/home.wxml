@@ -16,7 +16,7 @@
       </view>
       <view class="example--source">
           <view class="view-btn {{viewSourceClass}}" bindtap="bindViewSourceEvent">{{ isExpandSource ? '显示' : '隐藏' }} 详情</view>
-          <view wx:if="{{isExpandSource}}">123123</view>      
+          <view wx:if="{{isExpandSource}}">123123</view>
       </view>
     </view>
     <view class="example--box">
@@ -33,8 +33,10 @@
       <view class="example--source">
           <view class="view-btn {{viewSourceClass}}" bindtap="bindViewSourceEvent">{{ isExpandSource ? '显示' : '隐藏' }} 详情</view>
           <view wx:if="{{isExpandSource}}">
-            
-          </view>      
+            <template>
+              <image class="loear-card" src="../../assets/images/default_card.jpg" mode="aspectFill" />
+            </template>
+          </view>
       </view>
     </view>
 </view>
