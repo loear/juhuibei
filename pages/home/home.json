@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "聚会呗"
+  "navigationBarTitleText": "聚会呗",
+  "usingComponents": {
+    "wxc-avatar": "../../packages/@minui/wxc-avatar/dist/index"
+  }
 }

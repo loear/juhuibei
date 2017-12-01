@@ -33,10 +33,9 @@
       <view class="example--source">
           <view class="view-btn {{viewSourceClass}}" bindtap="bindViewSourceEvent">{{ isExpandSource ? '显示' : '隐藏' }} 详情</view>
           <view wx:if="{{isExpandSource}}">
-            <template>
-              <image class="loear-card" src="../../assets/images/default_card.jpg" mode="aspectFill" />
-            </template>
+              <wxc-avatar class="avatar" count="2" src="../../assets/images/monk.jpg"></wxc-avatar>
           </view>
       </view>
     </view>
 </view>
+

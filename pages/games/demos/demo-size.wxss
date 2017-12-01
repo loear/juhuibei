@@ -1,0 +1,16 @@
+.avatar {
+    display: inline-block;
+    margin-right: 20rpx;
+  }
+  .avatar__1 {
+    width: 120rpx;
+    height: 120rpx;
+  }
+  .avatar__2 {
+    width: 160rpx;
+    height: 160rpx;
+  }
+  .avatar__3 {
+    width: 200rpx;
+    height: 200rpx;
+  }

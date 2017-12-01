@@ -1,0 +1,7 @@
+/* pages/games/games.wxss */
+
+.avatar {
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+}

@@ -6,7 +6,8 @@
     "pages/my/my",
     "pages/article/article",
     "pages/activity/activity",
-    "pages/show/show"
+    "pages/show/show",
+    "pages/games/games"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF4444",

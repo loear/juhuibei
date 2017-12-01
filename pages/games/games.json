@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "wxc-avatar": "../../dist/packages/@minui/wxc-avatar/dist/index",
+    "example": "../../packages/@minui/wxc-example/dist/index",
+    "example-demo": "../../packages/@minui/wxc-example-demo/dist/index",
+    "example-md": "../../packages/@minui/wxc-example-md/dist/index",
+    "demo-default": "./demos/demo-default",
+    "demo-mold": "./demos/demo-mold",
+    "demo-count": "./demos/demo-count",
+    "demo-text": "./demos/demo-text",
+    "demo-size": "./demos/demo-size"
+  }
+}
