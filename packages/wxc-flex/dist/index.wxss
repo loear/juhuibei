@@ -29,7 +29,7 @@
     justify-content: space-between;
   }
   .main--center {
-    justify-content: center;
+    /* justify-content: center; */
   }
   .main--around {
     justify-content: space-around;
@@ -55,7 +55,7 @@
     align-items: flex-end;
   }
   .cross--center {
-    align-items: center;
+    /* align-items: center; */
   }
   .cross--baseline {
     align-items: baseline;

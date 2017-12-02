@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "wxc-avatar": "../../../packages/wxc-avatar/dist/index"
-  },
-  "component": true
-}

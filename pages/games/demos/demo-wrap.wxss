@@ -7,4 +7,8 @@
   .demo__pic {
     width: 200rpx;
     height: 200rpx;
+    margin: 15rpx;
+  }
+  .demo__text {
+    text-align: center;
   }
