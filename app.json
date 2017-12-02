@@ -1,12 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/category/category",
-    "pages/template/template",
     "pages/my/my",
-    "pages/article/article",
     "pages/activity/activity",
-    "pages/show/show",
     "pages/games/games"
   ],
   "window": {

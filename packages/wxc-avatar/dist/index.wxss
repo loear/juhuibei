@@ -17,7 +17,7 @@
   }
   .avatar__badge {
     position: absolute;
-    top: -8rpx;
-    right: -8rpx;
+    top: -15rpx;
+    right: -15rpx;
     z-index: 1;
   }
