@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "wxc-cc": "../../../packages/wxc-cc/dist/index",
-    "wxc-label": "../../../packages/wxc-label/dist/index",
-    "wxc-countdown": "../../../packages/wxc-countdown/dist/index"
-  },
-  "component": true
-}

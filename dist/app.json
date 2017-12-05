@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/activity/activity"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#efefef",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "MinUI",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 10000
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "example-md": "../../wxc-example-md/dist/index",
+    "wxc-avatar": "../../../@minui/wxc-avatar/dist/index"
+  },
+  "component": true
+}

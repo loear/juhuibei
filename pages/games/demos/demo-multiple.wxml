@@ -1,6 +1,0 @@
-<wxc-cc class="demo" _pid="{{_pid}}">
-  <wxc-label class="label" type="fill" type-color="#747bb1">报名中</wxc-label>
-  <wxc-label class="label" type="fill" type-color="#ffe8ee" text-color="#ff5577">已报名32人</wxc-label>
-  <wxc-countdown countdown="{{countdown}}" num-style="{{numStyle}}" symbol-style="{{symbolStyle}}"></wxc-countdown>
-
-</wxc-cc>
