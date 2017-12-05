@@ -1,46 +1,22 @@
-var gourmet_address = "";
-var gourmet_title = "";
-var geopoint = null;
+import { $wuxToptips } from '../../packages/@wux/components/wux';
+import WxValidate from '../../common/assets/plugins/WxValidate';
+var gourmet_address = "";   // 详细地址
+var gourmet_title = "";     // 地址标题
+var geopoint = null;        // 坐标
 Page({
   data: {
     form: {
-      gender: '',
-      assistance: '',
-      tel: '',
-      idcard: '',
+      "title": '',
+      "description": '',
+      "start_date": '',
+      "start_time": '',
+      "numbers": '',
+      "is_only_qun": '',
+      "end_date": '',
+      "end_time": ''
     },
-    radio: [
-      {
-        name: '男',
-        value: 'male',
-        checked: !1,
-      },
-      {
-        name: '女',
-        value: 'female',
-      },
-    ],
-    checkbox: [
-      {
-        name: '黄药师',
-        value: '0001',
-        checked: !1,
-      },
-      {
-        name: '欧阳锋',
-        value: '0002',
-      },
-      {
-        name: '段智兴',
-        value: '0003',
-      },
-      {
-        name: '洪七公',
-        value: '0004',
-      },
-    ],
     files: [],
-    date: "2016-09-01",
+    date: "2018-01-01",
     time: "12:01",
   },
   onLoad() {
@@ -60,9 +36,7 @@ Page({
     // setTimeout(hideToptips, 1500)
   },
   submitForm(e) {
-    const params = e.detail.value
-
-    console.log(params)
+    const params = e.detail.value;
 
     if (!this.WxValidate.checkForm(e)) {
       const error = this.WxValidate.errorList[0]
@@ -70,46 +44,41 @@ Page({
       return false
     }
 
+    let data = {
+      title: params.title,
+      description: params.description,
+      start_date: params.start_date,
+      start_time: params.start_time,
+      gourmet_address: gourmet_address,
+      gourmet_title: gourmet_title,
+      numbers: params.numbers,
+      end_date: params.end_date,
+      end_time: params.end_time
+    };
+
+    console.log(data);
+
     $wuxToptips.success({
       hidden: !0,
-      text: '提交成功',
+      text: '提交成功'
     })
   },
   initValidate() {
     this.WxValidate = new WxValidate({
-      gender: {
+      title: {
         required: true,
       },
-      tel: {
+      numbers: {
         required: true,
-        tel: true,
-      },
-      idcard: {
-        required: true,
-        idcard: true,
-      },
+      }
     }, {
-        gender: {
-          required: '请选择性别',
+        title: {
+          required: '聚会主题，如三年一班十年同学聚会'
         },
-        tel: {
-          required: '请输入手机号',
-          tel: '请输入正确的手机号',
-        },
-        idcard: {
-          required: '请输入身份证号码',
-          idcard: '请输入正确的身份证号码',
-        },
+        numbers: {
+          required: '需要输入人数上限',
+        }
       })
-  },
-  radioChange(e) {
-    const value = e.detail.value
-    const radio = this.data.radio
-    radio.forEach(n => n.checked = n.value === value)
-    this.setData({
-      radio: radio,
-      'form.gender': value,
-    })
   },
   chooseImage: function (e) {
     var that = this;
@@ -147,15 +116,13 @@ Page({
         console.log('chooseLocation', ret)
         gourmet_address = ret.address;
         gourmet_title = ret.name;
-        that.setData({
-          address: gourmet_address
-          , title: gourmet_title
-        })
-        title = gourmet_title;
         geopoint = {
           latitude: +ret.latitude //数值
           , longitude: +ret.longitude //数值
         }
+        that.setData({
+          title: gourmet_title,
+        })
       }
       , cancel: function () {
         geopoint = null;//退出之后对象清空

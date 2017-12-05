@@ -9,7 +9,8 @@
     "@minui/wxc-example": "^1.0.0",
     "@minui/wxc-example-demo": "^1.0.1",
     "@minui/wxc-label": "^1.0.3",
-    "@minui/wxc-loadmore": "^1.0.3"
+    "@minui/wxc-loadmore": "^1.0.3",
+    "@minui/wxc-popup": "^1.0.3"
   },
   "devDependencies": {
     "babel-plugin-syntax-export-extensions": "^6.13.0",

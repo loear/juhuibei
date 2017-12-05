@@ -1,4 +1,4 @@
-<import src="../../components/toptips/toptips.wxml"/>
+<import src="../../packages/@wux/components/toptips/toptips.wxml"/>
 
 <template is="toptips" data="{{ ...$wux.toptips }}"/>
 
@@ -8,13 +8,13 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="聚会主题"/>
+                <input class="weui-input" placeholder="聚会主题" name="title"/>
             </view>
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd">
               <view class="textarea-wrp">
-                <textarea bindblur="bindTextAreaBlur" auto-height class="weui-textarea" placeholder="活动详情" style="height: 3.3em" placeholder-class="placeholder" />
+                <textarea bindblur="bindTextAreaBlur" auto-height class="weui-textarea" placeholder="活动详情" style="height: 3.3em" placeholder-class="placeholder" name="description"/>
               </view>
               <view class="weui-uploader">
                 <view class="weui-uploader__bd">
@@ -39,12 +39,12 @@
             <view class="weui-label">聚会时间</view>
           </view>
           <view class="weui-cell__bd loear-data">
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+            <picker mode="date" value="{{date}}" start="2018-01-01" end="2019-01-01" bindchange="bindDateChange" name="start_date">
               <view class="weui-input">{{date}}</view>
             </picker>
           </view>
           <view class="loear-time">
-            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+            <picker mode="time" value="{{time}}" start="07:01" end="23:59" bindchange="bindTimeChange" name="start_time">
               <view class="weui-input">{{time}}</view>
             </picker>
           </view>
@@ -63,14 +63,14 @@
           <view class="weui-cell__hd">
             <view class="weui-label">人数上限</view>
           </view>
-          <input class="weui-input loear-right" type="number" placeholder="50" placeholder-class='loear-right'/>
+          <input class="weui-input loear-right" type="number" placeholder="50" placeholder-class='loear-right' name="numbers"/>
         </view>
         <!--指定微信群-->
         <view class="weui-cell weui-cell_switch">
           <view class="weui-cell__bd">限定微信群 <icon type="info" size="23" color="#ff4444"></icon>
           </view>
           <view class="weui-cell__ft">
-              <switch checked color="#ff4444" />
+              <switch color="#ff4444" name="is_only_qun"/>
           </view>
         </view>
         <!-- 时间 -->
@@ -79,12 +79,12 @@
             <view class="weui-label">截止报名时间</view>
           </view>
           <view class="weui-cell__bd loear-data">
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+            <picker mode="date" value="{{date}}" start="2018-01-01" end="2019-01-01" bindchange="bindDateChange" name="end_date">
               <view class="weui-input">{{date}}</view>
             </picker>
           </view>
           <view class="loear-time">
-            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+            <picker mode="time" value="{{time}}" start="7:01" end="23:59" bindchange="bindTimeChange" name="end_time">
               <view class="weui-input">{{time}}</view>
             </picker>
           </view>

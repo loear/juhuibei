@@ -67,3 +67,11 @@
   left: 10px;
   top:10px;
 }
+
+.popup__content {
+  width:100%;
+  height: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  background: #fff;
+}
