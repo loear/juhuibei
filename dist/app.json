@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/activity/activity"
+    "pages/activity/activity",
+    "pages/game/game"
   ],
   "window": {
     "backgroundTextStyle": "dark",

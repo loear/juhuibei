@@ -21,13 +21,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "activity",
 					"pathName": "pages/activity/activity",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "game",
+					"pathName": "pages/game/game"
 				}
 			]
 		}
