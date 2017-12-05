@@ -51,7 +51,9 @@ Page({
       start_time: params.start_time,
       gourmet_address: gourmet_address,
       gourmet_title: gourmet_title,
+      geopoint: geopoint,
       numbers: params.numbers,
+      is_only_qun: params.is_only_qun,
       end_date: params.end_date,
       end_time: params.end_time
     };
