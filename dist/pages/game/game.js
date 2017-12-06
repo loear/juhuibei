@@ -25,7 +25,11 @@ Page({
     this.setData({
       title: '游戏',
       desc: '总有一款适合你'
-    })
+    });
+    this._onLoad();
+  },
+  _onLoad: function () {
+
   },
 
   /**

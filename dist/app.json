@@ -6,12 +6,16 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "backgroundColor": "#efefef",
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "MinUI",
-    "navigationBarTextStyle": "black"
+    "backgroundColor": "#FFFFFF",
+    "navigationBarBackgroundColor": "#FF4444",
+    "navigationBarTitleText": "聚会呗",
+    "navigationBarTextStyle": "#FFFFFF"
   },
   "networkTimeout": {
-    "request": 10000
-  }
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "debug": true
 }
