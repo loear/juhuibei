@@ -1,21 +1,13 @@
 // pages/game/game.js
+import { Game } from 'game-model.js';
+var game = new Game();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    grids: [
-      { id: 0, title: "真心话", file_name: "monk" }, 
-      { id: 1, title: "大冒险", file_name: "monk" }, 
-      { id: 2, title: "狼人杀", file_name: "monk" }, 
-      { id: 3, title: "谁是卧底", file_name: "monk" }, 
-      { id: 4, title: "色子王", file_name: "monk" }, 
-      { id: 5, title: "斗地主", file_name: "monk" }, 
-      { id: 6, title: "插拳", file_name: "monk" }, 
-      { id: 7, title: "抽土豪", file_name: "monk" }, 
-      { id: 8, title: "猜猜猜", file_name: "monk" }
-    ]
+    grids: ''
   },
 
   /**
@@ -29,7 +21,14 @@ Page({
     this._onLoad();
   },
   _onLoad: function () {
-
+    var id = 1;
+    game.getGamesAll((res) => {
+      console.log(res);
+      this.data.grids = res;
+      this.setData({
+        'grids': res
+      });
+    });
   },
 
   /**
