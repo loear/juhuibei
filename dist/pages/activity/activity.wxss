@@ -63,9 +63,13 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
 }
 .loear-icon{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 50px;
   position: absolute;
-  left: 10px;
-  top:10px;
+  left:5px;
+  top:5px;
 }
 
 .popup__content {

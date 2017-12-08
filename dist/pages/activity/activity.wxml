@@ -107,7 +107,7 @@
       <view class="loear-submit">
         <view class="button-sp-area">
           <button class="loear-btn" formType="submit" hover-class="active-state">
-            <icon type="success_no_circle" size="30" color="#fff" class='loear-icon'></icon>
+            <image src="/common/assets/images/icon_tj.png" class="loear-icon"></image>
           </button>
         </view>
       </view>

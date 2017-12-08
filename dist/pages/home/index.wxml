@@ -1,4 +1,6 @@
 <view>
+    <import src="../../packages/@wux/components/button/button.wxml"/>
+    <template is="button" data="{{ ...$wux.button.br }}"/>
     <!--<layout-head></layout-head>-->
 
     <!-- wxp template -->
