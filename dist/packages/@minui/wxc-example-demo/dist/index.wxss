@@ -2,7 +2,7 @@
   overflow: hidden;
   border: 1rpx solid #e0e0e0;
   border-radius: 7rpx;
-  margin: 50rpx 0 0;
+  margin: 10rpx 0 0;
   transition: all .2s ease;
   box-shadow: 0 0 6rpx rgba(0, 0, 0, .15);
   z-index: 10;
@@ -41,6 +41,12 @@
   margin-top: 20rpx;
   color: #777;
   font-size: 24rpx;
+}
+
+.meta-icon {
+  width: 24rpx;
+  height: 24rpx;
+  padding-right: 10rpx;
 }
 
 .example--source {

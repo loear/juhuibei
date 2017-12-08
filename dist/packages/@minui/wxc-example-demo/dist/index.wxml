@@ -6,7 +6,7 @@
     </view>
     <view class="example--meta meta">
         <view class="meta-title">{{title}}</view>
-        <view class="meta-desc">{{desc}}</view>
+        <view class="meta-desc"><image class="meta-icon" src="../../../../common/assets/images/position.png"></image>{{desc}}</view>
     </view>
     <view class="example--source">
         <view class="view-btn {{viewSourceClass}}" bindtap="bindViewSourceEvent">{{ isExpandSource ? '收起列表' : '查看详情' }}</view>

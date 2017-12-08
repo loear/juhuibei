@@ -12,7 +12,7 @@
   justify-content:left;
 }
 .label {
-  margin-left: 20rpx;
+  margin-left: 10rpx;
 }
 
 
