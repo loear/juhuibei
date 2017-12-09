@@ -8,6 +8,7 @@ class Token {
 
   verify() {
     var token = wx.getStorageSync('token');
+    console.log(token);
     if (!token) {
       this.getTokenFromServer();
     }
@@ -44,6 +45,7 @@ class Token {
             code: res.code
           },
           success: function (res) {
+            console.log(res.data.token);
             wx.setStorageSync('token', res.data.token);
             callBack && callBack(res.data.token);
           }
