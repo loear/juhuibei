@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -40,6 +40,13 @@
 					"name": "wolf",
 					"pathName": "pages/wolf/wolf",
 					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "聚会详情页",
+					"pathName": "pages/activity-detail/index",
+					"query": "activity_id=1",
+					"scene": "1007"
 				}
 			]
 		}

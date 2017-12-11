@@ -18,8 +18,8 @@ exports.default = Page({
     this.initButton();
     this._onLoad();
   },
-  _onload() {
-    
+  _onLoad() {
+
   },
   initButton(position = 'bottomLeft') {
     this.setData({

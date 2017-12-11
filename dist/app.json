@@ -3,7 +3,8 @@
     "pages/home/index",
     "pages/activity/activity",
     "pages/game/game",
-    "pages/wolf/wolf"
+    "pages/wolf/wolf",
+    "pages/activity-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
