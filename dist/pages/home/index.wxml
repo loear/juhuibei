@@ -10,7 +10,7 @@
             <demo-multiple _pid="{{_pid}}"></demo-multiple>
         </example-demo>
 
-        <example-demo title="2017年湖南第5届同学聚会" desc="" _pid="{{_pid}}" source="{{__code__.demoMultiple}}">
+        <example-demo title="2017年湖南第5届同学聚会" desc="" _pid="{{_pid}}" source="{{__code__.demoMultiple}}" avatar="{{avatar}}">
             <demo-multiple _pid="{{_pid}}"></demo-multiple>
         </example-demo>
 

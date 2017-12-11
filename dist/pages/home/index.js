@@ -9,9 +9,17 @@ exports.default = Page({
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
     index: 3,
     opened: !1,
+    avatar: [
+      {count:1},
+      {count:2}
+    ]
   },
   onLoad() {
-    this.initButton()
+    this.initButton();
+    this._onLoad();
+  },
+  _onload() {
+    
   },
   initButton(position = 'bottomLeft') {
     this.setData({

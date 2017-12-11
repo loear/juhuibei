@@ -1,5 +1,8 @@
 import { $wuxToptips } from '../../packages/@wux/components/wux';
 import WxValidate from '../../common/assets/plugins/WxValidate';
+import { Activity } from 'activity-model.js';
+var activity = new Activity();
+
 var gourmet_address = "";   // 详细地址
 var gourmet_title = "";     // 地址标题
 var geopoint = null;        // 坐标
@@ -11,7 +14,7 @@ Page({
       "start_date": '',
       "start_time": '',
       "numbers": '',
-      "is_only_qun": '',
+      "is_only_group": '',
       "end_date": '',
       "end_time": ''
     },
@@ -53,13 +56,28 @@ Page({
       gourmet_title: gourmet_title,
       geopoint: geopoint,
       numbers: params.numbers,
-      is_only_qun: params.is_only_qun,
+      is_only_group: params.is_only_group,
       end_date: params.end_date,
       end_time: params.end_time
     };
 
-    console.log(data);
+    data.user_id = wx.getStorageSync('uid');
 
+    console.log(data);
+    activity.postActivity(data, (res)=>{
+      console.log(res);
+      wx.showToast({
+        title: res.data,
+        icon: 'success',
+        duration: 1000,
+        success: function () {
+          // wx.switchTab({
+          //   url: '/pages/template/template'
+          // });
+        }
+      });
+    });
+    
     $wuxToptips.success({
       hidden: !0,
       text: '提交成功'

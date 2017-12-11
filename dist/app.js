@@ -11,6 +11,7 @@ exports.default = App({
     token.verify();
   },
   onShow: function onShow() {},
-  onHide: function onHide() {}
+  onHide: function onHide() {},
+
 });
 

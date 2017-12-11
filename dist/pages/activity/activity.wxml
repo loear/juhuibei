@@ -70,7 +70,7 @@
           <view class="weui-cell__bd">限定微信群 <icon type="info" size="23" color="#ff4444"></icon>
           </view>
           <view class="weui-cell__ft">
-              <switch color="#ff4444" name="is_only_qun"/>
+              <switch color="#ff4444" name="is_only_group"/>
           </view>
         </view>
         <!-- 时间 -->

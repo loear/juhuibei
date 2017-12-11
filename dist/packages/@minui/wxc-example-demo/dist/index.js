@@ -16,6 +16,10 @@ exports.default = Component({
     source: {
       type: String,
       value: ''
+    },
+    avatar: {
+      type: Array,
+      value: []
     }
   },
   data: {

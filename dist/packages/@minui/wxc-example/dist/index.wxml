@@ -9,7 +9,7 @@
     <slot></slot>
 
     <!-- foot -->
-    <!-- <navigator class="example__foot" openType="switchTab" url="/pages/component/index" hover-class="none">
+     <!-- <navigator class="example__foot" openType="switchTab" url="/pages/component/index" hover-class="none">
       <image class="example__foot--icon" src="https://s10.mogucdn.com/mlcdn/c45406/170913_0e8g7dl1f2l75a8h6he12436a8024_152x23.png"></image>
-    </navigator> -->
+    </navigator>  -->
 </view>

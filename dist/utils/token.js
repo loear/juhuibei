@@ -4,13 +4,28 @@ class Token {
   constructor() {
     this.verifyUrl = Config.restUrl + 'token/verify';
     this.tokenUrl = Config.restUrl + 'token/user';
+    this.userInfoUrl = Config.restUrl + 'token/info';
   }
 
   verify() {
+    var that = this;
     var token = wx.getStorageSync('token');
     console.log(token);
     if (!token) {
       this.getTokenFromServer();
+      this.getUserInfo((data) => {
+        data.user_id = wx.getStorageSync('uid');
+        wx.request({
+          url: that.userInfoUrl,
+          method: 'POST',
+          data: {
+            data: data
+          },
+          success: function (res) {
+            console.log(res);
+          }
+        })
+      });
     }
     else {
       this._veirfyFromServer(token);
@@ -45,12 +60,26 @@ class Token {
             code: res.code
           },
           success: function (res) {
-            console.log(res.data.token);
             wx.setStorageSync('token', res.data.token);
+            wx.setStorageSync('uid', res.data.uid);
             callBack && callBack(res.data.token);
           }
         })
       }
+    })
+  }
+
+  //得到用户微信信息
+  getUserInfo(cb) {
+    var that = this;
+    wx.login({
+      success: function () {
+        wx.getUserInfo({
+          success: function (res) {
+            typeof cb == "function" && cb(res.userInfo);
+          }
+        });
+      },
     })
   }
 }
