@@ -43,9 +43,8 @@ exports.default = Page({
         }
       ],
       buttonClicked(index, item) {
-        index === 0 && wx.showModal({
-          title: '敬请期待！',
-          showCancel: !1,
+        index === 0 && wx.navigateTo({
+          url: '/pages/picture/index'
         })
 
         index === 1 && wx.navigateTo({

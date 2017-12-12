@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -52,6 +52,12 @@
 					"id": -1,
 					"name": "picture",
 					"pathName": "pages/picture/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "picture-detail",
+					"pathName": "pages/picture-detail/index",
 					"query": ""
 				}
 			]

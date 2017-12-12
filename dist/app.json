@@ -6,7 +6,8 @@
     "pages/wolf/wolf",
     "pages/activity-detail/index",
     "pages/music/music",
-    "pages/picture/index"
+    "pages/picture/index",
+    "pages/picture-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
