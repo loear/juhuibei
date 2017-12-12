@@ -1,0 +1,7 @@
+<wxc-flex class="wrap" cross="top" wrap="wrap">
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+</wxc-flex>

@@ -23,14 +23,13 @@ Page({
   },
   onReady: function () {
     wx.setNavigationBarTitle({
-      title: '十年情谊'
+      title: '音乐'
     })
   },
   getMusics: function (idList) {
     let musics = this.data.musics
-    console.log(idList.shift())
+
     if (idList.length > 0) {
-      
       api.getMusicDetailById({
         query: {
           id: idList.shift()
@@ -62,7 +61,7 @@ Page({
         current: length
       })
       wx.navigateTo({
-        url: '../home/index',
+        url: '../history/history?page=music',
         success: () => {
           this.setData({
             current: length - 1

@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -47,6 +47,12 @@
 					"pathName": "pages/activity-detail/index",
 					"query": "activity_id=1",
 					"scene": "1007"
+				},
+				{
+					"id": -1,
+					"name": "picture",
+					"pathName": "pages/picture/index",
+					"query": ""
 				}
 			]
 		}

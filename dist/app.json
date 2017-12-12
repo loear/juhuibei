@@ -4,7 +4,9 @@
     "pages/activity/activity",
     "pages/game/game",
     "pages/wolf/wolf",
-    "pages/activity-detail/index"
+    "pages/activity-detail/index",
+    "pages/music/music",
+    "pages/picture/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
