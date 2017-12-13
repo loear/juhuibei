@@ -10,8 +10,8 @@
   </swiper>
   
   <view class="music-content">
-    <include  src="./includes/story.wxml"/>
-    <include  src="./includes/lyric.wxml"/>
-    <include  src="./includes/about.wxml"/>
+    <include wx:if="{{item.contentType === 'story'}}" src="../includes/story.wxml"/>
+    <include wx:if="{{item.contentType === 'lyric'}}" src="../includes/lyric.wxml"/>
+    <include wx:if="{{item.contentType === 'about'}}" src="../includes/about.wxml"/>
   </view>
 </view>
