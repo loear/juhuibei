@@ -9,13 +9,17 @@ Page({
   data: {
     musics: [],
     current: 0,
-    playId: -1
+    playId: -1,
+
+    contentType: 'story',
+    playImg : MUSIC_PALY_IMG
   },
   onLoad: function () {
     api.getMusicIdList({
       success: (res) => {
         if (res.data.res === 0) {
           let idList = res.data.data
+          console.log(idList);
           this.getMusics(idList)
         }
       }
@@ -28,9 +32,7 @@ Page({
   },
   getMusics: function (idList) {
     let musics = this.data.musics
-    console.log(idList.shift())
     if (idList.length > 0) {
-      
       api.getMusicDetailById({
         query: {
           id: idList.shift()
@@ -38,7 +40,6 @@ Page({
         success: (res) => {
           if (res.data.res === 0) {
             let music = res.data.data
-
             music.playImg = MUSIC_PALY_IMG
             music.contentType = 'story'
             music.story = util.filterContent(music.story)

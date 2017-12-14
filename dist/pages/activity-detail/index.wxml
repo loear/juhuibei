@@ -8,10 +8,31 @@
     </block>
     <swiper-item></swiper-item>
   </swiper>
+
+  <view class="music-control">
+    <view class="music-author">
+      <image class="music-author-avatar" src="http://image.wufazhuce.com/FgK64osNWS18OWSy-Vy30_bQjJVm" mode="aspectFill"></image>
+      <view class="music-author-username">
+        <text>孙燕姿</text>
+      </view>
+      <view class="music-author-desc">
+        <text>新加坡歌手</text>
+      </view>
+    </view>
+    <view class="music-play" bindtap="togglePlay">
+      <image class="music-play-control" src="{{playImg}}" data-id="2460"></image>
+    </view>
+    <view class="music-title">
+      <text>ONE一个《音乐 | 喜欢就得往前凑，这才是生活的真勇敢》 文/旧万年： 你喜欢他，他喜欢她，她喜欢我，我喜欢你，谁也没错。 </text>
+    </view>
+    <view class="music-maketime">
+      <text>{{item.maketime}}</text>
+    </view>
+  </view>   
   
   <view class="music-content">
-    <include wx:if="{{item.contentType === 'story'}}" src="../includes/story.wxml"/>
-    <include wx:if="{{item.contentType === 'lyric'}}" src="../includes/lyric.wxml"/>
-    <include wx:if="{{item.contentType === 'about'}}" src="../includes/about.wxml"/>
+    <include wx:if="{{contentType === 'story'}}" src="./includes/story.wxml"/>
+    <include wx:if="{{contentType === 'lyric'}}" src="./includes/lyric.wxml"/>
+    <include wx:if="{{contentType === 'about'}}" src="./includes/about.wxml"/>
   </view>
 </view>
