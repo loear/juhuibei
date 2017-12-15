@@ -1,4 +1,5 @@
 import { $wuxToptips } from '../../packages/@wux/components/wux';
+import { $wuxDialog } from '../../packages/@wux/components/wux';
 import WxValidate from '../../common/assets/plugins/WxValidate';
 import { Activity } from 'activity-model.js';
 var activity = new Activity();
@@ -19,8 +20,10 @@ Page({
       "end_time": ''
     },
     files: [],
-    date: "2018-01-01",
-    time: "12:01",
+    start_date: "2018-01-01",
+    start_time: "12:01",
+    end_date: "2019-01-01",
+    end_time: "12:05",
   },
   onLoad() {
     this.initValidate();
@@ -119,14 +122,26 @@ Page({
       urls: this.data.files // 需要预览的图片http链接列表
     })
   },
-  bindDateChange: function (e) {
+  bindStartDateChange: function (e) {
     this.setData({
-      date: e.detail.value
+      start_date: e.detail.value,
+      end_date: e.detail.value
     })
   },
-  bindTimeChange: function (e) {
+  bindStartTimeChange: function (e) {
     this.setData({
-      time: e.detail.value
+      start_time: e.detail.value,
+      end_time: e.detail.value
+    })
+  },
+  bindEndDateChange: function (e) {
+    this.setData({
+      end_date: e.detail.value
+    })
+  },
+  bindEndTimeChange: function (e) {
+    this.setData({
+      end_time: e.detail.value
     })
   },
   chooseLocation: function () {
@@ -153,5 +168,14 @@ Page({
     this.setData({
       isAgree: !!e.detail.value.length
     });
+  },
+  bindGroupTag() {
+    $wuxDialog.alert({
+      title: '限定微信群',
+      content: '仅转发到的群成员可以报名',
+      onConfirm(e) {
+        console.log('我知道了')
+      },
+    })
   }
 })

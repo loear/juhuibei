@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 import { $wuxButton } from '../../packages/@wux/components/wux'
+import api from '../../api/api_v1.js'
 exports.default = Page({
   data: {
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
@@ -19,7 +20,14 @@ exports.default = Page({
     this._onLoad();
   },
   _onLoad() {
-
+    api.getActivityList({
+      query: {
+        id: 2
+      },
+      success: (res) => {
+        console.log(res)
+      } 
+    })
   },
   initButton(position = 'bottomLeft') {
     this.setData({

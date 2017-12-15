@@ -2,6 +2,10 @@
 
 <template is="toptips" data="{{ ...$wux.toptips }}"/>
 
+<import src="../../packages/@wux/components/dialog/dialog.wxml"/>
+
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+
 <view class="page">
   <view class="page__bd">
     <form bindsubmit="submitForm">
@@ -39,13 +43,13 @@
             <view class="weui-label">聚会时间</view>
           </view>
           <view class="weui-cell__bd loear-data">
-            <picker mode="date" value="{{date}}" start="2018-01-01" end="2019-01-01" bindchange="bindDateChange" name="start_date">
-              <view class="weui-input">{{date}}</view>
+            <picker mode="date" value="{{start_date}}" start="2018-01-01" end="2019-01-01" bindchange="bindStartDateChange" name="start_date">
+              <view class="weui-input">{{start_date}}</view>
             </picker>
           </view>
           <view class="loear-time">
-            <picker mode="time" value="{{time}}" start="07:01" end="23:59" bindchange="bindTimeChange" name="start_time">
-              <view class="weui-input">{{time}}</view>
+            <picker mode="time" value="{{start_time}}" start="07:01" end="23:59" bindchange="bindStartTimeChange" name="start_time">
+              <view class="weui-input">{{start_time}}</view>
             </picker>
           </view>
         </view>
@@ -67,7 +71,7 @@
         </view>
         <!--指定微信群-->
         <view class="weui-cell weui-cell_switch">
-          <view class="weui-cell__bd">限定微信群 <icon type="info" size="23" color="#ff4444"></icon>
+          <view class="weui-cell__bd">限定微信群 <icon type="info" size="23" color="#ddd" bindtap="bindGroupTag"></icon>
           </view>
           <view class="weui-cell__ft">
               <switch color="#ff4444" name="is_only_group"/>
@@ -79,13 +83,13 @@
             <view class="weui-label">截止报名时间</view>
           </view>
           <view class="weui-cell__bd loear-data">
-            <picker mode="date" value="{{date}}" start="2018-01-01" end="2019-01-01" bindchange="bindDateChange" name="end_date">
-              <view class="weui-input">{{date}}</view>
+            <picker mode="date" value="{{end_date}}" start="2018-01-01" end="2019-01-01" bindchange="bindEndDateChange" name="end_date">
+              <view class="weui-input">{{end_date}}</view>
             </picker>
           </view>
           <view class="loear-time">
-            <picker mode="time" value="{{time}}" start="7:01" end="23:59" bindchange="bindTimeChange" name="end_time">
-              <view class="weui-input">{{time}}</view>
+            <picker mode="time" value="{{end_time}}" start="7:01" end="23:59" bindchange="bindEndTimeChange" name="end_time">
+              <view class="weui-input">{{end_time}}</view>
             </picker>
           </view>
         </view>
