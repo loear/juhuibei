@@ -109,9 +109,11 @@ Page({
     let type = e.target.dataset.type
 
     let musics = this.data.musics
-    let music = musics.find((music) => music.id === id)
-    music.contentType = type
     
+    let music = musics.find((music) => music.id === id)
+
+    this.data.contentType = type
+    this.setData({ contentType:type })    
 
     this.setData({ musics })
     

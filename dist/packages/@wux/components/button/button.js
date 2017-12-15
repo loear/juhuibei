@@ -1,5 +1,4 @@
 import Component from '../component'
-
 export default {
 	/**
 	 * 默认参数
