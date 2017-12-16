@@ -1,0 +1,14 @@
+.demo-tab {}
+.demo-tab__label {
+    width: 100%;
+    margin: 20rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.demo-tab__text {
+    margin-left: 8rpx
+}
+.demo-tab--active {
+    color: #ff5777
+}

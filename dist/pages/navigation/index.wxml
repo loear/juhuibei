@@ -1,0 +1,18 @@
+<wxc-tab bind:tabchange="onClick" default-index="{{activeKey}}" component-id="c3" animate="{{true}}" class="demo-tab" _pid="{{_pid}}">
+    <view slot="tablabel">
+        <wxc-tab-label wx:for="{{tabs}}" wx:for-item="tab" wx:key="{{tab.title}}" tab-index="{{index}}" component-id="c3" _pid="{{_pid}}">
+            <view class="demo-tab__label">
+                <icon type="success" size="16" color="{{ activeKey === index ? '#ff5777' : '#555' }}">
+                </icon>
+                <view class="demo-tab__text {{ activeKey === index ? 'demo-tab--active' : ''}}">
+                    {{tab.title}}
+                </view>
+            </view>
+        </wxc-tab-label>
+    </view>
+
+    <wxc-tab-panel wx:for="{{tabs}}" wx:for-item="tab" wx:key="{{tab.content}}" tab-index="{{index}}" component-id="c3" _pid="{{_pid}}">
+        {{tab.content}}
+    </wxc-tab-panel>
+
+</wxc-tab>

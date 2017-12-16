@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -66,6 +66,11 @@
 					"pathName": "pages/navigation_car/navigation",
 					"query": "",
 					"scene": "1007"
+				},
+				{
+					"id": -1,
+					"name": "导航-new",
+					"pathName": "pages/navigation/index"
 				}
 			]
 		}
