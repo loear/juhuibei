@@ -7,7 +7,14 @@
     "pages/activity-detail/index",
     "pages/music/music",
     "pages/picture/index",
-    "pages/picture-detail/index"
+    "pages/picture-detail/index",
+    "pages/navigation_car/navigation",
+    "pages/navigation_bus/navigation",
+    "pages/navigation_walk/navigation",
+    "pages/navigation_ride/navigation",
+    "pages/navigation_car_detail/navigation",
+    "pages/navigation_walk_detail/navigation",
+    "pages/navigation_ride_detail/navigation"
   ],
   "window": {
     "backgroundTextStyle": "dark",
