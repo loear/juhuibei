@@ -6,6 +6,7 @@
   "dependencies": {
     "@minui/wxc-avatar": "^1.0.2",
     "@minui/wxc-countdown": "^1.0.3",
+    "@minui/wxc-dialog": "^1.0.3",
     "@minui/wxc-example": "^1.0.0",
     "@minui/wxc-example-demo": "^1.0.1",
     "@minui/wxc-label": "^1.0.3",

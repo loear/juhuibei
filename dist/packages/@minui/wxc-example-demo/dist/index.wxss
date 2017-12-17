@@ -18,6 +18,28 @@
   background: #fff;
 }
 
+.countdown {
+  position: absolute
+}
+
+.label_countdown {
+  position: relative;
+  left:10rpx;
+  top:-410rpx;
+}
+
+.label_coming {
+  position: relative;
+  left:20rpx;
+  top:-410rpx;
+}
+
+.dome-image{
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+}
+
 .meta {
   position: relative;
   margin-top: 40rpx;
@@ -69,12 +91,18 @@
   margin: 10rpx;
 }
 
-.button-sp-area {
-    margin: 0 auto;
-    padding: 15px 0;
-    width: 60%;
+.button-sp-area{
+    margin: 10rpx auto;
+    padding-top: 10rpx;
+    width: 100%;
+    text-align: center;
+}
+
+.mini-btn{
+    margin-right: 5px;
 }
 
 .loear-color {
   color:#ff4444;
 }
+

@@ -6,14 +6,11 @@
     <!-- wxp template -->
     <example title="" desc="" _pid="{{_pid}}">
 
-        <example-demo title="2017年湖南第5届同学聚会" desc="深圳市罗湖区" _pid="{{_pid}}" source="{{__code__.demoMultiple}}">
-            <demo-multiple _pid="{{_pid}}"></demo-multiple>
+        <block wx:for="{{activity_list}}" wx:key="item">
+        <example-demo title="{{item.title}}" desc="{{item.gourmet_title}}" _pid="{{_pid}}" source="{{__code__.demoMultiple}}" avatar="{{item.activity}}" countdown="{{item._end_time_diff}}" coming="{{item._numbers}}">
+            
         </example-demo>
-
-        <example-demo title="2017年湖南第5届同学聚会" desc="" _pid="{{_pid}}" source="{{__code__.demoMultiple}}" avatar="{{avatar}}">
-            <demo-multiple _pid="{{_pid}}"></demo-multiple>
-        </example-demo>
-
+        </block>
     </example>
 
     <!--<layout-foot></layout-foot>-->

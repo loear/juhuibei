@@ -25,7 +25,10 @@ exports.default = Page({
         id: 2
       },
       success: (res) => {
-        console.log(res)
+        console.log(res.data)
+        this.setData({
+          activity_list: res.data,
+        })
       } 
     })
   },

@@ -1,0 +1,9 @@
+<view class="map_box">
+  <map id="navi_map" longitude="116.451028" latitude="39.949643" scale="12" markers="{{markers}}" polyline="{{polyline_walk}}"></map>
+</view>
+
+<view class="text_box">
+  <view class="text">{{distance_walk}}</view>
+  <view class="text">{{cost_walk}}</view>
+  <view class="detail_button" bindtouchstart="goWalkDetail">详情</view>
+</view>
