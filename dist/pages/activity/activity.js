@@ -27,10 +27,10 @@ Page({
     start_date: "2018-01-01",
     start_time: "12:01",
     end_date: "2019-01-01",
-    end_time: "12:05"
+    end_time: "12:05",
+    has_image: false
   },
   onLoad() {
-    
     this.initValidate();
     this.setData({
       title: '地图定位',
@@ -48,7 +48,7 @@ Page({
   },
   submitForm(e) {
     const params = e.detail.value;
-
+    console.log(this.data.files[0].url);
     if (!this.WxValidate.checkForm(e)) {
       const error = this.WxValidate.errorList[0]
       this.showToptips(error)
@@ -71,7 +71,7 @@ Page({
 
     data.user_id = wx.getStorageSync('uid');
 
-    console.log(data);
+    
     activity.postActivity(data, (res)=>{
       console.log(res);
       wx.showToast({
@@ -79,9 +79,9 @@ Page({
         icon: 'success',
         duration: 1000,
         success: function () {
-          // wx.switchTab({
-          //   url: '/pages/template/template'
-          // });
+          wx.navigateTo({
+            url: '/pages/home/index'
+          });
         }
       });
     });
@@ -123,23 +123,23 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        that.setData({
-          files: that.data.files.concat(res.tempFilePaths)
-        });
+        // that.setData({
+        //   files: that.data.files.concat(res.tempFilePaths)
+        // });
 
         var filePath = res.tempFilePaths[0];
         // 交给七牛上传
         qiniuUploader.upload(filePath, (res) => {
-          console.log(res);
           that.setData({
-            'imageURL': res.imageURL,
+            'files': [{url: res.imageURL}],
+            'has_image': true
           });
           }, (error) => {
             console.log('error: ' + error);
           }, {
-            region: 'ECN',
-            domain: 'bzkdlkaf.bkt.clouddn.com', // // bucket 域名，下载资源时用到。
-            key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+            region: 'SCN',
+            domain: 'qiniu.juhuibei.com', // bucket 域名，下载资源时用到。
+            // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
             uptoken: token,
         });
         

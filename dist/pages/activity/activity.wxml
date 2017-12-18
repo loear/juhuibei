@@ -23,16 +23,21 @@
               <view class="weui-uploader">
                 <view class="weui-uploader__bd">
                   <view class="weui-uploader__files" id="uploaderFiles">
-                      <block wx:for="{{files}}" wx:key="*this">
-                        <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
-                          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                      <block wx:for="{{files}}" wx:key="item">
+                        <view class="weui-uploader__file" bindtap="previewImage" id="{{item.url}}">
+                          <image class="weui-uploader__img" src="//{{item.url}}" mode="aspectFill" />
                         </view>
                       </block>
                   </view>
-                  <view class="weui-uploader__input-box">
-                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  <view wx:if="{{has_image}}">
+                    <view class="loear-uploder__tips" bindtap="chooseImage">更换图片</view>
                   </view>
-                  <view class="loear-uploder__tips">背景图片</view>
+                  <view wx:else>
+                    <view class="weui-uploader__input-box">
+                      <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                    </view>
+                    <view class="loear-uploder__tips">背景图片</view>
+                  </view>
                 </view>
               </view>
             </view>
