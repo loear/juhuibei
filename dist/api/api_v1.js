@@ -25,49 +25,11 @@ const wxRequest = (params, url) => {
 }
 
 const getActivityList = (params) => wxRequest(params, host + 'activity/list/' + params.query.id)
-
-// Index
-const getVolById = (params) => wxRequest(params, host + '/api/hp/detail/' + params.query.id)
-const getVolIdList = (params) => wxRequest(params, host + '/api/hp/idlist/0')
-const getVolsByMonth = (params) => wxRequest(params, host + '/api/hp/bymonth/' + params.query.month)
-const getVolDetailById = (params) => wxRequest(params, host + '/api/hp/detail/' + params.query.id)
-
-// Reading
-const getCarousel = (params) => wxRequest(params, host + '/api/reading/carousel')
-const getLastArticles = (params) => wxRequest(params, host + '/api/reading/index')
-const getEssayById = (params) => wxRequest(params, host + '/api/essay/' + params.query.id)
-const getSerialById = (params) => wxRequest(params, host + '/api/serialcontent/' + params.query.id)
-const getQuestionById = (params) => wxRequest(params, host + '/api/question/' + params.query.id)
-const getArticlesByMonth = (params) => {
-  wxRequest(params, host + '/api/' + params.query.type + '/bymonth/' + params.query.month)
-}
-
-// Music
-const getMusicIdList = (params) => wxRequest(params, host + '/api/music/idlist/0')
-const getMusicsByMonth = (params) => wxRequest(params, host + '/api/music/bymonth/' + params.query.month)
-const getMusicDetailById = (params) => wxRequest(params, host + '/api/music/detail/' + params.query.id)
-
-// Movie
-const getMovieListById = (params) => wxRequest(params, host + '/api/movie/list/' + params.query.id)
-const getMovieDetailById = (params) => wxRequest(params, host + '/api/movie/detail/' + params.query.id)
-const getMovieStoryById = (params) => wxRequest(params, host + '/api/movie/' + params.query.id + '/story/1/0')
+const getActivityInfo = (params) => wxRequest(params, host + 'activity/info/' + params.query.user_id + '/' + params.query.activity_id)
+const getUploadToken = (params) => wxRequest(params, host + 'activity/upload_token')
 
 module.exports = {
   getActivityList,
-  getVolById,
-  getVolIdList,
-  getVolsByMonth,
-  getVolDetailById,
-  getCarousel,
-  getLastArticles,
-  getEssayById,
-  getSerialById,
-  getQuestionById,
-  getArticlesByMonth,
-  getMusicIdList,
-  getMusicsByMonth,
-  getMusicDetailById,
-  getMovieListById,
-  getMovieDetailById,
-  getMovieStoryById
+  getActivityInfo,
+  getUploadToken
 }

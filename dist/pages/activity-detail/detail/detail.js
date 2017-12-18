@@ -2,7 +2,7 @@ import {
   MUSIC_PALY_IMG,
   MUSIC_PAUSE_IMG
 } from '../../../utils/constants.js'
-import api from '../../../api/api.js'
+import api from '../../../api/api_v1.js'
 import util from '../../../utils/util.js'
 
 Page({

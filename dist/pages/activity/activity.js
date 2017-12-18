@@ -1,12 +1,16 @@
 import { $wuxToptips } from '../../packages/@wux/components/wux';
 import { $wuxDialog } from '../../packages/@wux/components/wux';
 import WxValidate from '../../common/assets/plugins/WxValidate';
+import api from '../../api/api_v1.js'
 import { Activity } from 'activity-model.js';
 var activity = new Activity();
 
 var gourmet_address = "";   // 详细地址
 var gourmet_title = "";     // 地址标题
 var geopoint = null;        // 坐标
+
+const qiniuUploader = require("../../libs/qiniuUploader");
+
 Page({
   data: {
     form: {
@@ -23,9 +27,10 @@ Page({
     start_date: "2018-01-01",
     start_time: "12:01",
     end_date: "2019-01-01",
-    end_time: "12:05",
+    end_time: "12:05"
   },
   onLoad() {
+    
     this.initValidate();
     this.setData({
       title: '地图定位',
@@ -105,6 +110,14 @@ Page({
   },
   chooseImage: function (e) {
     var that = this;
+    var token = '';
+    api.getUploadToken({
+      success: (res) => {
+        if (res.data.res === 0) {
+          token = res.data.data
+        }
+      }
+    })
     wx.chooseImage({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
@@ -113,6 +126,23 @@ Page({
         that.setData({
           files: that.data.files.concat(res.tempFilePaths)
         });
+
+        var filePath = res.tempFilePaths[0];
+        // 交给七牛上传
+        qiniuUploader.upload(filePath, (res) => {
+          console.log(res);
+          that.setData({
+            'imageURL': res.imageURL,
+          });
+          }, (error) => {
+            console.log('error: ' + error);
+          }, {
+            region: 'ECN',
+            domain: 'bzkdlkaf.bkt.clouddn.com', // // bucket 域名，下载资源时用到。
+            key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+            uptoken: token,
+        });
+        
       }
     })
   },

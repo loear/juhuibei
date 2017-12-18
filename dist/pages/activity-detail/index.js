@@ -2,7 +2,7 @@ import {
   MUSIC_PALY_IMG,
   MUSIC_PAUSE_IMG
 } from '../../utils/constants.js'
-import api from '../../api/api.js'
+import api from '../../api/api_v1.js'
 import util from '../../utils/util.js'
 
 Page({
@@ -15,12 +15,17 @@ Page({
     playImg : MUSIC_PALY_IMG
   },
   onLoad: function () {
-    api.getMusicIdList({
+    api.getActivityInfo({
+      query:{
+        user_id: 2,
+        activity_id: 1
+      },
       success: (res) => {
         if (res.data.res === 0) {
-          let idList = res.data.data
-          console.log(idList);
-          this.getMusics(idList)
+          let activity_info = res.data.data
+          console.log(activity_info);
+          this.setData({ activity_info })
+        
         }
       }
     })
@@ -29,30 +34,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '十年情谊'
     })
-  },
-  getMusics: function (idList) {
-    let musics = this.data.musics
-    if (idList.length > 0) {
-      api.getMusicDetailById({
-        query: {
-          id: idList.shift()
-        },
-        success: (res) => {
-          if (res.data.res === 0) {
-            let music = res.data.data
-            music.playImg = MUSIC_PALY_IMG
-            music.contentType = 'story'
-            music.story = util.filterContent(music.story)
-            music.maketime = util.formatMakettime(music.maketime)
-            musics.push(music)
-          }
-          this.getMusics(idList)
-        } 
-      })
-    } else {
-      this.setData({ musics })
-      console.log(musics);
-    }
   },
   handleChange: function (e) {
     let current = e.detail.current
