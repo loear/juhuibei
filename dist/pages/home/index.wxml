@@ -7,10 +7,10 @@
     <example title="" desc="" _pid="{{_pid}}">
 
         <block wx:for="{{activity_list}}" wx:key="item">
-        <example-demo title="{{item.title}}" desc="{{item.gourmet_title}}" _pid="{{_pid}}" source="{{__code__.demoMultiple}}" avatar="{{item.activity}}" countdown="{{item._end_time_diff}}" coming="{{item._numbers}}">
-            
+        <example-demo title="{{item.title}}" desc="{{item.gourmet_title}}" _pid="{{_pid}}" source="{{__code__.demoMultiple}}" avatar="{{item.info}}" countdown="{{item._end_time_diff}}" coming="{{item._numbers}}">
         </example-demo>
         </block>
+        
     </example>
 
     <!--<layout-foot></layout-foot>-->

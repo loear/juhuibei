@@ -7,8 +7,9 @@ var activity = new Activity();
 
 var gourmet_address = "";   // 详细地址
 var gourmet_title = "";     // 地址标题
-var geopoint = null;        // 坐标
-
+var latitude = 0;           // 纬度
+var longitude = 0;          // 经度
+var image_id = 0;           // 上传图片ID
 const qiniuUploader = require("../../libs/qiniuUploader");
 
 Page({
@@ -47,8 +48,8 @@ Page({
     // setTimeout(hideToptips, 1500)
   },
   submitForm(e) {
+    console.log(image_id);
     const params = e.detail.value;
-    console.log(this.data.files[0].url);
     if (!this.WxValidate.checkForm(e)) {
       const error = this.WxValidate.errorList[0]
       this.showToptips(error)
@@ -62,11 +63,13 @@ Page({
       start_time: params.start_time,
       gourmet_address: gourmet_address,
       gourmet_title: gourmet_title,
-      geopoint: geopoint,
+      latitude: latitude,
+      longitude: longitude,
       numbers: params.numbers,
       is_only_group: params.is_only_group,
       end_date: params.end_date,
-      end_time: params.end_time
+      end_time: params.end_time,
+      image_id: image_id
     };
 
     data.user_id = wx.getStorageSync('uid');
@@ -130,17 +133,30 @@ Page({
         var filePath = res.tempFilePaths[0];
         // 交给七牛上传
         qiniuUploader.upload(filePath, (res) => {
+          // 前端页面展示
           that.setData({
             'files': [{url: res.imageURL}],
             'has_image': true
           });
-          }, (error) => {
-            console.log('error: ' + error);
-          }, {
-            region: 'SCN',
-            domain: 'qiniu.juhuibei.com', // bucket 域名，下载资源时用到。
-            // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
-            uptoken: token,
+          // 后端插入images表
+          api.saveImage({
+            method: 'post',
+            data: {
+              url:res.imageURL
+            },
+            success: (res) => {
+              if (res.data.res === 0) {
+                image_id = res.data.data
+              }
+            }
+          })
+        }, (error) => {
+          console.log('error: ' + error);
+        }, {
+          region: 'SCN',
+          domain: 'qiniu.juhuibei.com', // bucket 域名，下载资源时用到。
+          // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+          uptoken: token,
         });
         
       }
@@ -178,13 +194,12 @@ Page({
     var that = this;
     wx.chooseLocation({
       success: function (ret) {
-        console.log('chooseLocation', ret)
-        gourmet_address = ret.address;
-        gourmet_title = ret.name;
-        geopoint = {
-          latitude: +ret.latitude //数值
-          , longitude: +ret.longitude //数值
-        }
+        // console.log('chooseLocation', ret)
+        gourmet_address = ret.address
+        gourmet_title = ret.name
+        latitude: +ret.latitude //数值
+        longitude: +ret.longitude //数值
+        // 前端展示选择的地址标题
         that.setData({
           title: gourmet_title,
         })

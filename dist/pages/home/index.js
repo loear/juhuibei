@@ -9,29 +9,17 @@ exports.default = Page({
   data: {
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
     index: 3,
-    opened: !1,
-    avatar: [
-      {count:1},
-      {count:2}
-    ]
+    opened: !1
   },
   onLoad() {
+    // 1. 初始化菜单按钮
     this.initButton();
-    this._onLoad();
+    // 1. 载入用户的聚会列表
+    let user_id = wx.getStorageSync('uid')
+    this.loadActivityList(user_id);
   },
-  _onLoad() {
-    api.getActivityList({
-      query: {
-        id: 2
-      },
-      success: (res) => {
-        console.log(res.data)
-        this.setData({
-          activity_list: res.data,
-        })
-      } 
-    })
-  },
+
+  // 初始化菜单按钮 默认在左下角
   initButton(position = 'bottomLeft') {
     this.setData({
       opened: !1,
@@ -75,12 +63,19 @@ exports.default = Page({
       },
     })
   },
-  switchChange(e) {
-    e.detail.value ? this.button.open() : this.button.close()
-  },
-  pickerChange(e) {
-    const index = e.detail.value
-    const position = this.data.types[index]
-    this.initButton(position)
-  },
+
+  // 载入聚会列表
+  loadActivityList: function (user_id) {
+    var that = this;
+    api.getActivityList({
+      query: {
+        id: user_id
+      },
+      success: (res) => {
+        that.setData({
+          activity_list: res.data,
+        })
+      } 
+    })
+  }
 });

@@ -27,9 +27,11 @@ const wxRequest = (params, url) => {
 const getActivityList = (params) => wxRequest(params, host + 'activity/list/' + params.query.id)
 const getActivityInfo = (params) => wxRequest(params, host + 'activity/info/' + params.query.user_id + '/' + params.query.activity_id)
 const getUploadToken = (params) => wxRequest(params, host + 'activity/upload_token')
+const saveImage = (params) => wxRequest(params, host + 'activity/save_image')
 
 module.exports = {
   getActivityList,
   getActivityInfo,
-  getUploadToken
+  getUploadToken,
+  saveImage
 }
