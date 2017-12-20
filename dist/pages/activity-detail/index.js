@@ -5,6 +5,8 @@ import {
 import api from '../../api/api_v1.js'
 import util from '../../utils/util.js'
 
+var title = '聚会呗';
+
 Page({
   data: {
     musics: [],
@@ -14,25 +16,30 @@ Page({
     contentType: 'story',
     playImg : MUSIC_PALY_IMG
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    var that = this;
+    console.log('options', options)
     api.getActivityInfo({
       query:{
-        user_id: 2,
-        activity_id: 1
+        user_id: options.user_id,
+        activity_id: options.activity_id
       },
       success: (res) => {
+        console.log('activity_info', res.data.data);
         if (res.data.res === 0) {
-          let activity_info = res.data.data
-          console.log(activity_info);
-          this.setData({ activity_info })
-        
+          that.setData({ 
+            activity_info: res.data.data,
+            user_id: options.user_id,
+            activity_id: options.activity_id
+          })
+          title = res.data.data.title
         }
       }
     })
   },
   onReady: function () {
     wx.setNavigationBarTitle({
-      title: '十年情谊'
+      title: title
     })
   },
   handleChange: function (e) {
@@ -98,5 +105,24 @@ Page({
 
     this.setData({ musics })
     
+  },
+  /**
+   * 页面分享
+   */
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: title,
+      path: '/pages/activity-detail/index?user_id=' + this.data.user_id + '&activity_id=' + this.data.activity_id,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

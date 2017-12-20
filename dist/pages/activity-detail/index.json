@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "十年同窗，友情不变",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "wxc-flex": "../../packages/@minui/wxc-flex/dist/index"
+  }
 }

@@ -1,6 +1,6 @@
 <view class="container">
   <swiper class="musics-swiper" current="{{current}}" bindchange="handleChange">
-    <block wx:for="{{musics}}" wx:key="id" wx:for-index="idx">
+    <block wx:for="{{activity_info.activity_image}}" wx:key="item" wx:for-index="idx">
       <swiper-item class="musics-swiper-item">
         <import src="templates/musicItem.wxml"/>
         <template is="music-item" data="{{item: item}}"/>
@@ -11,19 +11,23 @@
 
   <view class="music-control">
     <view class="music-author">
-      <image class="music-author-avatar" src="http://image.wufazhuce.com/FgK64osNWS18OWSy-Vy30_bQjJVm" mode="aspectFill"></image>
+      <block wx:for="{{activity_info.info}}" wx:key="item">
+        <view wx:if="{{item.user_id == user_id}}">
+          <image class="music-author-avatar" src="{{item.user.avatar_url}}" mode="aspectFill"></image>
+        </view>
+      </block>
       <view class="music-author-username">
-        <text>孙燕姿</text>
+        <text>{{activity_info.title}}</text>
       </view>
       <view class="music-author-desc">
-        <text>新加坡歌手</text>
+        <text>位置：{{activity_info.gourmet_title}}</text>
       </view>
     </view>
     <view class="music-play" bindtap="togglePlay">
-      <image class="music-play-control" src="{{playImg}}" data-id="2460"></image>
+      <image class="music-play-control" src="/{{playImg}}" data-id="2460"></image>
     </view>
     <view class="music-title">
-      <text>ONE一个《音乐 | 喜欢就得往前凑，这才是生活的真勇敢》 文/旧万年： 你喜欢他，他喜欢她，她喜欢我，我喜欢你，谁也没错。 </text>
+      <text>{{activity_info.description}} </text>
     </view>
     <view class="music-maketime">
       <text>{{item.maketime}}</text>

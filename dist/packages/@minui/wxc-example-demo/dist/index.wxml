@@ -36,13 +36,24 @@
             </view>
           </block>
           <view class="button-sp-area">
-            <button class="weui-btn" type="warn" plain="true" size="mini" bindtap="showDialog">我要参加</button>
-            <wxc-dialog class="wxc-dialog" title="" content="" confirm-text="确认报名" bindconfirm="onConfirm" cancel-text="取消" bindcancel="onCancel" _pid="{{_pid}}">
-              <form>
-              <input class="form-name" name="name" placeholder="请输入您的姓名"></input>
-              <input class="form-phone" name="phone" placeholder="请输入您的手机"></input>
-              </form>
-            </wxc-dialog>
+            <block wx:for="{{avatar}}" wx:key="item">
+              <view wx:if="{{item.user_id == uid}}">
+                <view wx:if="{{item.is_coming}}">
+                  <navigator url="/pages/activity-detail/index?user_id={{uid}}&activity_id={{item.activity_id}}">
+                    <button class="weui-btn mini-btn" type="warn" plain="true" size="mini">进入聚会圈</button>
+                  </navigator>
+                </view>
+                <view wx:else>
+                  <button class="weui-btn" type="warn" plain="true" size="mini" bindtap="showDialog">我要参加</button>
+                  <wxc-dialog class="wxc-dialog" title="" content="" confirm-text="确认报名" bindconfirm="onConfirm" cancel-text="取消" bindcancel="onCancel" _pid="{{_pid}}">
+                    <form>
+                      <input class="form-name" name="name" placeholder="请输入您的姓名"></input>
+                      <input class="form-phone" name="phone" placeholder="请输入您的手机"></input>
+                    </form>
+                  </wxc-dialog>
+                </view>
+              </view>
+            </block>
           </view>
         </view>
     </view>

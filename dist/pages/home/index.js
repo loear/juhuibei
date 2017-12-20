@@ -9,7 +9,8 @@ exports.default = Page({
   data: {
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
     index: 3,
-    opened: !1
+    opened: !1,
+    uid: 0
   },
   onLoad() {
     // 1. 初始化菜单按钮
@@ -17,6 +18,9 @@ exports.default = Page({
     // 1. 载入用户的聚会列表
     let user_id = wx.getStorageSync('uid')
     this.loadActivityList(user_id);
+    this.setData({
+      uid: user_id 
+    })
   },
 
   // 初始化菜单按钮 默认在左下角

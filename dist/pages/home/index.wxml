@@ -18,6 +18,7 @@
           image_url="{{item.activity_image[0].img.url}}"
           latitude="{{item.latitude}}"
           longitude="{{item.longitude}}"
+          uid="{{uid}}"
         >
         </example-demo>
         </block>

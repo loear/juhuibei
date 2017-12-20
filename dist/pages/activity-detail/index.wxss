@@ -9,6 +9,7 @@ page {
 
 .musics-swiper {
   width: 100%;
+  height: 400rpx;
 }
 
 .music {
@@ -138,4 +139,40 @@ page {
 .about-content {
   font-size: 14px;
   line-height: 1.5;
+}
+
+
+
+
+page {
+  background: #FFFFFF;
+}
+.wrap {
+    display: block;
+    padding: 1%;
+  }
+.item {
+  width: 31%;
+  height: 300rpx;
+  margin: 1.16%;
+  flex-grow: 0;
+  background: #ffffff;
+  box-shadow: 0 0 10rpx #ccc;
+  border-radius: 5rpx;
+  text-align: center;
+}
+.item-photo-box {
+  width:90%;
+  height: 206rpx;
+  margin: 10% 5%;
+  box-shadow: 0px 0px 10px #ccc inset;
+  background-image: url('https://www.juhuibei.com/images/add_photo.jpg');
+  background-size:100% 200rpx;
+}
+.item-photo {
+  width:100%;
+  height: 206rpx;
+}
+.item-text {
+  font-size: 24rpx;
 }

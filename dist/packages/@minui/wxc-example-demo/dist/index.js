@@ -40,6 +40,10 @@ exports.default = Component({
     longitude: {
       type: String,
       value: ''
+    },
+    uid:{
+      type: String,
+      value: ''
     }
   },
   data: {
@@ -51,6 +55,10 @@ exports.default = Component({
       this.setData({
         isExpandSource: !this.data.isExpandSource
       });
+    },
+
+    goDetail() {
+
     },
 
     showDialog() {

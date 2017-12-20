@@ -1,5 +1,5 @@
 <view class="map_box">
-  <map id="navi_map" longitude="116.451028" latitude="39.949643" scale="12" markers="{{markers}}" polyline="{{polyline_ride}}"></map>
+  <map id="navi_map" longitude="{{e_longitude}}" latitude="{{e_latitude}}" scale="12" markers="{{markers}}" polyline="{{polyline_ride}}"></map>
 </view>
 
 <view class="text_box">

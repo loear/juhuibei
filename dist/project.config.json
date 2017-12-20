@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -45,7 +45,7 @@
 					"id": 3,
 					"name": "聚会详情页",
 					"pathName": "pages/activity-detail/index",
-					"query": "activity_id=1",
+					"query": "user_id=2&activity_id=8",
 					"scene": "1007"
 				},
 				{
