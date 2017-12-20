@@ -68,7 +68,15 @@
 .meta-icon {
   width: 24rpx;
   height: 24rpx;
-  padding-right: 10rpx;
+  padding: 0 10rpx;
+}
+
+.meta-navigator {
+  display: inline-block;
+}
+
+.navigator-hover {
+  color:#ff4444;
 }
 
 .example--source {
@@ -106,6 +114,3 @@
   color:#ff4444;
 }
 
-.navigator-hover {
-  color:blue;
-}

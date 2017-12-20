@@ -45,7 +45,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
+    console.log('position:',options);
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {

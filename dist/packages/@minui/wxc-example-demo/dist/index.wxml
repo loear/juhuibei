@@ -21,8 +21,9 @@
         <view class="meta-title">{{title}}</view>
         <view class="meta-desc">
           <image class="meta-icon" src="../../../../common/assets/images/position.png"></image>
-          {{desc}}
-          <navigator url="/pages/navigation/index?latitude={{latitude}}&longitude={{longitude}}" hover-class="navigator-hover">导航</navigator>
+          <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{latitude}}&longitude={{longitude}}" hover-class="navigator-hover">
+            位置：{{desc}}
+          </navigator>
         </view>
         
     </view>

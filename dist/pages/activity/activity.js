@@ -49,6 +49,8 @@ Page({
   },
   submitForm(e) {
     console.log(image_id);
+    console.log(latitude);
+    console.log(longitude);
     const params = e.detail.value;
     if (!this.WxValidate.checkForm(e)) {
       const error = this.WxValidate.errorList[0]
@@ -194,11 +196,11 @@ Page({
     var that = this;
     wx.chooseLocation({
       success: function (ret) {
-        // console.log('chooseLocation', ret)
+        console.log('chooseLocation', ret)
         gourmet_address = ret.address
         gourmet_title = ret.name
-        latitude: +ret.latitude //数值
-        longitude: +ret.longitude //数值
+        latitude = +ret.latitude //数值
+        longitude = +ret.longitude //数值
         // 前端展示选择的地址标题
         that.setData({
           title: gourmet_title,
