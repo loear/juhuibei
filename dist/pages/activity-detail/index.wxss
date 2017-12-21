@@ -84,6 +84,9 @@ page {
   color: #888;
   font-size: 12px;
   text-align: right;
+  position: absolute;
+  right:20rpx;
+  bottom: 20rpx;
 }
 
 .music-content {

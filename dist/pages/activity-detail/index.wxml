@@ -20,17 +20,19 @@
         <text>{{activity_info.title}}</text>
       </view>
       <view class="music-author-desc">
-        <text>位置：{{activity_info.gourmet_title}}</text>
+        <text>{{activity_info.description}}</text>
       </view>
     </view>
     <view class="music-play" bindtap="togglePlay">
       <image class="music-play-control" src="/{{playImg}}" data-id="2460"></image>
     </view>
     <view class="music-title">
-      <text>{{activity_info.description}} </text>
+      <text></text>
     </view>
     <view class="music-maketime">
-      <text>{{item.maketime}}</text>
+      <view wx:if="{{activity_info._countdown}}">
+        <wxc-countdown countdown="{{activity_info._countdown}}"></wxc-countdown>
+      </view>
     </view>
   </view>   
   

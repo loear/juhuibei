@@ -1,21 +1,27 @@
 <view class="music-story">
   <view class="music-content-header">
-    <text class="content-label">音乐故事</text>
+    <text class="content-label">详细信息</text>
     <view class="content-links" data-id="2486" bindtap="switchContent">
       <image class="link" src="/image/music_story_selected.png" mode="aspectFill"></image>
       <image class="link" src="/image/music_lyric_default.png" mode="aspectFill" data-type="lyric"></image>
       <image class="link" src="/image/music_about_default.png" mode="aspectFill" data-type="about"></image>
     </view>
   </view>
-  <view class="music-content-body">
-    <view class="story-title">
-      <text>春天分手，秋天会习惯</text>
-    </view>
-    <view class="story-author">
-      <text>七天路过</text>
-    </view>
-    <view class="story-content">
-      <text>大家说‘我心爱的’时，\n真的是用心在爱吗？”\n我冷不丁问了余意这样一句话，摇晃着他沉睡的身体</text>
-    </view>
+
+  <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__info ">
+              <view class="weui-media-box__info__meta">时间</view>
+              <view class="weui-media-box__info__meta">{{activity_info._start_time}}</view>
+          </view>
+          <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta">地点</view>
+              <view class="weui-media-box__info__meta">{{activity_info.gourmet_title}}</view>
+          </view>
+          <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta">人数</view>
+              <view class="weui-media-box__info__meta">{{activity_info._numbers}} / {{activity_info.numbers}}</view>
+          </view>
+      </view>
   </view>
 </view>

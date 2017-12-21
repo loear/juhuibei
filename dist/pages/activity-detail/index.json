@@ -2,6 +2,7 @@
   "navigationBarTitleText": "十年同窗，友情不变",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "wxc-flex": "../../packages/@minui/wxc-flex/dist/index"
+    "wxc-flex": "../../packages/@minui/wxc-flex/dist/index",
+    "wxc-countdown": "../../packages/@minui/wxc-countdown/dist/index"
   }
 }
