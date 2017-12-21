@@ -24,7 +24,7 @@
       </view>
     </view>
     <view class="music-play" bindtap="togglePlay">
-      <image class="music-play-control" src="/{{playImg}}" data-id="2460"></image>
+      <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="2460"></image>
     </view>
     <view class="music-title">
       <text></text>

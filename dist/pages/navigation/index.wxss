@@ -4,7 +4,7 @@
     margin: 20rpx 0;
     display: flex;
     justify-content: center;
-    align-items: center
+     align-items: center 
 }
 .demo-tab__text {
     margin-left: 8rpx
@@ -15,7 +15,7 @@
 
 .map_box{
   position:absolute;
-  top: 35px;
+  top: 50px;
   bottom: 90px;
   left: 0px;
   right: 0px;
@@ -40,7 +40,7 @@
   right: 10px;
   padding: 3px 5px;
   color: #fff;
-  background: #0091ff;
+  background: #ff4444;
   width:50px;
   text-align:center;
   border-radius:5px;
@@ -55,4 +55,11 @@
 .text_box_bus .text_item_bus{
   display:inline-block;
   line-height: 8px;
+}
+
+.icon {
+  display: inline-block;
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 10rpx;
 }

@@ -9,10 +9,10 @@ Page({
    */
   data: {
     tabs: [
-      { title: '驾车', content: '内容一' },
-      { title: '步行', content: '内容二' },
-      { title: '公交', content: '内容三' },
-      { title: '骑行', content: '内容四' }
+      { title: '驾车', content: '内容一', url: 'car_' },
+      { title: '步行', content: '内容二', url: 'walk_' },
+      { title: '公交', content: '内容三', url: 'bus_'  },
+      { title: '骑行', content: '内容四', url: 'ride_' }
     ],
     activeKey: 0,
     markers: [],

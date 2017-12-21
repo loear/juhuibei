@@ -2,14 +2,24 @@
   <view class="music-content-header">
     <text class="content-label">通讯录</text>
     <view class="content-links" data-id="{{item.id}}" bindtap="switchContent">
-      <image class="link" src="/image/music_story_default.png" mode="aspectFill" data-type="story"></image>
-      <image class="link" src="/image/music_lyric_default.png" mode="aspectFill" data-type="lyric"></image>
-      <image class="link" src="/image/music_about_selected.png" mode="aspectFill"></image>
+      <image class="link" src="/common/assets/images/activity/home_a.png" mode="aspectFill" data-type="story"></image>
+      <image class="link" src="/common/assets/images/activity/picture_a.png" mode="aspectFill" data-type="lyric"></image>
+      <image class="link" src="/common/assets/images/activity/book_b.png" mode="aspectFill" data-type="about"></image>
     </view>
   </view>
-  <view class="music-content-body">
-    <view class="about-content">
-      <text>{{item.info}}</text>
-    </view>
+  
+  <view class="weui-cells weui-cells_after-title">
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <image src="http://qiniu.juhuibei.com/tmp/wx3ea377e9cef7406f.o6zAJszXGlNEO5PTwtzdTYS2nEEU.06fc4be9701da5a4d986b2091ab8b017.jpg" style="margin-right: 10px;vertical-align: middle;width:40px; height: 40px;border-radius:50%;"></image>
+          <view class="weui-cell__bd">南郭先生</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">135-6075-7116</view>
+      </navigator>
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+              <image src="http://qiniu.juhuibei.com/tmp/wx3ea377e9cef7406f.o6zAJszXGlNEO5PTwtzdTYS2nEEU.06fc4be9701da5a4d986b2091ab8b017.jpg" style="margin-right: 10px;vertical-align: middle;width:40px; height: 40px;border-radius:50%;"></image>
+          </view>
+          <view class="weui-cell__bd">小李</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">138-8383-9837</view>
+      </navigator>
   </view>
 </view>

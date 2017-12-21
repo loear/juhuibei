@@ -59,7 +59,7 @@ page {
 
 .music-author-username {
   padding: 5px;
-  color: #89bdf7;
+  color: #ff4444;
 }
 
 .music-author-desc {
@@ -81,7 +81,7 @@ page {
 }
 
 .music-maketime {
-  color: #888;
+  color: #ff4444;
   font-size: 12px;
   text-align: right;
   position: absolute;
