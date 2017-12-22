@@ -179,3 +179,19 @@ page {
 .item-text {
   font-size: 24rpx;
 }
+
+
+/* callbook */
+.call_avatar {
+  position: relative;
+  margin-right: 20rpx;
+  vertical-align: middle;
+  width:40px; 
+  height: 40px;
+  border-radius:50%;
+}
+.weui-badge {
+  margin-left: 5px;
+  font-size:10px;
+  background:#ff4444;
+}

@@ -92,19 +92,99 @@ Page({
   pauseMusic: function () {
     wx.pauseBackgroundAudio()
   },
+  /**
+   * 切换小菜单
+   */
   switchContent: function (e) {
-    let id = e.currentTarget.dataset.id
     let type = e.target.dataset.type
-
-    let musics = this.data.musics
-    
-    let music = musics.find((music) => music.id === id)
-
     this.data.contentType = type
-    this.setData({ contentType:type })    
+    this.setData({ contentType:type })
+  },
+  /**
+   * 打开影集详情页
+   */
+  openDetail: function(e) {
+    console.log(e);
+    wx.navigateTo({
+      url: '/pages/picture-detail/index'
+    })
+  },
+  /**
+   * 上传图片到七牛
+   */
+  uploadImage: function (e) {
+    console.log(e);
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        // that.setData({
+        //   files: that.data.files.concat(res.tempFilePaths)
+        // });
 
-    this.setData({ musics })
+        var filePath = res.tempFilePaths[0];
+        // 交给七牛上传
+        qiniuUploader.upload(filePath, (res) => {
+          // 前端页面展示
+          that.setData({
+            'files': [{ url: res.imageURL }],
+            'has_image': true
+          });
+          // 后端插入images表
+          api.saveImage({
+            method: 'post',
+            data: {
+              url: res.imageURL
+            },
+            success: (res) => {
+              if (res.data.res === 0) {
+                image_id = res.data.data
+              }
+            }
+          })
+        }, (error) => {
+          console.log('error: ' + error);
+        }, {
+            region: 'SCN',
+            domain: 'qiniu.juhuibei.com', // bucket 域名，下载资源时用到。
+            // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+            uptoken: token,
+          });
+
+      }
+    })
+  },
+  editImageTitle: function() {
     
+  },
+  showDialog() {
+    let dialogComponent = this.selectComponent('.wxc-dialog');
+    dialogComponent && dialogComponent.show();
+  },
+  hideDialog() {
+    let dialogComponent = this.selectComponent('.wxc-dialog');
+    dialogComponent && dialogComponent.hide();
+  },
+  onConfirm: function (e) {
+    console.log(e);
+    console.log('点击了确认按钮');
+    this.hideDialog();
+  },
+  onCancel() {
+    console.log('点击了取消按钮');
+    this.hideDialog();
+  },
+  inputValue: function(e) {
+    console.log('inputValue',e);
+  },
+  /**
+   * 拨打电话
+   */
+  callPhone: function(options) {
+    wx.makePhoneCall({
+      phoneNumber:  options.target.dataset.phone
+    })
   },
   /**
    * 页面分享
