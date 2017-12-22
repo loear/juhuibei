@@ -9,32 +9,39 @@
     <swiper-item></swiper-item>
   </swiper>
 
-  <view class="music-control">
-    <view class="music-author">
-      <block wx:for="{{activity_info.info}}" wx:key="item">
-        <view wx:if="{{item.user_id == user_id}}">
-          <image class="music-author-avatar" src="{{item.user.avatar_url}}" mode="aspectFill"></image>
+  <block wx:for="{{activity_info.info}}" wx:key="*this">
+    <block wx:if="{{item.user_id == uid}}">
+      <view class="music-control">
+        <view class="music-author">      
+              <image class="music-author-avatar" src="{{item.user.avatar_url}}" mode="aspectFill"></image>        
+          <view class="music-author-username">
+            <text>{{activity_info.title}}</text>
+          </view>
+          <view class="music-author-desc">
+            <text>{{activity_info.description}}</text>
+          </view>
         </view>
-      </block>
-      <view class="music-author-username">
-        <text>{{activity_info.title}}</text>
+        <block wx:if="{{item.is_coming}}">
+          <view class="music-play" bindtap="openShareMenu">
+            <image class="music-play-control" src="/common/assets/images/activity/share.png" data-id="{{item.user_id}}"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="music-play" bindtap="joinActivity">
+            <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="{{item.user_id}}"></image>
+          </view>
+        </block>
+        <view class="music-title">
+          <text></text>
+        </view>
+        <view class="music-maketime">
+          <view wx:if="{{activity_info._countdown}}">
+            <wxc-countdown countdown="{{activity_info._countdown}}"></wxc-countdown>
+          </view>
+        </view>
       </view>
-      <view class="music-author-desc">
-        <text>{{activity_info.description}}</text>
-      </view>
-    </view>
-    <view class="music-play" bindtap="togglePlay">
-      <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="2460"></image>
-    </view>
-    <view class="music-title">
-      <text></text>
-    </view>
-    <view class="music-maketime">
-      <view wx:if="{{activity_info._countdown}}">
-        <wxc-countdown countdown="{{activity_info._countdown}}"></wxc-countdown>
-      </view>
-    </view>
-  </view>   
+    </block>
+  </block> 
   
   <view class="music-content">
     <include wx:if="{{contentType === 'story'}}" src="./includes/story.wxml"/>

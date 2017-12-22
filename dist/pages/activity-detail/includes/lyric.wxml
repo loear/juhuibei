@@ -19,17 +19,16 @@
         <text class="item-text">聚会合影</text>
       </view>
     </view>
+
+    <block wx:for="{{activity_info.activity_image}}" wx:key="*this">
     <view class="item">
       <view class="item-photo-box">
-        <image class="item-photo" src="" mode="aspectFit" bindtap="openDetail" bindlongtap="uploadImage" data-id="5"></image>
-        <text class="item-text" bindtap="showDialog">情深似海</text>
-        <wxc-dialog class="wxc-dialog" title="更改标题" content="" confirm-text="确认" bindconfirm="onConfirm" _pid="{{_pid}}">
-          <form bindblur="inputValue" >
-            <input class="form-name" name="title" data-value="2123" value='情深似海' ></input>
-          </form>
-        </wxc-dialog>
+        <image class="item-photo" src="{{item.img.url}}" mode="aspectFit" bindtap="openDetail" bindlongtap="uploadImage" data-id="{{item.id}}" data-image_id="{{item.image_id}}"></image>   
+        <input class="item-text" name="title" data-id="2123" value='{{item.img.name}}' bindblur="inputValue" disabled=""></input>
       </view>
     </view>
+    </block>
+
     <view class="item">
       <view class="item-photo-box">
         <image class="item-photo" src="" mode="aspectFit"></image>

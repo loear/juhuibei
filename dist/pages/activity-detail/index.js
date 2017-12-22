@@ -17,8 +17,26 @@ Page({
     playImg : MUSIC_PALY_IMG
   },
   onLoad: function (options) {
-    var that = this;
     console.log('options', options)
+    var that = this;
+    var uid = wx.getStorageSync('uid')
+    this.setData({uid: uid})
+    // 保存用户关联聚会信息
+    api.saveActivityUser({
+      method: 'post',
+      data: {
+        user_id: uid,
+        activity_id: options.activity_id
+      },
+      success: (res) => {
+        console.log('saveActivityUser', res.data.data);
+        if (res.data.res === 0) {
+         
+        }
+      }
+    })
+
+    // 获取聚会详细信息
     api.getActivityInfo({
       query:{
         user_id: options.user_id,
@@ -29,17 +47,27 @@ Page({
         if (res.data.res === 0) {
           that.setData({ 
             activity_info: res.data.data,
-            user_id: options.user_id,
             activity_id: options.activity_id
           })
           title = res.data.data.title
         }
       }
     })
+
+    // 显示当前页面的转发按钮
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
   onReady: function () {
     wx.setNavigationBarTitle({
       title: title
+    })
+  },
+  openShareMenu: function(e) {
+    console.log('openShareMenu', e)
+    wx.showShareMenu({
+      withShareTicket: true
     })
   },
   handleChange: function (e) {

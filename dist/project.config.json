@@ -46,7 +46,12 @@
 					"name": "聚会详情页",
 					"pathName": "pages/activity-detail/index",
 					"query": "user_id=2&activity_id=8",
-					"scene": "1007"
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "G_784qF15Y-vrjve_WvFfskVkSWmXWNCBT-Qavm0SLU@cr4dev",
+						"shareKey": "acnSXiNBf8nIhFZH9WmwVwG3bzAqjNHkeK871eIw9NjToXsp4803B-MyynYjeE7c2R8pF8jeGsPpGl5wZtw3ew~~"
+					}
 				},
 				{
 					"id": -1,
