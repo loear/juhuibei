@@ -10,22 +10,28 @@ class Token {
   verify() {
     var that = this;
     var token = wx.getStorageSync('token');
-    console.log(token);
+    // console.log(token);
     if (!token) {
-      this.getTokenFromServer();
-      this.getUserInfo((data) => {
-        data.user_id = wx.getStorageSync('uid');
-        wx.request({
-          url: that.userInfoUrl,
-          method: 'POST',
-          data: {
-            data: data
-          },
-          success: function (res) {
-            console.log(res);
-          }
-        })
-      });
+      // 获取用户ID
+      this.getTokenFromServer((cb)=>{
+        wx.setStorageSync('token', cb.token);
+        wx.setStorageSync('uid', cb.uid);
+        // 获取用户信息
+        that.getUserInfo((data) => {
+          data.user_id = cb.uid;
+          // 存储用户信息
+          wx.request({
+            url: that.userInfoUrl,
+            method: 'POST',
+            data: {
+              data: data
+            },
+            success: function (res) {
+              console.log(res);
+            }
+          })
+        });
+      });    
     }
     else {
       this._veirfyFromServer(token);
@@ -60,9 +66,7 @@ class Token {
             code: res.code
           },
           success: function (res) {
-            wx.setStorageSync('token', res.data.token);
-            wx.setStorageSync('uid', res.data.uid);
-            callBack && callBack(res.data.token);
+            callBack && callBack(res.data);
           }
         })
       }

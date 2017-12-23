@@ -7,31 +7,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = App({
   globalData: {},
-  onLaunch: function onLaunch() {
+  onLaunch: function onLaunch(e) {
     var token = new Token();
     token.verify();
-  },
-  onShow: function onShow(e) {
+    var token = wx.getStorageSync('token');
+    console.log('token', token);
     if (e.scene == 1044) {
-      console.log('onShow', e.shareTicket)
+      // console.log('onLaunch', e.shareTicket)
       wx.getShareInfo({
         shareTicket: e.shareTicket,
         success: (res) => {
-          console.log('getShareInfo', res)
+          // console.log('getShareInfo', res)
           api.enCryptedData({
             method: 'post',
             data: {
               encryptedData: res.encryptedData,
-              iv: res.iv
+              iv: res.iv,
+              token: token
             },
             success: (resault) => {
-              console.log('enCryptedData', resault);
-              
+              // console.log('enCryptedData', resault);
+
             }
           })
         }
       })
     }
+  },
+  onShow: function onShow(e) {
+  
   },
   onHide: function onHide() {},
 

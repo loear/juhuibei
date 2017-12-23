@@ -9,7 +9,7 @@
     <swiper-item></swiper-item>
   </swiper>
 
-  <block wx:for="{{activity_info.info}}" wx:key="*this">
+  <block wx:for="{{activity_info.info}}" wx:key="item">
     <block wx:if="{{item.user_id == uid}}">
       <view class="music-control">
         <view class="music-author">      
@@ -22,9 +22,9 @@
           </view>
         </view>
         <block wx:if="{{item.is_coming}}">
-          <view class="music-play" bindtap="openShareMenu">
+          <button open-type="share" class="music-play">
             <image class="music-play-control" src="/common/assets/images/activity/share.png" data-id="{{item.user_id}}"></image>
-          </view>
+          </button>
         </block>
         <block wx:else>
           <view class="music-play" bindtap="joinActivity">
