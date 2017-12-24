@@ -9,43 +9,39 @@
     <swiper-item></swiper-item>
   </swiper>
 
-  <block wx:for="{{activity_info.info}}" wx:key="item">
-    <block wx:if="{{item.user_id == uid}}">
-      <view class="music-control">
-        <view class="music-author">      
-              <image class="music-author-avatar" src="{{item.user.avatar_url}}" mode="aspectFill"></image>        
-          <view class="music-author-username">
-            <text>{{activity_info.title}}</text>
-          </view>
-          <view class="music-author-desc">
-            <text>{{activity_info.description}}</text>
-          </view>
-        </view>
-        <block wx:if="{{item.is_coming}}">
-          <button open-type="share" class="music-play">
-            <image class="music-play-control" src="/common/assets/images/activity/share.png" data-id="{{item.user_id}}"></image>
-          </button>
-        </block>
-        <block wx:else>
-          <view class="music-play" bindtap="joinActivity">
-            <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="{{item.user_id}}"></image>
-          </view>
-        </block>
-        <view class="music-title">
-          <text></text>
-        </view>
-        <view class="music-maketime">
-          <view wx:if="{{activity_info._countdown}}">
-            <wxc-countdown countdown="{{activity_info._countdown}}"></wxc-countdown>
-          </view>
-        </view>
+  <view class="music-control">
+    <view class="music-author">      
+          <image class="music-author-avatar" src="{{info.user_info.avatar_url}}" mode="aspectFill"></image>        
+      <view class="music-author-username">
+        <text>{{activity_info.title}}</text>
+      </view>
+      <view class="music-author-desc">
+        <text>{{activity_info.description}}</text>
+      </view>
+    </view>
+    <block wx:if="{{info.is_coming}}">
+      <button open-type="share" class="share-btn">
+        <image class="music-play-control" src="/common/assets/images/activity/share.png" data-id="{{item.user_id}}"></image>
+      </button>
+    </block>
+    <block wx:else>
+      <view class="music-play" bindtap="joinActivity">
+        <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="{{item.user_id}}"></image>
       </view>
     </block>
-  </block> 
-  
+    <view class="music-title">
+      <text></text>
+    </view>
+    <view class="music-maketime">
+      <block wx:if="{{activity_info._countdown}}">
+        <wxc-countdown countdown="{{activity_info._countdown}}"></wxc-countdown>
+      </block>
+    </view>
+  </view>
+
   <view class="music-content">
-    <include wx:if="{{contentType === 'story'}}" src="./includes/story.wxml"/>
-    <include wx:if="{{contentType === 'lyric'}}" src="./includes/lyric.wxml"/>
-    <include wx:if="{{contentType === 'about'}}" src="./includes/about.wxml"/>
+    <include wx:if="{{contentType === 'info'}}" src="./includes/info.wxml"/>
+    <include wx:if="{{contentType === 'picture'}}" src="./includes/picture.wxml"/>
+    <include wx:if="{{contentType === 'callbook'}}" src="./includes/callbook.wxml"/>
   </view>
 </view>

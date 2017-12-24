@@ -12,15 +12,17 @@ Page({
     musics: [],
     current: 0,
     playId: -1,
-
-    contentType: 'story',
-    playImg : MUSIC_PALY_IMG
+    contentType: 'info',
+    playImg : MUSIC_PALY_IMG,
+    info: []
   },
   onLoad: function (options) {
     console.log('options', options)
     var that = this;
     var uid = wx.getStorageSync('uid')
-    this.setData({uid: uid})
+    this.setData({ uid: uid })
+    
+
     // 保存用户关联聚会信息
     api.saveActivityUser({
       method: 'post',
@@ -36,14 +38,29 @@ Page({
       }
     })
 
-    // 获取聚会详细信息
-    api.getActivityInfo({
-      query:{
-        user_id: options.user_id,
+    // 获取当前用户聚会信息
+    api.getUserActivityInfo({
+      query: {
+        user_id: uid,
         activity_id: options.activity_id
       },
       success: (res) => {
-        console.log('activity_info', res.data.data);
+         console.log('getUserActivityInfo', res)
+        if (res.data.res === 0) {
+          that.setData({
+            info: res.data.data
+          })
+        }
+      }
+    })
+
+    // 通过发布人和聚会ID获取聚会详细信息
+    api.getActivityInfo({
+      query:{
+        activity_id: options.activity_id
+      },
+      success: (res) => {
+         console.log('activity_info', res.data.data);
         if (res.data.res === 0) {
           that.setData({ 
             activity_info: res.data.data,

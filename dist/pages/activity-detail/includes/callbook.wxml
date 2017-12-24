@@ -2,15 +2,14 @@
   <view class="music-content-header">
     <text class="content-label">通讯录</text>
     <view class="content-links" bindtap="switchContent">
-      <image class="link" src="/common/assets/images/activity/home_a.png" mode="aspectFill" data-type="story"></image>
-      <image class="link" src="/common/assets/images/activity/picture_a.png" mode="aspectFill" data-type="lyric"></image>
-      <image class="link" src="/common/assets/images/activity/book_b.png" mode="aspectFill" data-type="about"></image>
+      <image class="link" src="/common/assets/images/activity/home_a.png" mode="aspectFill" data-type="info"></image>
+      <image class="link" src="/common/assets/images/activity/picture_a.png" mode="aspectFill" data-type="picture"></image>
+      <image class="link" src="/common/assets/images/activity/book_b.png" mode="aspectFill" data-type="callbook"></image>
     </view>
   </view>
-  
-  <view class="weui-cells weui-cells_after-title">
-    <block wx:for="{{activity_info.info}}" wx:key="{{item}}">
-      <block wx:if="{{item.is_coming}}">
+  <block wx:if="{{info.is_coming}}">
+    <view class="weui-cells weui-cells_after-title">
+      <block wx:for="{{activity_info.info}}" wx:key="{{item}}">
         <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" >
             <image src="{{item.user.avatar_url}}" class="call_avatar"></image>
             <view class="weui-cell__bd">
@@ -24,6 +23,11 @@
             </view>
         </view>
       </block>
-    </block>
-  </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="nocoming">
+        <text>请先报名</text>
+    </view>
+  </block>
 </view>

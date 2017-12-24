@@ -36,7 +36,7 @@ page {
   position: relative;
   top: -20px;
   background-color: #fff;
-  border: 1px solid #ebebeb;
+  /* border: 1px olid #ebebeb; */
   border-radius: 3px;
   box-shadow: 0px 1px 1px #ebebeb;
 }
@@ -67,12 +67,21 @@ page {
 }
 
 .music-play {
-  position: static;
   float: right;
-  display: inline-block;
-  padding:0;
+}
+
+.share-btn {
+  position: static;
+  padding: 0;
+  display: inline;
+  float: right;
+  border: none;
   background-color: #fff;
-  border-color: #fff;
+}
+.share-btn:after {
+  position: static;
+  border: none;
+  background-color: #fff;
 }
 
 .music-play-control {
@@ -149,7 +158,10 @@ page {
   line-height: 1.5;
 }
 
-
+.nocoming {
+  margin: 20rpx 20rpx;
+  color:#888;
+}
 
 
 page {
