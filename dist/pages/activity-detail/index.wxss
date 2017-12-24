@@ -183,7 +183,7 @@ page {
 }
 .item-photo-box {
   width:90%;
-  height: 206rpx;
+  height: 200rpx;
   margin: 10% 5%;
   box-shadow: 0px 0px 10px #ccc inset;
   background-image: url('https://www.juhuibei.com/images/add_photo.jpg');
@@ -191,7 +191,7 @@ page {
 }
 .item-photo {
   width:100%;
-  height: 206rpx;
+  height: 200rpx;
 }
 .item-text {
   font-size: 24rpx;

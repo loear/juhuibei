@@ -1,14 +1,20 @@
 <wxc-flex class="wrap" cross="top" wrap="wrap">
     <view class="item">
       <view class="item-photo-box">
-        <image class="item-photo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513093903135&di=118786e272164022ecc02181ff3c70bd&imgtype=0&src=http%3A%2F%2Fimg003.21cnimg.com%2Fphotos%2Falbum%2F20170219%2Fm600%2F8BEEA3B4353DB9EF5B787A8C2762473B.jpeg" mode="aspectFit"></image>
-        <text class="item-text">聚会合影</text>
+        <image class="item-photo" src="{{info.img_info.url}}" mode="aspectFit"></image>
+        <text class="item-text">{{info.name}}</text>
         <view class="item-desc">
-          <text>我要讲一个故事给你听</text>
-        </view>
+          <text>{{info.description}}</text>
+        </view>        
       </view>
     </view> 
 </wxc-flex>
 <view class="date">
-  <text>— 2017-01-01 —</text>
+  <view class="user-info">
+    <image class="avatar" src="{{info.user_info.avatar_url}}"></image>
+    <view class="user-info-text">
+      <view><text>{{info.user_info.nickname}}</text></view>
+      <view><text>{{info._data}}</text></view>
+    </view>
+  </view>
 </view>

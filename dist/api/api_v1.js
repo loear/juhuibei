@@ -24,20 +24,26 @@ const wxRequest = (params, url) => {
   })
 }
 
-const getActivityList     = (params) => wxRequest(params, host + 'activity/list/' + params.query.id)
+const getActivityList     = (params) => wxRequest(params, host + 'activity_list/' + params.query.id)
 const getActivityInfo     = (params) => wxRequest(params, host + 'activity_info/' + params.query.activity_id)
 const getUserActivityInfo = (params) => wxRequest(params, host + 'info/' + params.query.user_id + '/' + params.query.activity_id)
-const getUploadToken      = (params) => wxRequest(params, host + 'activity/upload_token')
-const saveImage           = (params) => wxRequest(params, host + 'activity/save_image')
-const saveActivityUser    = (params) => wxRequest(params, host + 'activity/save_user')
+const getImageInfo        = (params) => wxRequest(params, host + 'picture/' + params.query.image_id)
+const getUploadToken      = (params) => wxRequest(params, host + 'upload_token')
+const saveImage           = (params) => wxRequest(params, host + 'save_image')
+const saveActivityImage   = (params) => wxRequest(params, host + 'save_activity_image')
+const saveImageName       = (params) => wxRequest(params, host + 'save_picture_name')
+const saveActivityUser    = (params) => wxRequest(params, host + 'save_activity_user')
 const enCryptedData       = (params) => wxRequest(params, host + 'activity/encrypt')
 
 module.exports = {
   getActivityList,
   getActivityInfo,
   getUserActivityInfo,
+  getImageInfo,
   getUploadToken,
   saveImage,
+  saveActivityImage,
+  saveImageName,
   saveActivityUser,
   enCryptedData
 }

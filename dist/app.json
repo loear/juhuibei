@@ -11,7 +11,8 @@
     "pages/navigation/index",
     "pages/navigation_car_detail/navigation",
     "pages/navigation_walk_detail/navigation",
-    "pages/navigation_ride_detail/navigation"
+    "pages/navigation_ride_detail/navigation",
+    "pages/cut_image/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

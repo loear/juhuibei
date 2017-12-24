@@ -9,15 +9,15 @@
   </view>
   <block wx:if="{{info.is_coming}}">
     <wxc-flex class="wrap" cross="top" wrap="wrap">
-      <block wx:for="{{activity_info.activity_image}}" wx:key="*this">
+      <block wx:for="{{activity_info.activity_image}}" wx:key="" wx:for-item="pic">
       <view class="item">
         <view class="item-photo-box">
-          <image class="item-photo" src="{{item.img.url}}" mode="aspectFit" bindtap="openDetail" data-image_id="{{item.image_id}}"></image>   
-          <input class="item-text" name="title" data-image_id="{{item.image_id}}" value="{{item.img.name}}" bindblur="inputValue" disabled="{{item.user_id == uid ? 'false' : 'true' }}"></input>
+          <image class="item-photo" src="{{pic.img.url}}" mode="aspectFit" bindtap="openDetail" data-image_id="{{pic.image_id}}"></image>   
+          <input class="item-text" name="title" data-image_id="{{pic.image_id}}" data-image_name="{{pic.name}}" value="{{pic.name}}" bindblur="saveImageName" disabled="{{pic.user_id===uid ? false : true }}"></input>
         </view>
       </view>
       </block>
-      <block wx:if="{{ info.picture_number - info._picture_number }}">
+      <block wx:if="{{ info.picture_number - info._picture_number > 0}}">
       <view class="item">
         <view class="item-photo-box">
           <image class="item-photo" src="" mode="aspectFit" bindlongtap="uploadImage"></image>

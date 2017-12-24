@@ -9,17 +9,17 @@
   </view>
   <block wx:if="{{info.is_coming}}">
     <view class="weui-cells weui-cells_after-title">
-      <block wx:for="{{activity_info.info}}" wx:key="{{item}}">
+      <block wx:for="{{activity_info.info}}" wx:key=""  wx:for-item="call_item">
         <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" >
-            <image src="{{item.user.avatar_url}}" class="call_avatar"></image>
+            <image src="{{call_item.user.avatar_url}}" class="call_avatar"></image>
             <view class="weui-cell__bd">
-              {{ item.user.username ? item.user.username : item.user.nickname }}
-              <block wx:if="{{item.is_master}}">
+              {{ call_item.user.username ? call_item.user.username : call_item.user.nickname }}
+              <block wx:if="{{call_item.is_master}}">
                 <view class="weui-badge">会长</view>
               </block>
             </view>
-            <view class="weui-cell__ft weui-cell__ft_in-access" bindtap="callPhone" data-phone="{{item.user.phone}}">
-              {{item.user.phone}}
+            <view class="weui-cell__ft weui-cell__ft_in-access" bindtap="callPhone" data-phone="{{call_item.user.phone}}">
+              {{call_item.user.phone}}
             </view>
         </view>
       </block>

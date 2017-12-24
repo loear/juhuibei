@@ -39,5 +39,27 @@ page {
 .date{
   width:100%;
   text-align: center;
-  color:#ff4444;
+  color:#888;
+}
+.user-info {
+  display: inline-block;
+  height: 40px;
+  width: 160px;
+  border-radius: 20px;
+  /* background: #ccc; */
+  box-shadow:0 0 10rpx #ccc;
+}
+.user-info-text {
+  display: inline-block;
+  width:110px;
+  font-size: 24rpx;
+  line-height: 20px;
+  height: 40px;
+  margin-right: 10px;
+  float: right;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }

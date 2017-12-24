@@ -4,6 +4,7 @@ import {
 } from '../../utils/constants.js'
 import api from '../../api/api_v1.js'
 import util from '../../utils/util.js'
+const qiniuUploader = require("../../libs/qiniuUploader");
 
 var title = '聚会呗';
 
@@ -14,13 +15,18 @@ Page({
     playId: -1,
     contentType: 'info',
     playImg : MUSIC_PALY_IMG,
-    info: []
+    info: [],
+    uid: 0,
+    activity_id: 0
   },
   onLoad: function (options) {
     console.log('options', options)
     var that = this;
     var uid = wx.getStorageSync('uid')
-    this.setData({ uid: uid })
+    this.setData({ 
+      uid: uid,
+      activity_id: options.activity_id
+    })
     
 
     // 保存用户关联聚会信息
@@ -63,8 +69,7 @@ Page({
          console.log('activity_info', res.data.data);
         if (res.data.res === 0) {
           that.setData({ 
-            activity_info: res.data.data,
-            activity_id: options.activity_id
+            activity_info: res.data.data
           })
           title = res.data.data.title
         }
@@ -77,6 +82,7 @@ Page({
     })
   },
   onReady: function () {
+    // 设置标题
     wx.setNavigationBarTitle({
       title: title
     })
@@ -149,59 +155,18 @@ Page({
    * 打开影集详情页
    */
   openDetail: function(e) {
-    console.log(e);
+    // console.log('openDetail',e);
     wx.navigateTo({
-      url: '/pages/picture-detail/index'
+      url: '/pages/picture-detail/index?image_id=' + e.target.dataset.image_id
     })
   },
   /**
    * 上传图片到七牛
    */
-  uploadImage: function (e) {
-    console.log(e);
-    wx.chooseImage({
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        // that.setData({
-        //   files: that.data.files.concat(res.tempFilePaths)
-        // });
-
-        var filePath = res.tempFilePaths[0];
-        // 交给七牛上传
-        qiniuUploader.upload(filePath, (res) => {
-          // 前端页面展示
-          that.setData({
-            'files': [{ url: res.imageURL }],
-            'has_image': true
-          });
-          // 后端插入images表
-          api.saveImage({
-            method: 'post',
-            data: {
-              url: res.imageURL
-            },
-            success: (res) => {
-              if (res.data.res === 0) {
-                image_id = res.data.data
-              }
-            }
-          })
-        }, (error) => {
-          console.log('error: ' + error);
-        }, {
-            region: 'SCN',
-            domain: 'qiniu.juhuibei.com', // bucket 域名，下载资源时用到。
-            // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
-            uptoken: token,
-          });
-
-      }
+  uploadImage: function () {
+    wx.navigateTo({
+      url: '/pages/cut_image/index?user_id=' + this.data.uid + '&activity_id=' + this.data.activity_id + '&page=' + 'activity-detail'
     })
-  },
-  editImageTitle: function() {
-    
   },
   showDialog() {
     let dialogComponent = this.selectComponent('.wxc-dialog');
@@ -220,8 +185,26 @@ Page({
     console.log('点击了取消按钮');
     this.hideDialog();
   },
-  inputValue: function(e) {
-    console.log('inputValue',e);
+  /**
+   * 保存更改的照片名
+   */
+  saveImageName: function(e) {
+    // 只有更改了才会保存
+    if (e.detail.value !== e.target.dataset.image_name) {
+      // console.log('saveImageName', e);
+      api.saveImageName({
+        method: 'post',
+        data: {
+          image_id: e.target.dataset.image_id,
+          name: e.detail.value
+        },
+        success: (res) => {
+          if (res.data.res === 0) {
+            console.log('saveImageName', res.data.data);
+          }
+        }
+      })
+    }
   },
   /**
    * 拨打电话

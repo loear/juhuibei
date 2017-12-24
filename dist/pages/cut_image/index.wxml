@@ -1,0 +1,19 @@
+<import src="../../packages/@we-cropper/we-cropper.wxml"/>
+
+<view class="cropper-wrapper">
+    <template is="we-cropper" data="{{...cropperOpt}}"/>
+    <view class="cropper-buttons">
+        <view
+                class="upload"
+                bindtap="uploadTap">
+            选择图片
+        </view>
+        <button
+                class="getCropperImage"
+                bindtap="getCropperImage"
+                disabled="{{ disabled ? true  :false }}"
+                >
+            保存图片
+        </button>
+    </view>
+</view>

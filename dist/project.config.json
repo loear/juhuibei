@@ -60,16 +60,34 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "picture-detail",
 					"pathName": "pages/picture-detail/index",
-					"query": ""
+					"query": "image_id=2",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "G_784qF15Y-vrjve_WvFfskVkSWmXWNCBT-Qavm0SLU@cr4dev",
+						"shareKey": "acnSXiNBf8nIhFZH9WmwVwG3bzAqjNHkeK871eIw9NjToXsp4803B-MyynYjeE7c2R8pF8jeGsPpGl5wZtw3ew~~"
+					}
 				},
 				{
 					"id": -1,
 					"name": "导航-new",
 					"pathName": "pages/navigation/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "选择图片",
+					"pathName": "pages/cut_image/index",
+					"query": "user_id=2&activity_id=8&page=activity-detail",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "G_784qF15Y-vrjve_WvFfskVkSWmXWNCBT-Qavm0SLU@cr4dev",
+						"shareKey": "acnSXiNBf8nIhFZH9WmwVwG3bzAqjNHkeK871eIw9NjToXsp4803B-MyynYjeE7c2R8pF8jeGsPpGl5wZtw3ew~~"
+					}
 				}
 			]
 		}
