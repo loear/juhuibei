@@ -45,7 +45,7 @@
 					"id": 3,
 					"name": "聚会详情页",
 					"pathName": "pages/activity-detail/index",
-					"query": "user_id=2&activity_id=8",
+					"query": "user_id=3&activity_id=13",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",

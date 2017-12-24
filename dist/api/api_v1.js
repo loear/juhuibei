@@ -29,10 +29,12 @@ const getActivityInfo     = (params) => wxRequest(params, host + 'activity_info/
 const getUserActivityInfo = (params) => wxRequest(params, host + 'info/' + params.query.user_id + '/' + params.query.activity_id)
 const getImageInfo        = (params) => wxRequest(params, host + 'picture/' + params.query.image_id)
 const getUploadToken      = (params) => wxRequest(params, host + 'upload_token')
+const saveActivity        = (params) => wxRequest(params, host + 'activity_submit')
 const saveImage           = (params) => wxRequest(params, host + 'save_image')
 const saveActivityImage   = (params) => wxRequest(params, host + 'save_activity_image')
 const saveImageName       = (params) => wxRequest(params, host + 'save_picture_name')
 const saveActivityUser    = (params) => wxRequest(params, host + 'save_activity_user')
+const saveComingInfo      = (params) => wxRequest(params, host + 'save_coming')
 const enCryptedData       = (params) => wxRequest(params, host + 'activity/encrypt')
 
 module.exports = {
@@ -41,9 +43,11 @@ module.exports = {
   getUserActivityInfo,
   getImageInfo,
   getUploadToken,
+  saveActivity,
   saveImage,
   saveActivityImage,
   saveImageName,
   saveActivityUser,
+  saveComingInfo,
   enCryptedData
 }

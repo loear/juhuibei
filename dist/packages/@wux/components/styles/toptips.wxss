@@ -11,7 +11,8 @@
 }
 
 .weui-toptips_cancel {
-	background-color: #E64340 !important;
+	/* background-color: #E64340 !important; */
+  background-color: #ff4444 !important;
 }
 
 .weui-toptips_icon {

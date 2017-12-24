@@ -25,19 +25,19 @@
 .label_countdown {
   position: relative;
   left:10rpx;
-  top:-410rpx;
+  top:-490rpx;
 }
 
 .label_coming {
   position: relative;
   left:20rpx;
-  top:-410rpx;
+  top:-490rpx;
 }
 
 .dome-image{
   position: relative;
   width: 100%;
-  height: 400rpx;
+  /* height: 400rpx; */
 }
 
 .meta {

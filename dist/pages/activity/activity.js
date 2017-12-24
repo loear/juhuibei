@@ -1,15 +1,12 @@
 import { $wuxToptips } from '../../packages/@wux/components/wux';
 import { $wuxDialog } from '../../packages/@wux/components/wux';
 import WxValidate from '../../common/assets/plugins/WxValidate';
-import api from '../../api/api_v1.js'
-import { Activity } from 'activity-model.js';
-var activity = new Activity();
+import api from '../../api/api_v1.js';
 
 var gourmet_address = "";   // 详细地址
 var gourmet_title = "";     // 地址标题
 var latitude = 0;           // 纬度
 var longitude = 0;          // 经度
-var image_id = 0;           // 上传图片ID
 const qiniuUploader = require("../../libs/qiniuUploader");
 
 Page({
@@ -19,8 +16,9 @@ Page({
       "description": '',
       "start_date": '',
       "start_time": '',
+      "username": '',
+      "phone": '',
       "numbers": '',
-      "is_only_group": '',
       "end_date": '',
       "end_time": ''
     },
@@ -29,13 +27,17 @@ Page({
     start_time: "12:01",
     end_date: "2019-01-01",
     end_time: "12:05",
-    has_image: false
+    has_image: false,
+    image_id: 0,
+    uid: 0
   },
   onLoad() {
+    var uid = wx.getStorageSync('uid')
     this.initValidate();
     this.setData({
       title: '地图定位',
       isAgree: true,
+      uid: uid
     })
   },
   showToptips(error) {
@@ -47,18 +49,25 @@ Page({
 
     // setTimeout(hideToptips, 1500)
   },
-  submitForm(e) {
-    console.log(image_id);
-    console.log(latitude);
-    console.log(longitude);
+  submitForm: function(e) {
+    console.log('image_id', this.data.image_id);
+    var that = this;
     const params = e.detail.value;
     if (!this.WxValidate.checkForm(e)) {
       const error = this.WxValidate.errorList[0]
       this.showToptips(error)
       return false
     }
+    if (!that.data.image_id) {
+      this.showToptips({msg:'选择一张背景图片'})
+      return false
+    }
+    if (!gourmet_title) {
+      this.showToptips({msg:'选择聚会的位置'})
+      return false
+    }
 
-    let data = {
+    var data = {
       title: params.title,
       description: params.description,
       start_date: params.start_date,
@@ -68,28 +77,31 @@ Page({
       latitude: latitude,
       longitude: longitude,
       numbers: params.numbers,
-      is_only_group: params.is_only_group,
+      username: params.username,
+      phone: params.phone,
       end_date: params.end_date,
       end_time: params.end_time,
-      image_id: image_id
-    };
+      user_id: that.data.uid,
+      image_id: that.data.image_id
+    }
 
-    data.user_id = wx.getStorageSync('uid');
-
-    
-    activity.postActivity(data, (res)=>{
-      console.log(res);
-      wx.showToast({
-        title: res.data,
-        icon: 'success',
-        duration: 1000,
-        success: function () {
-          wx.navigateTo({
-            url: '/pages/home/index'
-          });
-        }
-      });
-    });
+    api.saveActivity({
+      method: 'post',
+      data: data,
+      success: (res) => {
+        console.log('saveActivity', res);
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 1000,
+          success: function () {
+            wx.navigateTo({
+              url: '/pages/home/index'
+            });
+          }
+        });
+      }
+    })
     
     $wuxToptips.success({
       hidden: !0,
@@ -103,6 +115,13 @@ Page({
       },
       numbers: {
         required: true,
+      },
+      username: {
+        required: true,
+      },
+      phone: {
+        required: true,
+        tel: true, 
       }
     }, {
         title: {
@@ -110,58 +129,19 @@ Page({
         },
         numbers: {
           required: '需要输入人数上限',
+        },
+        username: {
+          required: '还没有填写姓名',
+        },
+        phone: {
+          required: '还没有填写手机',
+          tel: '请输入正确的手机号', 
         }
       })
   },
-  chooseImage: function (e) {
-    var that = this;
-    var token = '';
-    api.getUploadToken({
-      success: (res) => {
-        if (res.data.res === 0) {
-          token = res.data.data
-        }
-      }
-    })
-    wx.chooseImage({
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        // that.setData({
-        //   files: that.data.files.concat(res.tempFilePaths)
-        // });
-
-        var filePath = res.tempFilePaths[0];
-        // 交给七牛上传
-        qiniuUploader.upload(filePath, (res) => {
-          // 前端页面展示
-          that.setData({
-            'files': [{url: res.imageURL}],
-            'has_image': true
-          });
-          // 后端插入images表
-          api.saveImage({
-            method: 'post',
-            data: {
-              url:res.imageURL
-            },
-            success: (res) => {
-              if (res.data.res === 0) {
-                image_id = res.data.data
-              }
-            }
-          })
-        }, (error) => {
-          console.log('error: ' + error);
-        }, {
-          region: 'SCN',
-          domain: 'qiniu.juhuibei.com', // bucket 域名，下载资源时用到。
-          // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
-          uptoken: token,
-        });
-        
-      }
+  chooseImage: function (e) {   
+    wx.navigateTo({
+      url: '/pages/cut_image/index?user_id=' + this.data.uid
     })
   },
   previewImage: function (e) {

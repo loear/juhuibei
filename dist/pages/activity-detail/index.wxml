@@ -1,6 +1,8 @@
 <view class="container">
-  <swiper class="musics-swiper" current="{{current}}" bindchange="handleChange">
-    <block wx:for="{{activity_info.activity_image}}" wx:key="item" wx:for-index="idx">
+  <swiper class="musics-swiper" current="{{current}}" bindchange="handleChange" 
+    autoplay="{{activity_info.activity_image.length>1?true:false }}"
+  >
+    <block wx:for="{{activity_info.activity_image}}" wx:key="" wx:for-index="idx" wx:for-item="item">
       <swiper-item class="musics-swiper-item">
         <import src="templates/musicItem.wxml"/>
         <template is="music-item" data="{{item: item}}"/>
@@ -25,12 +27,32 @@
       </button>
     </block>
     <block wx:else>
-      <view class="music-play" bindtap="joinActivity">
+      <view class="music-play" bindtap="showDialog">
         <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="{{item.user_id}}"></image>
       </view>
+      <wxc-dialog class="wxc-dialog" title="" content="" confirm-text="确认报名" bindconfirm="onConfirm" cancel-text="取消" bindcancel="onCancel" _pid="{{_pid}}">
+        <form>
+          <view class="input-box">
+            <input class="form-name" name="username" placeholder="请输入您的姓名" value="{{info.user_info.username}}" bindblur="setUsername"></input>
+          </view>
+          <view class="input-box">
+            <input class="form-phone" type="number" name="phone" placeholder="请输入您的手机" value="{{info.user_info.phone}}" bindblur="setPhone"></input>
+          </view>
+        </form>
+      </wxc-dialog>
     </block>
     <view class="music-title">
-      <text></text>
+      <block wx:if="{{activity_info._countdown}}">
+        <block wx:if="{{activity_info.number - activity_info._numberf > 0}}">
+          <text>即将开始</text>
+        </block>
+        <block wx:else> 
+          <text>人员已满</text>
+        </block>
+      </block>
+      <block wx:else>
+        <text>已开始</text>
+      </block>
     </view>
     <view class="music-maketime">
       <block wx:if="{{activity_info._countdown}}">

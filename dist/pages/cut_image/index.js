@@ -71,11 +71,7 @@ Page({
                   var pages = getCurrentPages();
                   var currPage = pages[pages.length - 1];   //当前页面
                   var prevPage = pages[pages.length - 2];  //上一个页面
-                  if (that.data.activity) {
-                    prevPage.setData({
-                      image_id: res.data.data
-                    })
-                  } else {
+                  if (that.data.activity_id) {                    
                     api.saveActivityImage({
                       method: 'post',
                       data: {
@@ -90,7 +86,12 @@ Page({
                         })
                       }
                     })
-                    // that.saveActivityImage(res.data.data)
+                  } else {
+                    prevPage.setData({
+                      image_id: res.data.data,
+                      files: [{ url: src }],
+                      has_image: true
+                    })
                   }
                   wx.navigateBack({ delta: 1 }) // 返回上一页
                 }
@@ -109,10 +110,6 @@ Page({
       }
     })
   },
-  saveActivityImage: function(image_id) {
-    var that = this;
-    
-  },
   uploadTap: function () {
     const self = this
 
@@ -130,11 +127,9 @@ Page({
   },
   onLoad: function (options) {
     console.log('options', options);
-    this.setData({
-      uid: options.user_id,
-      activity_id: options.activity_id,
-      disabled: true
-    })
+    this.setData({ disabled: true })
+    if (options.user_id) this.setData({ uid: options.user_id })
+    if (options.activity_id) this.setData({ activity_id: options.activity_id})
     const { cropperOpt } = this.data
 
     new WeCropper(cropperOpt)

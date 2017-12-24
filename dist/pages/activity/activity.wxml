@@ -25,7 +25,7 @@
                   <view class="weui-uploader__files" id="uploaderFiles">
                       <block wx:for="{{files}}" wx:key="item">
                         <view class="weui-uploader__file" bindtap="previewImage" id="{{item.url}}">
-                          <image class="weui-uploader__img" src="//{{item.url}}" mode="aspectFill" />
+                          <image class="weui-uploader__img" src="{{item.url}}" mode="aspectFill" />
                         </view>
                       </block>
                   </view>
@@ -65,23 +65,40 @@
         </view>
       </view>
 
-      <view class="weui-cells__title">限制条件</view>
+      <view class="weui-cells__title">方便成员联系您</view>
+      <view class="weui-cells weui-cells_after-title">
+        <!--人数上限-->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">姓名</view>
+          </view>
+          <input class="weui-input loear-right" placeholder="请输入您的姓名" placeholder-class='loear-right' name="username"/>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">手机</view>
+          </view>
+          <input class="weui-input loear-right" type="number" placeholder="请输入您的手机号" placeholder-class='loear-right' name="phone"/>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">限制条件(可不填)</view>
       <view class="weui-cells weui-cells_after-title">
         <!--人数上限-->
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             <view class="weui-label">人数上限</view>
           </view>
-          <input class="weui-input loear-right" type="number" placeholder="50" placeholder-class='loear-right' name="numbers"/>
+          <input class="weui-input loear-right" type="number" placeholder="请输入聚会人数上限" placeholder-class='loear-right' name="numbers" value="50"/>
         </view>
         <!--指定微信群-->
-        <view class="weui-cell weui-cell_switch">
+        <!-- <view class="weui-cell weui-cell_switch">
           <view class="weui-cell__bd">限定微信群 <icon type="info" size="23" color="#ddd" bindtap="bindGroupTag"></icon>
           </view>
           <view class="weui-cell__ft">
               <switch color="#ff4444" name="is_only_group"/>
           </view>
-        </view>
+        </view> -->
         <!-- 时间 -->
         <view class="weui-cell weui-cell_input" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
@@ -99,6 +116,8 @@
           </view>
         </view>
       </view>
+
+      
       
        <checkbox-group bindchange="bindAgreeChange">
             <label class="weui-agree" for="weuiAgree">

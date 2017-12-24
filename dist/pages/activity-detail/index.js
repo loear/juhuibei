@@ -17,7 +17,8 @@ Page({
     playImg : MUSIC_PALY_IMG,
     info: [],
     uid: 0,
-    activity_id: 0
+    activity_id: 0,
+    activity_info: {}
   },
   onLoad: function (options) {
     console.log('options', options)
@@ -93,21 +94,15 @@ Page({
       withShareTicket: true
     })
   },
+  /**
+   * 切换图片
+   */
   handleChange: function (e) {
     let current = e.detail.current
-    let length = this.data.musics.length
-
+    let length = this.data.activity_info.activity_image.length
     if (current === length) {
       this.setData({
         current: length
-      })
-      wx.navigateTo({
-        url: '../home/index',
-        success: () => {
-          this.setData({
-            current: length - 1
-          })
-        }
       })
     }
   },
@@ -165,7 +160,7 @@ Page({
    */
   uploadImage: function () {
     wx.navigateTo({
-      url: '/pages/cut_image/index?user_id=' + this.data.uid + '&activity_id=' + this.data.activity_id + '&page=' + 'activity-detail'
+      url: '/pages/cut_image/index?user_id=' + this.data.uid + '&activity_id=' + this.data.activity_id
     })
   },
   showDialog() {
@@ -177,13 +172,38 @@ Page({
     dialogComponent && dialogComponent.hide();
   },
   onConfirm: function (e) {
-    console.log(e);
-    console.log('点击了确认按钮');
+    var that = this;
+    api.saveComingInfo({
+      method: 'post',
+      data: {
+        user_id: that.data.uid,
+        activity_id: that.data.activity_id,
+        username: that.data.username,
+        phone: that.data.phone
+      },
+      success: (res) => {
+        if (res.data.res === 0) {
+          console.log('onConfirm', res)
+        }
+      }
+    })
     this.hideDialog();
   },
   onCancel() {
     console.log('点击了取消按钮');
     this.hideDialog();
+  },
+  setUsername: function(e) {
+    // console.log('setUsername',e);
+    this.setData({
+      username:e.detail.value
+    })
+  },
+  setPhone: function (e) {
+    // console.log('setPhone', e);
+    this.setData({
+      phone: e.detail.value
+    })
   },
   /**
    * 保存更改的照片名
@@ -224,7 +244,7 @@ Page({
     }
     return {
       title: title,
-      path: '/pages/activity-detail/index?user_id=' + this.data.user_id + '&activity_id=' + this.data.activity_id,
+      path: '/pages/activity-detail/index?user_id=' + this.data.uid + '&activity_id=' + this.data.activity_id,
       success: function (res) {
         // 转发成功
       },
