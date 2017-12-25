@@ -91,13 +91,13 @@ page {
 }
 
 .music-title {
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #888;
 }
 
 .music-maketime {
   color: #ff4444;
-  font-size: 28rpx;
+  font-size: 24rpx;
   text-align: right;
   position: absolute;
   right:20rpx;
@@ -197,7 +197,25 @@ page {
 .item-text {
   font-size: 24rpx;
 }
+/* info */
+.weui-media-box__info {
+  color: #888;
+  line-height: 40rpx;
+  word-wrap:break-word;
+}
 
+.address {
+  margin-left: 20rpx;
+}
+
+.meta-navigator {
+  display: inline-block;
+  margin-right: 20rpx;
+}
+
+.navigator-hover {
+  color:#ff4444;
+}
 
 /* callbook */
 .call_avatar {

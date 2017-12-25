@@ -25,6 +25,9 @@ Page({
           info: res.data.data
         })
         title = res.data.data.name
+        wx.setNavigationBarTitle({
+          title: res.data.data.name
+        })
       }
     })
   },
@@ -33,9 +36,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.setNavigationBarTitle({
-      title: title
-    })
+    
   },
 
   /**

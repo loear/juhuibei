@@ -72,13 +72,13 @@
           <view class="weui-cell__hd">
             <view class="weui-label">姓名</view>
           </view>
-          <input class="weui-input loear-right" placeholder="请输入您的姓名" placeholder-class='loear-right' name="username"/>
+          <input class="weui-input loear-right" placeholder="请输入您的姓名" placeholder-class='loear-right' name="username" value="{{username}}"/>
         </view>
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             <view class="weui-label">手机</view>
           </view>
-          <input class="weui-input loear-right" type="number" placeholder="请输入您的手机号" placeholder-class='loear-right' name="phone"/>
+          <input class="weui-input loear-right" type="number" placeholder="请输入您的手机号" placeholder-class='loear-right' name="phone" value="{{phone}}"/>
         </view>
       </view>
 

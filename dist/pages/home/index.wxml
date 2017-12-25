@@ -26,5 +26,5 @@
     </example>
 
     <!--<layout-foot></layout-foot>-->
-    <wxc-loadmore is-end="{{true}}"  text="https://www.juhuibei.com"></wxc-loadmore>
+    <wxc-loadmore is-end="{{true}}"  text="我是有底线的"></wxc-loadmore>
 </view>

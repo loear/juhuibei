@@ -3,19 +3,19 @@
         <view class="demo-inner">
             <slot></slot>
             <view class="countdown">
-              <wxc-label class="label_countdown" type="fill" type-color="#ff4444">
-                <wxc-countdown countdown="{{countdown}}"></wxc-countdown>
-              </wxc-label>
-              <wxc-label class="label_coming" type="fill" type-color="#ffe8ee" text-color="#ff5577">已报名{{coming}}人</wxc-label>
+              <block wx:if="{{countdown}}">
+                <wxc-label class="label_countdown" type="fill" type-color="#ff4444">
+                  <wxc-countdown countdown="{{countdown}}"></wxc-countdown>
+                </wxc-label>
+              </block>
+              <wxc-label class="label_coming" type="fill" type-color="#ffe8ee" text-color="#ff5577">{{coming}}人报名</wxc-label>
             </view>
             <view wx:if="{{image_url == ''}}">
-              <image class="dome-image" src="/common/assets/images/activity_bg.jpg"></image>
+              <image class="dome-image" src="/common/assets/images/activity_bg.jpg" mode="aspectFill"></image>
             </view>
             <view wx:else>
-              <image class="dome-image" src="{{image_url}}"></image>
+              <image class="dome-image" src="{{image_url}}" mode="aspectFill"></image>
             </view>
-            
-            
         </view>
     </view>
     <view class="example--meta meta">
@@ -32,28 +32,17 @@
         <view class="view-btn {{viewSourceClass}}" bindtap="bindViewSourceEvent">{{ isExpandSource ? '收起列表' : '查看详情' }}</view>
         <view wx:if="{{isExpandSource}}">
           <block wx:for="{{avatar}}" wx:key="item">
-            <view wx:if="{{item.is_coming}}">
+            <block wx:if="{{item.is_coming}}">
               <wxc-avatar class="avatar" count="{{item.count}}" src="{{item.user.avatar_url}}"></wxc-avatar>
-            </view>
+            </block>
           </block>
           <view class="button-sp-area">
             <block wx:for="{{avatar}}" wx:key="item">
-              <view wx:if="{{item.user_id == uid}}">
-                <view wx:if="{{item.is_coming}}">
-                  <navigator url="/pages/activity-detail/index?user_id={{uid}}&activity_id={{item.activity_id}}">
+              <block wx:if="{{item.is_master == 1}}">
+                  <navigator url="/pages/activity-detail/index?user_id={{item.user_id}}&activity_id={{item.activity_id}}">
                     <button class="weui-btn mini-btn" type="warn" plain="true" size="mini">进入聚会圈</button>
                   </navigator>
-                </view>
-                <view wx:else>
-                  <button class="weui-btn" type="warn" plain="true" size="mini" bindtap="showDialog">我要参加</button>
-                  <wxc-dialog class="wxc-dialog" title="" content="" confirm-text="确认报名" bindconfirm="onConfirm" cancel-text="取消" bindcancel="onCancel" _pid="{{_pid}}">
-                    <form>
-                      <input class="form-name" name="name" placeholder="请输入您的姓名"></input>
-                      <input class="form-phone" name="phone" placeholder="请输入您的手机"></input>
-                    </form>
-                  </wxc-dialog>
-                </view>
-              </view>
+              </block>
             </block>
           </view>
         </view>

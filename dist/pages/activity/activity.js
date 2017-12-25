@@ -24,15 +24,30 @@ Page({
     },
     files: [],
     start_date: "2018-01-01",
-    start_time: "12:01",
-    end_date: "2019-01-01",
-    end_time: "12:05",
+    start_time: "12:00",
+    end_date: "2018-01-01",
+    end_time: "11:00",
     has_image: false,
     image_id: 0,
     uid: 0
   },
   onLoad() {
+    var that = this;
     var uid = wx.getStorageSync('uid')
+    api.getUserInfo({
+      query: {
+        user_id: uid
+      },
+      success: (res) => {
+        console.log('getUserInfo', res)
+        if (res.data.res === 0) {
+          that.setData({
+            username: res.data.data.username,
+            phone: res.data.data.phone
+          })
+        }
+      }
+    })
     this.initValidate();
     this.setData({
       title: '地图定位',

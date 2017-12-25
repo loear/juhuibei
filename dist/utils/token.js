@@ -17,19 +17,33 @@ class Token {
         wx.setStorageSync('token', cb.token);
         wx.setStorageSync('uid', cb.uid);
         // 获取用户信息
+        wx.login({
+          success: function () {
+            wx.getUserInfo({
+              success: function (res) {
+                wx.request({
+                  url: that.userInfoUrl,
+                  method: 'POST',
+                  data: {
+                    user_id: cb.uid,
+                    nickname: res.userInfo.nickName,
+                    avatar_url: res.userInfo.avatarUrl
+                  },
+                  success: function (res) {
+                    console.log(res);
+                  }
+                })
+              },
+              fail: function() {
+                that.verify()
+              }
+            });
+          },
+        })
         that.getUserInfo((data) => {
           data.user_id = cb.uid;
           // 存储用户信息
-          wx.request({
-            url: that.userInfoUrl,
-            method: 'POST',
-            data: {
-              data: data
-            },
-            success: function (res) {
-              console.log(res);
-            }
-          })
+          
         });
       });    
     }

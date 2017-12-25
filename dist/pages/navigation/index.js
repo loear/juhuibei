@@ -35,6 +35,11 @@ Page({
    */
   onLoad: function (options) {
     console.log('position:',options)
+    if (options.active_key) {
+      this.setData({
+        activeKey: options.active_key
+      })
+    }
     var that = this;
     var key = config.Config.key;
     var myAmapFun = new amapFile.AMapWX({ key: key });

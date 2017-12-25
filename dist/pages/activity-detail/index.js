@@ -75,6 +75,9 @@ Page({
             activity_info: res.data.data
           })
           title = res.data.data.title
+          wx.setNavigationBarTitle({
+            title: res.data.data.title
+          })
         }
       }
     })
@@ -85,10 +88,7 @@ Page({
     })
   },
   onReady: function () {
-    // 设置标题
-    wx.setNavigationBarTitle({
-      title: title
-    })
+    
   },
   openShareMenu: function(e) {
     console.log('openShareMenu', e)
@@ -104,7 +104,7 @@ Page({
     let length = this.data.activity_info.activity_image.length
     if (current === length) {
       this.setData({
-        current: length
+        current: 0
       })
     }
   },

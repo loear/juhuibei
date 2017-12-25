@@ -77,6 +77,7 @@ exports.default = Page({
       },
       success: (res) => {
         if (res.data.res === 0) {
+          console.log('activity_list', res.data.data)
           that.setData({
             activity_list: res.data.data,
           })

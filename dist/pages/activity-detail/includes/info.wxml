@@ -10,17 +10,27 @@
 
   <view class="weui-panel__bd">
       <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta">人数：</view>
+              <view class="weui-media-box__info__meta">{{activity_info._numbers}} / {{activity_info.numbers}}</view>
+          </view>
           <view class="weui-media-box__info ">
-              <view class="weui-media-box__info__meta">时间</view>
+              <view class="weui-media-box__info__meta">时间：</view>
               <view class="weui-media-box__info__meta">{{activity_info._start_time}}</view>
           </view>
           <view class="weui-media-box__info">
-              <view class="weui-media-box__info__meta">地点</view>
+              <view class="weui-media-box__info__meta">地名：</view>
               <view class="weui-media-box__info__meta">{{activity_info.gourmet_title}}</view>
           </view>
           <view class="weui-media-box__info">
-              <view class="weui-media-box__info__meta">人数</view>
-              <view class="weui-media-box__info__meta">{{activity_info._numbers}} / {{activity_info.numbers}}</view>
+              <view class="weui-media-box__info__meta">地址： <text class="address">{{activity_info.gourmet_address}}</text></view>
+          </view>
+          <view class="weui-media-box__info">
+            <view class="weui-media-box__info__meta">导航：</view>
+            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}" hover-class="navigator-hover">汽车</navigator>
+            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=1" hover-class="navigator-hover">步行</navigator>
+            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=2" hover-class="navigator-hover">公交</navigator>
+            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=3" hover-class="navigator-hover">骑行</navigator>
           </view>
       </view>
   </view>

@@ -35,7 +35,19 @@ exports.default = App({
     }
   },
   onShow: function onShow(e) {
-  
+    // 可以通过 wx.getSetting 先查询一下用户是否授权
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+              console.log('userInfo ok')
+            }
+          })
+        }
+      }
+    })
   },
   onHide: function onHide() {},
 
