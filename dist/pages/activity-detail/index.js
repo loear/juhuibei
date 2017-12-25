@@ -55,7 +55,9 @@ Page({
          console.log('getUserActivityInfo', res)
         if (res.data.res === 0) {
           that.setData({
-            info: res.data.data
+            info: res.data.data,
+            username: res.data.data.user_info.nickname,
+            phone: res.data.data.user_info.phone
           })
         }
       }
@@ -173,7 +175,7 @@ Page({
   },
   onConfirm: function (e) {
     var that = this;
-    api.saveComingInfo({
+    api.saveUserComing({
       method: 'post',
       data: {
         user_id: that.data.uid,
@@ -182,8 +184,17 @@ Page({
         phone: that.data.phone
       },
       success: (res) => {
+        console.log('onConfirm', res)
         if (res.data.res === 0) {
-          console.log('onConfirm', res)
+         
+          wx.showToast({
+            title: '报名成功',
+            icon: 'success',
+            duration: 1000,
+            success: function () {
+              that.data.info.iscoming = 1;
+            }
+          });
         }
       }
     })

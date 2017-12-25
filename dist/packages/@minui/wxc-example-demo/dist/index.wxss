@@ -19,19 +19,20 @@
 }
 
 .countdown {
-  position: absolute
+  position: absolute;
+  z-index: 9999;
 }
 
 .label_countdown {
   position: relative;
   left:10rpx;
-  top:-490rpx;
+  top:0rpx; 
 }
 
 .label_coming {
   position: relative;
   left:20rpx;
-  top:-490rpx;
+  top:0rpx;
 }
 
 .dome-image{

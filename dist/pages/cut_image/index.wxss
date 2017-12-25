@@ -39,16 +39,6 @@
     color: #04b00f;
 }
 
-.getCropperImage{
-  background: #000;
-  color: #04b00f;
-  font-size: 32rpx;
-}
-
-button[disabled][type="default"], wx-button[disabled]:not([type]) {
-  color:#ff4444;
-  background-color:#000;
-}
-button:after {
-  border: none;
+.disabled{
+  color: #888;
 }

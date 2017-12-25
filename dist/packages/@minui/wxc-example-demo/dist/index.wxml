@@ -2,18 +2,19 @@
     <view class="example--demo demo">
         <view class="demo-inner">
             <slot></slot>
-            <view wx:if="{{image_url == ''}}">
-              <image class="dome-image" src="/common/assets/images/activity_bg.jpg"></image>
-            </view>
-            <view wx:else>
-              <image class="dome-image" src="{{image_url}}"></image>
-            </view>
             <view class="countdown">
               <wxc-label class="label_countdown" type="fill" type-color="#ff4444">
                 <wxc-countdown countdown="{{countdown}}"></wxc-countdown>
               </wxc-label>
               <wxc-label class="label_coming" type="fill" type-color="#ffe8ee" text-color="#ff5577">已报名{{coming}}人</wxc-label>
             </view>
+            <view wx:if="{{image_url == ''}}">
+              <image class="dome-image" src="/common/assets/images/activity_bg.jpg"></image>
+            </view>
+            <view wx:else>
+              <image class="dome-image" src="{{image_url}}"></image>
+            </view>
+            
             
         </view>
     </view>

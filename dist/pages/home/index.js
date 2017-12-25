@@ -76,10 +76,11 @@ exports.default = Page({
         id: user_id
       },
       success: (res) => {
-        console.log(res.data)
-        that.setData({
-          activity_list: res.data,
-        })
+        if (res.data.res === 0) {
+          that.setData({
+            activity_list: res.data.data,
+          })
+        }
       } 
     })
   }

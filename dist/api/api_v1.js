@@ -34,7 +34,7 @@ const saveImage           = (params) => wxRequest(params, host + 'save_image')
 const saveActivityImage   = (params) => wxRequest(params, host + 'save_activity_image')
 const saveImageName       = (params) => wxRequest(params, host + 'save_picture_name')
 const saveActivityUser    = (params) => wxRequest(params, host + 'save_activity_user')
-const saveComingInfo      = (params) => wxRequest(params, host + 'save_coming')
+const saveUserComing      = (params) => wxRequest(params, host + 'save_coming')
 const enCryptedData       = (params) => wxRequest(params, host + 'activity/encrypt')
 
 module.exports = {
@@ -48,6 +48,6 @@ module.exports = {
   saveActivityImage,
   saveImageName,
   saveActivityUser,
-  saveComingInfo,
+  saveUserComing,
   enCryptedData
 }

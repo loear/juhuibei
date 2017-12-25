@@ -8,12 +8,20 @@
                 bindtap="uploadTap">
             选择图片
         </view>
-        <button
+        <block wx:if="{{disabled}}">
+          <view
+                  class="getCropperImage disabled"
+                  >
+             保存图片
+          </view>
+        </block>
+        <block wx:else>
+          <view
                 class="getCropperImage"
                 bindtap="getCropperImage"
-                disabled="{{ disabled ? true  :false }}"
                 >
             保存图片
-        </button>
+        </view>
+        </block>
     </view>
 </view>
