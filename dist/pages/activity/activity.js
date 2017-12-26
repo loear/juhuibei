@@ -29,11 +29,31 @@ Page({
     end_time: "11:00",
     has_image: false,
     image_id: 0,
-    uid: 0
+    uid: 0,
+    title: '地图定位',
+    isAgree: true
   },
   onLoad() {
     var that = this;
     var uid = wx.getStorageSync('uid')
+    if (uid) {
+      this.setData({ uid: uid })
+      that.getUserInfo(uid)
+      that.initValidate()
+    } else {
+      var token = new Token();
+      token.getTokenFromServer((cb) => {
+        that.setData({ uid: cb.uid })
+        token.saveUserInfo(cb.uid)
+        that.getUserInfo(cb.uid)
+        that.initValidate()
+      });
+    }
+  },
+  /**
+   * 获取用户信息 姓名和手机
+   */
+  getUserInfo: function(uid) {
     api.getUserInfo({
       query: {
         user_id: uid
@@ -47,12 +67,6 @@ Page({
           })
         }
       }
-    })
-    this.initValidate();
-    this.setData({
-      title: '地图定位',
-      isAgree: true,
-      uid: uid
     })
   },
   showToptips(error) {
@@ -110,7 +124,7 @@ Page({
           icon: 'success',
           duration: 1000,
           success: function () {
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/home/index'
             });
           }

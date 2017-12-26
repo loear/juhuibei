@@ -21,7 +21,7 @@
         <text>{{activity_info.description}}</text>
       </view>
     </view>
-    <block wx:if="{{info.is_coming}}">
+    <block wx:if="{{is_coming}}">
       <button open-type="share" class="share-btn">
         <image class="music-play-control" src="/common/assets/images/activity/share.png" data-id="{{item.user_id}}"></image>
       </button>

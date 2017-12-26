@@ -7,7 +7,7 @@
       <image class="link" src="/common/assets/images/activity/book_b.png" mode="aspectFill" data-type="callbook"></image>
     </view>
   </view>
-  <block wx:if="{{info.is_coming}}">
+  <block wx:if="{{is_coming}}">
     <view class="weui-cells weui-cells_after-title">
       <block wx:for="{{activity_info.info}}" wx:key=""  wx:for-item="call_item">
         <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" >

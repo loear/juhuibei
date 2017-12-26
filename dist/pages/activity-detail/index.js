@@ -2,6 +2,7 @@ import {
   MUSIC_PALY_IMG,
   MUSIC_PAUSE_IMG
 } from '../../utils/constants.js'
+import { Token } from '../../utils/token.js';
 import api from '../../api/api_v1.js'
 import util from '../../utils/util.js'
 const qiniuUploader = require("../../libs/qiniuUploader");
@@ -16,62 +17,104 @@ Page({
     contentType: 'info',
     playImg : MUSIC_PALY_IMG,
     info: [],
-    uid: 0,
+    uid: 3,
     activity_id: 0,
-    activity_info: {}
+    activity_info: {},
+    is_coming: 0,
+    is_uploading: false
   },
   onLoad: function (options) {
-    console.log('options', options)
     var that = this;
+    console.log('options', options)
+    if (options.activity_id) this.setData({ activity_id: options.activity_id })
     var uid = wx.getStorageSync('uid')
-    this.setData({ 
-      uid: uid,
-      activity_id: options.activity_id
-    })
+    if (uid) {
+      this.setData({ uid: uid })
+      console.log('uid1=', uid);
+      this.getUserActivityInfo(uid)
+    } else {
+      var token = new Token();
+      token.getTokenFromServer((cb)=>{
+        that.setData({ uid: cb.uid })
+        token.saveUserInfo(cb.uid)
+        console.log('uid2=', cb.uid);
+        that.getUserActivityInfo(cb.uid)
+      });
+    }
     
-
-    // 保存用户关联聚会信息
-    api.saveActivityUser({
-      method: 'post',
-      data: {
-        user_id: uid,
-        activity_id: options.activity_id
-      },
-      success: (res) => {
-        console.log('saveActivityUser', res.data.data);
-        if (res.data.res === 0) {
-         
-        }
-      }
-    })
-
+    // 显示当前页面的转发按钮
+    wx.showShareMenu({ withShareTicket: true })
+  },
+  /**
+   * 获取用户聚会信息
+   */
+  getUserActivityInfo: function(uid) {
+    var that = this;
     // 获取当前用户聚会信息
     api.getUserActivityInfo({
       query: {
         user_id: uid,
-        activity_id: options.activity_id
+        activity_id: that.data.activity_id
       },
       success: (res) => {
-         console.log('getUserActivityInfo', res)
+        console.log('getUserActivityInfo', res.data.data)
         if (res.data.res === 0) {
           that.setData({
             info: res.data.data,
+            is_coming: res.data.data.is_coming,
+            is_uploading: res.data.data._is_uploading,
             username: res.data.data.user_info.nickname,
             phone: res.data.data.user_info.phone
           })
+          that.getActivityInfo()
+        } else {
+          that.saveActivityUser(uid)
+        }
+      },
+      fail: (msg) => {
+        that.saveActivityUser(uid)
+      }
+    })
+  },
+  /**
+   * 关联聚会用户 并获取用户聚会信息
+   */
+  saveActivityUser: function(uid) {
+    var that = this;
+    api.saveActivityUser({
+      method: 'post',
+      data: {
+        user_id: uid,
+        activity_id: that.data.activity_id
+      },
+      success: (res) => {
+        console.log('saveActivityUser', res.data.data);
+        if (res.data.res === 0) {
+          that.setData({
+            info: res.data.data,
+            is_coming: res.data.data.is_coming,
+            is_uploading: res.data.data._is_uploading,
+            username: res.data.data.user_info.nickname,
+            phone: res.data.data.user_info.phone
+          })
+          that.getActivityInfo()
         }
       }
     })
-
-    // 通过发布人和聚会ID获取聚会详细信息
+  },
+  /**
+   * 获取聚会详细信息
+   */
+  getActivityInfo: function() {
+    var that = this;
     api.getActivityInfo({
-      query:{
-        activity_id: options.activity_id
+      query: {
+        activity_id: that.data.activity_id
       },
       success: (res) => {
-         console.log('activity_info', res.data.data);
+        console.log('activity_info', res.data.data);
         if (res.data.res === 0) {
-          that.setData({ 
+          that.setData({
             activity_info: res.data.data
           })
           title = res.data.data.title
@@ -80,11 +123,6 @@ Page({
           })
         }
       }
-    })
-
-    // 显示当前页面的转发按钮
-    wx.showShareMenu({
-      withShareTicket: true
     })
   },
   onReady: function () {
@@ -145,7 +183,7 @@ Page({
    */
   switchContent: function (e) {
     let type = e.target.dataset.type
-    this.data.contentType = type
+    // this.data.contentType = type
     this.setData({ contentType:type })
   },
   /**
@@ -192,7 +230,9 @@ Page({
             icon: 'success',
             duration: 1000,
             success: function () {
-              that.data.info.iscoming = 1;
+              that.setData({
+                is_coming: 1
+              })
             }
           });
         }

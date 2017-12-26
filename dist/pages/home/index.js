@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+import { Token } from '../../utils/token.js';
 import { $wuxButton } from '../../packages/@wux/components/wux'
 import api from '../../api/api_v1.js'
 exports.default = Page({
@@ -12,15 +13,24 @@ exports.default = Page({
     opened: !1,
     uid: 0
   },
-  onLoad() {
+  onLoad() {    
     // 1. 初始化菜单按钮
     this.initButton();
-    // 1. 载入用户的聚会列表
-    let user_id = wx.getStorageSync('uid')
-    this.loadActivityList(user_id);
-    this.setData({
-      uid: user_id 
-    })
+    // 2. 载入用户的聚会列表
+    var that = this;
+    var uid = wx.getStorageSync('uid')
+    if (uid) {
+      this.setData({ uid: uid })
+      that.loadActivityList(uid);
+    } else {
+      var token = new Token();
+      token.getTokenFromServer((cb) => {
+        that.setData({ uid: cb.uid })
+        token.saveUserInfo(cb.uid)
+        that.loadActivityList(cb.uid);
+      });
+    }
+    
   },
 
   // 初始化菜单按钮 默认在左下角
@@ -69,11 +79,11 @@ exports.default = Page({
   },
 
   // 载入聚会列表
-  loadActivityList: function (user_id) {
+  loadActivityList: function (uid) {
     var that = this;
     api.getActivityList({
       query: {
-        id: user_id
+        id: uid
       },
       success: (res) => {
         if (res.data.res === 0) {

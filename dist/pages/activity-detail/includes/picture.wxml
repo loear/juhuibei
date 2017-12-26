@@ -7,7 +7,7 @@
       <image class="link" src="/common/assets/images/activity/book_a.png" mode="aspectFill" data-type="callbook"></image>
     </view>
   </view>
-  <block wx:if="{{info.is_coming}}">
+  <block wx:if="{{is_coming}}">
     <wxc-flex class="wrap" cross="top" wrap="wrap">
       <block wx:for="{{activity_info.activity_image}}" wx:key="" wx:for-item="pic">
       <view class="item">
@@ -17,7 +17,7 @@
         </view>
       </view>
       </block>
-      <block wx:if="{{ info.picture_number - info._picture_number > 0}}">
+      <block wx:if="{{ is_uploading }}">
       <view class="item">
         <view class="item-photo-box">
           <image class="item-photo" src="" mode="aspectFit" bindlongtap="uploadImage"></image>

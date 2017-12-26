@@ -82,7 +82,8 @@ Page({
                       success: (save_res) => {
                         console.log('save_res', save_res.data.data);
                         prevPage.setData({
-                          activity_info: save_res.data.data
+                          activity_info: save_res.data.data,
+                          is_uploading: save_res.data.data._is_uploading
                         })
                       }
                     })
