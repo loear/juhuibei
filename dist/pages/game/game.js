@@ -1,6 +1,4 @@
-// pages/game/game.js
-import { Game } from 'game-model.js';
-var game = new Game();
+import api from '../../api/api_v1.js';
 Page({
 
   /**
@@ -21,14 +19,15 @@ Page({
     this._onLoad();
   },
   _onLoad: function () {
-    var id = 1;
-    game.getGamesAll((res) => {
-      console.log(res);
-      this.data.grids = res;
-      this.setData({
-        'grids': res
-      });
-    });
+    var that = this;
+    api.getGamesAll({
+      success: (res) => {
+        if (res.data.res === 0) {
+          console.log('getGamesAll', res.data.data)
+          that.setData({ 'grids': res.data.data })
+        }
+      }
+    })
   },
 
   /**

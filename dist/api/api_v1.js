@@ -37,6 +37,7 @@ const saveImageName       = (params) => wxRequest(params, host + 'save_picture_n
 const saveActivityUser    = (params) => wxRequest(params, host + 'save_activity_user')
 const saveUserComing      = (params) => wxRequest(params, host + 'save_coming')
 const enCryptedData       = (params) => wxRequest(params, host + 'activity/encrypt')
+const getGamesAll          = (params) => wxRequest(params, host + 'games')
 
 module.exports = {
   getActivityList,
@@ -51,5 +52,6 @@ module.exports = {
   saveImageName,
   saveActivityUser,
   saveUserComing,
-  enCryptedData
+  enCryptedData,
+  getGamesAll
 }
