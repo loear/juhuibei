@@ -5,29 +5,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    grids: ''
+    grids: '',
+    title: '娱乐',
+    desc: '这里有好玩的'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      title: '游戏',
-      desc: '总有一款适合你'
-    });
-    this._onLoad();
+    this.getGamesAll();
   },
-  _onLoad: function () {
+  /**
+   * 获取游戏列表
+   */
+  getGamesAll: function () {
     var that = this;
     api.getGamesAll({
       success: (res) => {
         if (res.data.res === 0) {
           console.log('getGamesAll', res.data.data)
-          that.setData({ 'grids': res.data.data })
+          that.setData({ grids: res.data.data })
         }
       }
     })
+  },
+  /**
+   * 进入游戏web-view
+   */
+  goToplay: function (e) {
+    console.log(e);
+    var url = e.target.dataset.url;
+    console.log(url);
+    if (url) {
+      wx.navigateTo({
+        url: '/pages/game-detail/index?url=' + url
+      })
+    }
   },
 
   /**

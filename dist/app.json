@@ -1,11 +1,10 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/activity/activity",
-    "pages/game/game",
-    "pages/wolf/wolf",
+    "pages/activity/index",
     "pages/activity-detail/index",
-    "pages/music/music",
+    "pages/game/index",
+    "pages/game-detail/index",
     "pages/picture/index",
     "pages/picture-detail/index",
     "pages/navigation/index",

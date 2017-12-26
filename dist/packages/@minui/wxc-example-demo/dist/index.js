@@ -56,28 +56,6 @@ exports.default = Component({
         isExpandSource: !this.data.isExpandSource
       });
     },
-
-    goDetail() {
-
-    },
-
-    showDialog() {
-      let dialogComponent = this.selectComponent('.wxc-dialog');
-      dialogComponent && dialogComponent.show();
-    },
-    hideDialog() {
-      let dialogComponent = this.selectComponent('.wxc-dialog');
-      dialogComponent && dialogComponent.hide();
-    },
-    onConfirm: function(e) {
-      console.log(e);
-      console.log('点击了确认按钮');
-      this.hideDialog();
-    },
-    onCancel() {
-      console.log('点击了取消按钮');
-      this.hideDialog();
-    }
   },
   attached: function attached() {}
 });

@@ -54,6 +54,7 @@ Page({
    * 获取用户信息 姓名和手机
    */
   getUserInfo: function(uid) {
+    var that = this;
     api.getUserInfo({
       query: {
         user_id: uid

@@ -2,8 +2,7 @@
   "usingComponents": {
     "example": "../../packages/@minui/wxc-example/dist/index",
     "example-demo": "../../packages/@minui/wxc-example-demo/dist/index",
-    "example-md": "../../packages/@minui/wxc-example-md/dist/index",
-    "demo-multiple": "./demos/demo-multiple",
-    "wxc-loadmore": "../../packages/@minui/wxc-loadmore/dist/index"
+    "wxc-loadmore": "../../packages/@minui/wxc-loadmore/dist/index",
+    "wxc-mask": "../../packages/@minui/wxc-mask/dist/index"
   }
 }

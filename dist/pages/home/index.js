@@ -11,7 +11,8 @@ exports.default = Page({
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
     index: 3,
     opened: !1,
-    uid: 0
+    uid: 0,
+    maskStatus: 'hide'
   },
   onLoad() {    
     // 1. 初始化菜单按钮
@@ -35,6 +36,7 @@ exports.default = Page({
 
   // 初始化菜单按钮 默认在左下角
   initButton(position = 'bottomLeft') {
+    var that = this;
     this.setData({
       opened: !1,
     })
@@ -61,16 +63,21 @@ exports.default = Page({
         })
 
         index === 1 && wx.navigateTo({
-          url: '/pages/game/game'
+          url: '/pages/game/index'
         })
 
         index === 2 && wx.navigateTo({
-          url: '/pages/activity/activity'
+          url: '/pages/activity/index'
         })
 
         return true
       },
       callback(vm, opened) {
+        if (opened) {
+          that.setData({ maskStatus: 'show' })
+        } else {
+          that.setData({ maskStatus: 'hide' })
+        }
         vm.setData({
           opened,
         })

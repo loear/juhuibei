@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "wxc-cc": "../../../packages/@minui/wxc-cc/dist/index",
-    "wxc-label": "../../../packages/@minui/wxc-label/dist/index",
-    "wxc-countdown": "../../../packages/@minui/wxc-countdown/dist/index"
-  },
-  "component": true
-}
