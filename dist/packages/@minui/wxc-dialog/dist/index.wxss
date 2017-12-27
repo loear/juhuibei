@@ -34,7 +34,8 @@
     line-height: 100rpx;
     height: 100rpx;
     border-top: 1rpx solid #e5e5e5;
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
@@ -51,5 +52,10 @@
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    border:none;
+    background-color: #FFFFFF;
+}
+button:after {
+    border: none;
 }

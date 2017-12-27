@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -57,7 +57,7 @@
 					"id": 3,
 					"name": "聚会详情页",
 					"pathName": "pages/activity-detail/index",
-					"query": "user_id=3&activity_id=13",
+					"query": "user_id=1&activity_id=12",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",
@@ -94,6 +94,18 @@
 					"name": "选择图片",
 					"pathName": "pages/cut_image/index",
 					"query": "user_id=2&activity_id=8&page=activity-detail",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "G_784qF15Y-vrjve_WvFfskVkSWmXWNCBT-Qavm0SLU@cr4dev",
+						"shareKey": "acnSXiNBf8nIhFZH9WmwVwG3bzAqjNHkeK871eIw9NjToXsp4803B-MyynYjeE7c2R8pF8jeGsPpGl5wZtw3ew~~"
+					}
+				},
+				{
+					"id": 8,
+					"name": "关于",
+					"pathName": "pages/about/index",
+					"query": "user_id=1&activity_id=12",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",

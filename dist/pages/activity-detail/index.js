@@ -212,36 +212,38 @@ Page({
     dialogComponent && dialogComponent.hide();
   },
   onConfirm: function (e) {
+    
+    this.hideDialog();
+  },
+  onCancel() {
+    console.log('点击了取消按钮');
+    this.hideDialog();
+  },
+  submitForm: function(e) {
     var that = this;
     api.saveUserComing({
       method: 'post',
       data: {
+        form_id: e.detail.formId,
         user_id: that.data.uid,
         activity_id: that.data.activity_id,
-        username: that.data.username,
-        phone: that.data.phone
+        username: e.detail.value.username,
+        phone: e.detail.value.phone
       },
       success: (res) => {
         console.log('onConfirm', res)
         if (res.data.res === 0) {
-         
           wx.showToast({
             title: '报名成功',
             icon: 'success',
             duration: 1000,
             success: function () {
-              that.setData({
-                is_coming: 1
-              })
+              that.setData({ is_coming: 1 })
             }
           });
         }
       }
     })
-    this.hideDialog();
-  },
-  onCancel() {
-    console.log('点击了取消按钮');
     this.hideDialog();
   },
   setUsername: function(e) {

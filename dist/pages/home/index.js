@@ -45,21 +45,21 @@ exports.default = Page({
       position: position,
       buttons: [
         {
-          label: '影集',
-          icon: "/common/assets/images/menu_yj.png",
+          label: '关于我们',
+          icon: "/common/assets/images/menu_yj_1.png",
         },
         {
-          label: '游戏',
-          icon: "/common/assets/images/menu_yx.png",
+          label: '聚会游戏',
+          icon: "/common/assets/images/menu_yx_1.png",
         },
         {
-          label: '发布',
-          icon: "/common/assets/images/menu_fb.png",
+          label: '发布活动',
+          icon: "/common/assets/images/menu_fb_1.png",
         }
       ],
       buttonClicked(index, item) {
         index === 0 && wx.navigateTo({
-          url: '/pages/picture/index'
+          url: '/pages/about/index'
         })
 
         index === 1 && wx.navigateTo({

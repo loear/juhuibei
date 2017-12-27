@@ -30,14 +30,15 @@
       <view class="music-play" bindtap="showDialog">
         <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="{{item.user_id}}"></image>
       </view>
-      <wxc-dialog class="wxc-dialog" title="" content="" confirm-text="确认报名" bindconfirm="onConfirm" cancel-text="取消" bindcancel="onCancel" _pid="{{_pid}}">
-        <form>
+      <wxc-dialog class="wxc-dialog" title="活动报名" content="请确认姓名和联系电话无误" _pid="{{_pid}}">
+        <form bindsubmit="submitForm" report-submit="true">
           <view class="input-box">
             <input class="form-name" name="username" placeholder="请输入您的姓名" value="{{info.user_info.username}}" bindblur="setUsername"></input>
           </view>
           <view class="input-box">
             <input class="form-phone" type="number" name="phone" placeholder="请输入您的手机" value="{{info.user_info.phone}}" bindblur="setPhone"></input>
           </view>
+          <button formType="submit" class="form-submit">确认报名{{confirmText}}</button>
         </form>
       </wxc-dialog>
     </block>

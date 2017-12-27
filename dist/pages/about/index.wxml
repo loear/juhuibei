@@ -1,0 +1,35 @@
+<view>
+    <view class="title--h2">○ 聚会宗旨</view>
+
+    <view class="section section__poetry">
+        <view class="section__p">追忆青春，重温旧梦；</view>
+        <view class="section__p">互叙离情，沟通情感；</view>
+        <view class="section__p">促进交流，感受成功；</view>
+        <view class="section__p">共话未来，祝福加油！</view>
+        
+    </view>
+
+    <view class="title--h2">○ 聚会原则</view>
+
+    <view class="section">
+        <view class="section__changelog">
+            <view class="section__p"> - 坚持自愿的原则</view>
+        </view>
+    </view>
+
+    <view class="title--h2">○ 版本日志</view>
+
+    <view class="section">
+        <view class="section__changelog">
+            <view class="title--h3">v1.0.0（2017.12.27）</view>
+            <view class="section__p"> - 初始版本</view>
+        </view>
+    </view>
+    
+
+    
+    <button class="cantact-btn" open-type="contact">问题反馈</button>
+  
+
+    <!--<layout-foot></layout-foot>-->
+</view>

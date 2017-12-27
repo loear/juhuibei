@@ -237,3 +237,11 @@ page {
   border-radius: 5rpx;
   margin-bottom: 20rpx;
 }
+
+.form-submit {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  color: #FF4444;
+  margin-bottom: 20rpx;
+}
