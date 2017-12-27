@@ -20,7 +20,7 @@
   font-size:14px;
 }
 .weui-uploader{
-  margin-top:20px;
+  margin-top:60px;
 }
 .weui-textarea{
   font-size:14px;

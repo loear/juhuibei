@@ -112,7 +112,8 @@ Page({
       end_date: params.end_date,
       end_time: params.end_time,
       user_id: that.data.uid,
-      image_id: that.data.image_id
+      image_id: that.data.image_id,
+      form_id: e.detail.formId
     }
 
     api.saveActivity({
