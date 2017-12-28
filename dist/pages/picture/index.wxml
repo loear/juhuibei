@@ -1,50 +1,32 @@
-<wxc-flex class="wrap" cross="top" wrap="wrap">
-    <view class="item">
-      <view class="item-photo-box">
-        <image class="item-photo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513093903135&di=118786e272164022ecc02181ff3c70bd&imgtype=0&src=http%3A%2F%2Fimg003.21cnimg.com%2Fphotos%2Falbum%2F20170219%2Fm600%2F8BEEA3B4353DB9EF5B787A8C2762473B.jpeg" mode="aspectFit"></image>
-        <text class="item-text">聚会合影</text>
+<!-- pages/index/index.wxml -->
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key="unique">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!--弹幕开关-->
+<view class="barrage-Switch" style="color:{{barrageTextColor}};">
+    <switch id="switch_" bindchange="barrageSwitch"/>
+    <text>弹幕</text>
+</view>
+
+<!--弹幕输入框-->
+  <view class="barrage-inputText" style="display:{{barrage_inputText}}">
+      <view class="barrage-input">
+        <input bindblur="bind_shoot" value="{{bind_shootValue}}"/>
       </view>
-    </view>
-    <view class="item">
-      <view class="item-photo-box">
-        <image class="item-photo" src="" mode="aspectFit"></image>
-        <text class="item-text">情深似海</text>
+      <view class="barrage-shoot">
+          <button class="shoot" size="mini" bindtap="shoot">发射</button>
       </view>
-    </view>
-    <view class="item">
-      <view class="item-photo-box">
-        <image class="item-photo" src="" mode="aspectFit"></image>
-        <text class="item-text">丰盛的美食</text>
-      </view>
-    </view>
-    <view class="item">
-      <view class="item-photo-box">
-        <image class="item-photo" src="" mode="aspectFit"></image>
-        <text class="item-text">最美的回忆</text>
-      </view>
-    </view>
-    <view class="item">
-      <view class="item-photo-box">
-        <image class="item-photo" src="" mode="aspectFit"></image>
-        <text class="item-text">干杯</text>
-      </view>
-    </view>
-    <view class="item">
-      <view class="item-photo-box">
-        <image class="item-photo" src="" mode="aspectFit"></image>
-        <text class="item-text">抢红包</text>
-      </view>
-    </view>
-    <view class="item">
-      <view class="item-photo-box">
-        <image class="item-photo" src="" mode="aspectFit"></image>
-        <text class="item-text">现场游戏</text>
-      </view>
-    </view>
-    <view class="item">
-      <view class="item-photo-box">
-        <image class="item-photo" src="" mode="aspectFit"></image>
-        <text class="item-text">自定义</text>
-      </view>
-    </view>
-</wxc-flex>
+  </view>
+
+<!--弹幕上单文字-->
+<view class="barrage-fly" style="display:{{barragefly_display}}">
+  <block wx:for="{{barrage_style}}" wx:key="unique">
+   <text class="barrage-textFly" style="color:{{item.barrage_shoottextColor}};left:{{item.barrage_phoneWidth}}px;top:{{item.barrageText_height}}px;">{{item.barrage_shootText}}</text>
+  </block>
+</view>

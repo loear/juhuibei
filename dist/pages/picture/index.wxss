@@ -1,32 +1,54 @@
-page {
-  background: #FFFFFF;
+/* pages/index/index.wxss */
+.slide-image{
+    width: 100%;
 }
-.wrap {
-    display: block;
-    padding: 1%;
-  }
-.item {
-  width: 31%;
-  height: 300rpx;
-  margin: 1.16%;
-  flex-grow: 0;
-  background: #ffffff;
-  box-shadow: 0 0 10rpx #ccc;
-  border-radius: 5rpx;
-  text-align: center;
+
+/* 弹幕选择按钮的操作*/
+.barrage-Switch{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
 }
-.item-photo-box {
-  width:90%;
-  height: 206rpx;
-  margin: 10% 5%;
-  box-shadow: 0px 0px 10px #ccc inset;
-  background-image: url('https://www.juhuibei.com/images/add_photo.jpg');
-  background-size:100% 200rpx;
+
+/* 弹幕输入框的操作*/
+.barrage-inputText{
+    position: absolute;
+    display: flex;
+    background-color: #BFBFBF;
+    width: 100%;
+    height: 40px;
+    flex-direction: row;
+    nav-index: 2;
+    justify-content: center;
+    align-items: center;
+    bottom: 10%;
 }
-.item-photo {
-  width:100%;
-  height: 206rpx;
+.barrage-input{
+    background-color: greenyellow;
+    width: 60%;
+    height: 30px;
 }
-.item-text {
-  font-size: 24rpx;
+.barrage-shoot{
+
+    margin-left: 10px;
+    width: 25%;
+    height: 30px;
+}
+.shoot{
+    width: 100%;
+    color: black;
+}
+
+/*弹幕飞飞飞*/
+.barrage-fly{
+    z-index: 3;
+    height: 80%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+.barrage-textFly{
+    position: absolute;
+
 }

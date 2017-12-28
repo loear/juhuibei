@@ -9,7 +9,7 @@ page {
 
 .musics-swiper {
   width: 100%;
-  height: 760rpx;
+  height: 240px;
 }
 
 .music {
@@ -27,7 +27,7 @@ page {
 
 .music-cover-image {
   width: 100%;
-  height: 750rpx;
+  height: 240px;
 }
 
 .music-control {
@@ -202,6 +202,7 @@ page {
   color: #888;
   line-height: 40rpx;
   word-wrap:break-word;
+  margin-top: 10px;
 }
 
 .address {
@@ -231,14 +232,19 @@ page {
   font-size:10px;
   background:#ff4444;
 }
-.input-box{
+
+.dialog-form {
+
+}
+
+.dialog-input {
   border: 1px solid #ebebeb;
   padding:10rpx 30rpx;
   border-radius: 5rpx;
   margin-bottom: 20rpx;
 }
 
-.form-submit {
+.dialog-submit {
   position: relative;
   width: 100%;
   background-color: #FFFFFF;
