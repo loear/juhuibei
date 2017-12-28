@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -57,7 +57,7 @@
 					"id": 3,
 					"name": "聚会详情页",
 					"pathName": "pages/activity-detail/index",
-					"query": "user_id=1&activity_id=12",
+					"query": "user_id=1&activity_id=17",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",
@@ -75,7 +75,7 @@
 					"id": 5,
 					"name": "picture-detail",
 					"pathName": "pages/picture-detail/index",
-					"query": "image_id=2",
+					"query": "image_id=24",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",

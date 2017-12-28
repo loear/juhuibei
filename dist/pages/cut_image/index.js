@@ -19,10 +19,10 @@ Page({
       scale: 2.5,
       zoom: 8,
       cut: {
-        x: (width - 300) / 2,
-        y: (height - 300) / 2,
-        width: 300,
-        height: 300
+        x: (width - 320) / 2,
+        y: (height - 240) / 2,
+        width: 320,
+        height: 240
       },
       uid: 0,
       activity_id: 0,

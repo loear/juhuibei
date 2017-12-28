@@ -12,7 +12,7 @@
       <block wx:for="{{activity_info.activity_image}}" wx:key="" wx:for-item="pic">
       <view class="item">
         <view class="item-photo-box">
-          <image class="item-photo" src="{{pic.img.url}}" mode="aspectFit" bindtap="openDetail" data-image_id="{{pic.image_id}}"></image>   
+          <image class="item-photo" src="{{pic.img.url}}" mode="aspectFill" bindtap="openDetail" data-image_id="{{pic.image_id}}"></image>   
           <input class="item-text" name="title" data-image_id="{{pic.image_id}}" data-image_name="{{pic.name}}" value="{{pic.name}}" bindblur="saveImageName" disabled="{{pic.user_id==uid ? false : true }}"></input>
         </view>
       </view>

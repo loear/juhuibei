@@ -14,7 +14,7 @@ Page({
     musics: [],
     current: 0,
     playId: -1,
-    contentType: 'info',
+    contentType: 'picture',
     playImg : MUSIC_PALY_IMG,
     info: [],
     uid: 3,

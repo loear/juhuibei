@@ -23,12 +23,14 @@
     </view>
     <block wx:if="{{is_coming}}">
       <button open-type="share" class="share-btn">
-        <image class="music-play-control" src="/common/assets/images/activity/share.png" data-id="{{item.user_id}}"></image>
+        <!-- <image class="music-play-control" src="/common/assets/images/activity/share.png" data-id="{{item.user_id}}"></image> -->
+        <view class='music-play-control'>分享</view>
       </button>
     </block>
     <block wx:else>
       <view class="music-play" bindtap="showDialog">
-        <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="{{item.user_id}}"></image>
+        <view class='music-play-control'>报名</view>
+        <!-- <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="{{item.user_id}}"></image> -->
       </view>
       <wxc-dialog class="wxc-dialog" title="活动报名" content="请确认姓名和联系电话无误" _pid="{{_pid}}">
         <form bindsubmit="submitForm" report-submit="true" class="dialog-form">

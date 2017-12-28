@@ -1,7 +1,7 @@
 <wxc-flex class="wrap" cross="top" wrap="wrap">
     <view class="item">
       <view class="item-photo-box">
-        <image class="item-photo" src="{{info.img_info.url}}" mode="aspectFit"></image>
+        <image class="item-photo" src="{{info.img_info.url}}" mode="aspectFill"></image>
         <text class="item-text">{{info.name}}</text>
         <view class="item-desc">
           <text>{{info.description}}</text>
