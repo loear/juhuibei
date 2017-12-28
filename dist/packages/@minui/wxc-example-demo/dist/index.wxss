@@ -44,14 +44,15 @@
 
 .label-coming-btn {
   display: inline-block;
-  margin-top:50px;
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
-  background: #FF4444;
-  opacity:0.7;
-  color: #FFFFFF;
-  line-height: 80px;
+  margin-top: 70px;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  background: #F44;
+    opacity:0.9;  
+  color: #FFF;
+  line-height: 40px;
+  /* border: 2px solid #FFF; */
   box-shadow:0 0 6rpx rgba(0, 0, 0, .15);
 }
 .dome-image{
@@ -134,14 +135,18 @@
   color:#ff4444;
 }
 
-.input-box{
+.dialog-form {
+
+}
+
+.dialog-input {
   border: 1px solid #ebebeb;
   padding:10rpx 30rpx;
   border-radius: 5rpx;
   margin-bottom: 20rpx;
 }
 
-.form-submit {
+.dialog-submit {
   position: relative;
   width: 100%;
   background-color: #FFFFFF;

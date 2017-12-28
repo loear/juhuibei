@@ -14,18 +14,18 @@
                   
                 </view>
                 <block wx:if="{{item.is_coming == 0}}">
-                  <view class="center" bindtap="showDialog">
-                    <view class="label-coming-btn"><text>报名</text></view>
+                  <view class="center" bindtap="showDialog" >
+                    <view class="label-coming-btn"><text>活动报名</text></view>
                   </view>
                   <wxc-dialog class="wxc-dialog" title="活动报名" content="请确认姓名和联系电话无误" _pid="{{_pid}}">
-                    <form bindsubmit="submitForm" report-submit="true">
-                      <view class="input-box">
-                        <input class="form-name" name="username" placeholder="请输入您的姓名" value="{{item.user_info.username}}" bindblur="setUsername"></input>
+                    <form bindsubmit="submitForm" report-submit="true" class="dialog-form">
+                      <view class="dialog-input">
+                        <input name="username" placeholder="请输入您的姓名" value="{{item.user.username}}" bindblur="setUsername"></input>
                       </view>
-                      <view class="input-box">
-                        <input class="form-phone" type="number" name="phone" placeholder="请输入您的手机" value="{{item.user_info.phone}}" bindblur="setPhone"></input>
+                      <view class="dialog-input">
+                        <input type="number" name="phone" placeholder="请输入您的手机" value="{{item.user.phone}}" bindblur="setPhone"></input>
                       </view>
-                      <button formType="submit" class="form-submit">立即报名</button>
+                      <button formType="submit" class="dialog-submit" data-uid="{{item.user_id}}" data-activity_id="{{item.activity_id}}">立即报名</button>
                     </form>
                   </wxc-dialog>
                 </block>

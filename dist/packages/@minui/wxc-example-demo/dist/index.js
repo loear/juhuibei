@@ -1,5 +1,5 @@
 'use strict';
-
+import api from '../../../../api/api_v1.js';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -73,13 +73,14 @@ exports.default = Component({
       this.hideDialog();
     },
     submitForm: function (e) {
+      console.log(e);
       var that = this;
       api.saveUserComing({
         method: 'post',
         data: {
           form_id: e.detail.formId,
-          user_id: that.data.uid,
-          activity_id: that.data.activity_id,
+          user_id: e.detail.target.dataset.uid,
+          activity_id: e.detail.target.dataset.activity_id,
           username: e.detail.value.username,
           phone: e.detail.value.phone
         },
@@ -91,7 +92,9 @@ exports.default = Component({
               icon: 'success',
               duration: 1000,
               success: function () {
-                that.setData({ is_coming: 1 })
+                wx.reLaunch({
+                  url: '/pages/activity-detail/index?activity_id=' + e.detail.target.dataset.activity_id
+                })
               }
             });
           }
