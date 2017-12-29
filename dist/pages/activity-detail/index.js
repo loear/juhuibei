@@ -199,8 +199,25 @@ Page({
    * 上传图片到七牛
    */
   uploadImage: function () {
-    wx.navigateTo({
-      url: '/pages/cut_image/index?user_id=' + this.data.uid + '&activity_id=' + this.data.activity_id
+    if (this.data.is_uploading) {
+      wx.navigateTo({
+        url: '/pages/cut_image/index?user_id=' + this.data.uid + '&activity_id=' + this.data.activity_id
+      })
+    } else {
+      this.buyPictureSpace();
+    }
+  },
+  buyPictureSpace: function() {
+    wx.showModal({
+      title: '温馨提示',
+      content: '默认能上传1张照片，点击确定充值影集空间',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
   showDialog() {

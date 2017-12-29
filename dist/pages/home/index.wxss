@@ -30,10 +30,35 @@
   text-align: center;
 }
 
+header-hover {
+  color: #FFFFFF;
+  background-color: #313538;
+}
+
 .header {
-  width: 100%;
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
   height: 50px;
-  background: yellow;
-  color: #FFF;
+  background: #f44;
+  color: #fadd9d;
   line-height: 50px;
+  padding: 0 5%;
+  z-index: 200;
+  margin: 0;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28)
+}
+
+.header-tag {
+  margin-left: 30rpx;
+}
+
+.header-right {
+  display: block;
+  float: right;
+}
+
+.header-position {
+  margin-top: 60px;
 }

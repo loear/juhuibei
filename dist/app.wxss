@@ -1,4 +1,5 @@
 @import 'packages/@wux/components/wux.wxss';
+@import 'packages/@font/font-awesome.wxss';
 @import 'common/assets/styles/weui.wxss';
 
 page {

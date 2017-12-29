@@ -48,12 +48,12 @@
   width: 100px;
   height: 40px;
   border-radius: 5px;
-  background: #F44;
-    opacity:0.9;  
-  color: #FFF;
+  background: #FF4444;
+  opacity:0.9;  
+  color: #fadd9d;
   line-height: 40px;
   /* border: 2px solid #FFF; */
-  box-shadow:0 0 6rpx rgba(0, 0, 0, .15);
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
 }
 .dome-image{
   position: relative;

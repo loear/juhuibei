@@ -17,15 +17,16 @@
         </view>
       </view>
       </block>
-      <block wx:if="{{ is_uploading }}">
+      <!-- <block wx:if="{{ is_uploading }}">
       <view class="item">
         <view class="item-photo-box">
           <image class="item-photo" src="" mode="aspectFit" bindlongtap="uploadImage"></image>
           <text class="item-text">长按上传</text>
         </view>
       </view>
-      </block>
+      </block> -->
     </wxc-flex>
+    <view class="info-menu" bindtap="uploadImage"><text class="fa fa-camera"></text></view>
   </block>
   <block wx:else>
     <view class="nocoming">

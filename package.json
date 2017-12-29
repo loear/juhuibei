@@ -9,6 +9,7 @@
     "@minui/wxc-dialog": "^1.0.3",
     "@minui/wxc-example": "^1.0.0",
     "@minui/wxc-example-demo": "^1.0.1",
+    "@minui/wxc-icon": "^1.0.3",
     "@minui/wxc-label": "^1.0.3",
     "@minui/wxc-loadmore": "^1.0.3",
     "@minui/wxc-mask": "^1.0.3",

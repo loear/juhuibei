@@ -3,9 +3,16 @@
     <template is="button" data="{{ ...$wux.button.br }}"/>
     <wxc-mask status="{{maskStatus}}" opacity="0.5"></wxc-mask>
     <layout-head>
-      <view class="header">
-        <text>还没有活动，点击创建吧！</text>
-      </view>
+      
+        <view class="header">
+          <navigator url="/pages/activity/index">
+            <text class="fa fa-commenting"></text>
+            <text class="header-tag">青春不散场，我们还一样，聚个会呗！</text>           
+            <view class="header-right"> <text class="fa fa-chevron-right"></text></view>
+          </navigator>
+        </view>
+        <view class="header-position"></view>
+      
     </layout-head>
 
     <!-- wxp template -->

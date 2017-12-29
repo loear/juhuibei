@@ -129,11 +129,9 @@ Page({
   onLoad: function (options) {
     console.log('options', options);
     this.setData({ disabled: true })
-    if (options.user_id && options.activity_id) {
-      this.setData({ 
-        uid: options.user_id,
-        activity_id: options.activity_id
-      });
+    if (options.activity_id) this.setData({ activity_id: options.activity_id })
+    if (options.user_id) {
+      this.setData({  uid: options.user_id });
       this.uploadTap();
     }
     const { cropperOpt } = this.data

@@ -27,11 +27,23 @@
           </view>
           <view class="weui-media-box__info">
             <view class="weui-media-box__info__meta">导航：</view>
-            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}" hover-class="navigator-hover">汽车</navigator>
-            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=1" hover-class="navigator-hover">步行</navigator>
-            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=2" hover-class="navigator-hover">公交</navigator>
-            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=3" hover-class="navigator-hover">骑行</navigator>
+            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}" hover-class="navigator-hover">
+              <image class="icon" src="/common/assets/images/navigation/car_a.png"></image> 
+            </navigator>
+            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=1" hover-class="navigator-hover">
+              <image class="icon" src="/common/assets/images/navigation/walk_a.png"></image> 
+            </navigator>
+            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=2" hover-class="navigator-hover">
+              <image class="icon" src="/common/assets/images/navigation/bus_a.png"></image> 
+            </navigator>
+            <navigator class="meta-navigator" url="/pages/navigation/index?latitude={{activity_info.latitude}}&longitude={{activity_info.longitude}}&active_key=3" hover-class="navigator-hover">
+              <image class="icon" src="/common/assets/images/navigation/ride_a.png"></image> 
+            </navigator>
           </view>
       </view>
   </view>
+
+  <navigator class="meta-navigator" url="/pages/home/index" hover-class="navigator-hover">
+    <view class="info-menu"><text class="fa fa-home" style="font-size:20px;"></text></view>
+  </navigator>
 </view>
