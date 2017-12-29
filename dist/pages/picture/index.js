@@ -1,134 +1,105 @@
-var barrage_style_arr = [];
-var barrage_style_obj = {};
-var phoneWidth = 0;
-var timers = [];
-var timer;
+//index.js 
+function getRandomColor() {
+  let rgb = []
+  for (let i = 0; i < 3; ++i) {
+    let color = Math.floor(Math.random() * 256).toString(16)
+    color = color.length == 1 ? '0' + color : color
+    rgb.push(color)
+  }
+  return '#' + rgb.join('')
+}
+
 Page({
-  data: {
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    indicatorDots: true,
-    autoplay: true,
-    interval: 3000,
-    duration: 500,
-    barrageTextColor: "#D3D3D3",
-    barrage_inputText: "none",
-    barrage_shoottextColor: "black",
-    bind_shootValue: "",
-    barrage_style: [],
-    barragefly_display: "none",
-  },
-
-
-  // 生命周期函数--监听页面加载
-  onLoad: function (options) {
-    var that = this;
-    //获取屏幕的宽度
+  onLoad: function () {
+    var _this = this;
+    //获取屏幕宽高  
     wx.getSystemInfo({
       success: function (res) {
-        that.setData({
-          barrage_phoneWidth: res.windowWidth - 100,
+        var windowWidth = res.windowWidth;
+        //video标签认宽度300px、高度225px，设置宽高需要通过wxss设置width和height。 
+        var videoHeight = (225 / 300) * windowWidth//屏幕高宽比  
+        console.log('videoWidth: ' + windowWidth)
+        console.log('videoHeight: ' + videoHeight)
+        _this.setData({
+          videoWidth: windowWidth,
+          videoHeight: videoHeight
         })
       }
     })
-    phoneWidth = that.data.barrage_phoneWidth;
-    console.log(phoneWidth);
   },
-
-  //是否打开弹幕... 
-  barrageSwitch: function (e) {
-    console.log(e);
-    //先判断没有打开
-    if (!e.detail.value) {
-      //清空弹幕
-      barrage_style_arr = [];
-      //设置data的值
-      this.setData({
-        barrageTextColor: "#D3D3D3",
-        barrage_inputText: "none",
-        barragefly_display: "none",
-        barrage_style: barrage_style_arr,
-      });
-      //清除定时器
-      clearInterval(timer);
-    } else {
-      this.setData({
-        barrageTextColor: "#04BE02",
-        barrage_inputText: "flex",
-        barragefly_display: "block",
-      });
-      //打开定时器
-      timer = setInterval(this.barrageText_move, 800)
-    }
+  onReady: function (res) {
+    this.videoContext = wx.createVideoContext('myVideo')
   },
-
-  //发射按钮
-  shoot: function (e) {
-
-    //字体颜色随机
-    var textColor = "rgb(" + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + ")";
-    // //设置弹幕字体的水平位置样式
-    // var textWidth = -(this.data.bind_shootValue.length*0);
-    //设置弹幕字体的垂直位置样式
-    var barrageText_height = (Math.random()) * 266;
-    barrage_style_obj = {
-      // textWidth:textWidth,
-      barrageText_height: barrageText_height,
-      barrage_shootText: this.data.bind_shootValue,
-      barrage_shoottextColor: textColor,
-      barrage_phoneWidth: phoneWidth
-    };
-    barrage_style_arr.push(barrage_style_obj);
-    this.setData({
-      barrage_style: barrage_style_arr,        //发送弹幕
-      bind_shootValue: ""                    //清空输入框
-    })
-
-    //定时器  让弹幕动起来
-    //  this.timer= setInterval(this.barrageText_move,800);
-
-  },
-
-  //定时器  让弹幕动起来
-  barrageText_move: function () {
-    var timerNum = barrage_style_arr.length;
-    var textMove;
-    for (var i = 0; i < timerNum; i++) {
-      textMove = barrage_style_arr[i].barrage_phoneWidth;
-      console.log("barrage_style_arr[" + i + "].barrage_phoneWidth----------:" + barrage_style_arr[i].barrage_phoneWidth);
-      textMove = textMove - 20;
-      barrage_style_arr[i].barrage_phoneWidth = textMove;
-      //走完的移除掉
-      if (textMove <= -100) {
-        //         clearTimeout(this.timer);
-        barrage_style_arr.splice(0, 1);
-        i--;
-        //全部弹幕运行完
-        if (barrage_style_arr.length == 0) {
-          this.setData({
-            barrage_style: barrage_style_arr,
-          })
-          // clearInterval(this.timer);
-          return;
-        }
+  onShow: function () {
+    var _this = this;
+    //获取年数 
+    wx.getStorage({
+      key: 'numberColor',
+      success: function (res) {
+        console.log(res.data + "numberColor----")
+        _this.setData({
+          numberColor: res.data,
+        })
       }
-      console.log("第" + i + "个定时器:", textMove);
-      this.setData({
-        barrage_style: barrage_style_arr,
-      })
-    }
-
-
-  },
-
-  //绑定发射输入框，将值传递给data里的bind_shootValue，发射的时候调用
-  bind_shoot: function (e) {
-    this.setData({
-      bind_shootValue: e.detail.value
     })
   },
+  inputValue: '',
+  data: {
+    isRandomColor: true,//默认随机 
+    src: '',
+    numberColor: "#ff0000",//默认黑色 
 
-})
+    danmuList: [
+      {
+        text: '第 1s 出现的红色弹幕',
+        color: '#ff0000',
+        time: 1
+      },
+      {
+        text: '第 2s 出现的绿色弹幕',
+        color: '#00ff00',
+        time: 2
+      }
+    ]
+  },
+  bindInputBlur: function (e) {
+    this.inputValue = e.detail.value
+  },
+  bindSendDanmu: function () {
+    if (this.data.isRandomColor) {
+      var color = getRandomColor();
+    } else {
+      var color = this.data.numberColor;
+    }
+
+    this.videoContext.sendDanmu({
+      text: this.inputValue,
+      color: color
+    })
+  },
+  videoErrorCallback: function (e) {
+    console.log('视频错误信息:')
+    console.log(e.detail.errMsg)
+  },
+  //选择颜色页面 
+  selectColor: function () {
+    wx.navigateTo({
+      url: '../selectColor/selectColor',
+      success: function (res) {
+        // success 
+      },
+      fail: function () {
+        // fail 
+      },
+      complete: function () {
+        // complete 
+      }
+    })
+  },
+  //switch是否选中 
+  switchChange: function (e) {
+    this.setData({
+      isRandomColor: e.detail.value
+    })
+  }
+}) 

@@ -1,54 +1,76 @@
-/* pages/index/index.wxss */
-.slide-image{
-    width: 100%;
-}
-
-/* 弹幕选择按钮的操作*/
-.barrage-Switch{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    z-index: 2;
-}
-
-/* 弹幕输入框的操作*/
-.barrage-inputText{
-    position: absolute;
-    display: flex;
-    background-color: #BFBFBF;
-    width: 100%;
-    height: 40px;
-    flex-direction: row;
-    nav-index: 2;
-    justify-content: center;
-    align-items: center;
-    bottom: 10%;
-}
-.barrage-input{
-    background-color: greenyellow;
-    width: 60%;
-    height: 30px;
-}
-.barrage-shoot{
-
-    margin-left: 10px;
-    width: 25%;
-    height: 30px;
-}
-.shoot{
-    width: 100%;
-    color: black;
-}
-
-/*弹幕飞飞飞*/
-.barrage-fly{
-    z-index: 3;
-    height: 80%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-}
-.barrage-textFly{
-    position: absolute;
-
-}
+/**index.wxss**/
+.weui-cells { 
+ position: relative; 
+ margin-top: 1.17647059em; 
+ background-color: #FFFFFF; 
+ line-height: 1.41176471; 
+ font-size: 17px; 
+} 
+.weui-cells:before { 
+ content: " "; 
+ position: absolute; 
+ left: 0; 
+ top: 0; 
+ right: 0; 
+ height: 1px; 
+ border-top: 1rpx solid #D9D9D9; 
+ color: #D9D9D9; 
+   
+} 
+.weui-cells:after { 
+ content: " "; 
+ position: absolute; 
+ left: 0; 
+ bottom: 0; 
+ right: 0; 
+ height: 1px; 
+ border-bottom: 1rpx solid #D9D9D9; 
+ color: #D9D9D9; 
+} 
+.weui-cells_after-title { 
+ margin-top: 0; 
+} 
+.weui-cell__bd { 
+ -webkit-box-flex: 1; 
+ -webkit-flex: 1; 
+     flex: 1; 
+} 
+.weui-cell__ft { 
+ text-align: right; 
+ color: #999999; 
+} 
+  
+.weui-cell { 
+ padding: 10px 10px; 
+ position: relative; 
+ display: -webkit-box; 
+ display: -webkit-flex; 
+ display: flex; 
+ -webkit-box-align: center; 
+ -webkit-align-items: center; 
+     align-items: center; 
+} 
+.weui-cell:before { 
+ content: " "; 
+ position: absolute; 
+ top: 0; 
+ right: 0; 
+ height: 1px; 
+ border-top: 1rpx solid #D9D9D9; 
+ color: #D9D9D9; 
+ left: 15px; 
+} 
+.weui-cell:first-child:before { 
+ display: none; 
+} 
+.colorstyle{ 
+  border-top: 2px solid #eee; 
+  border-bottom: 2px solid #eee; 
+  padding-left: 10px; 
+  padding-right: 10px; 
+  font-size: 17px; 
+  line-height: 100rpx; 
+  display: flex; 
+  flex-direction: row; 
+  justify-content:space-between; 
+} 
