@@ -2,7 +2,11 @@
     <import src="../../packages/@wux/components/button/button.wxml"/>
     <template is="button" data="{{ ...$wux.button.br }}"/>
     <wxc-mask status="{{maskStatus}}" opacity="0.5"></wxc-mask>
-    <!--<layout-head></layout-head>-->
+    <layout-head>
+      <view class="header">
+        <text>还没有活动，点击创建吧！</text>
+      </view>
+    </layout-head>
 
     <!-- wxp template -->
     <example title="" desc="" _pid="{{_pid}}">

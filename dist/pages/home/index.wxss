@@ -29,3 +29,11 @@
   color: #a9a9a9;
   text-align: center;
 }
+
+.header {
+  width: 100%;
+  height: 50px;
+  background: yellow;
+  color: #FFF;
+  line-height: 50px;
+}
