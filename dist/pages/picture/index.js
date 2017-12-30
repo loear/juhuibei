@@ -84,7 +84,7 @@ Page({
   //选择颜色页面 
   selectColor: function () {
     wx.navigateTo({
-      url: '../selectColor/selectColor',
+      url: '../selectColor/index',
       success: function (res) {
         // success 
       },

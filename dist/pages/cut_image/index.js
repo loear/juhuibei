@@ -14,10 +14,10 @@ Page({
   data: {
     cropperOpt: {
       id: 'cropper',
-      width: 760,
-      height: 760,
+      width,
+      height,
       scale: 2.5,
-      zoom: 8,
+      zoom: 5,
       cut: {
         x: (width - 320) / 2,
         y: (height - 240) / 2,
@@ -64,8 +64,9 @@ Page({
               data: {
                 url: res.imageURL
               },
-              success: (res) => {
-                if (res.data.res === 0) {
+              success: (res2) => {
+                console.log('saveImage', res2);
+                if (res2.data.res === 0) {
                   // console.log('image_id', res.data.data)
                   // 直接调用上一个页面的setData()方法，把数据存到上一个页面中去
                   var pages = getCurrentPages();
@@ -75,7 +76,7 @@ Page({
                     api.saveActivityImage({
                       method: 'post',
                       data: {
-                        image_id: res.data.data,
+                        image_id: res2.data.data,
                         user_id: that.data.uid,
                         activity_id: that.data.activity_id
                       },
@@ -89,7 +90,7 @@ Page({
                     })
                   } else {
                     prevPage.setData({
-                      image_id: res.data.data,
+                      image_id: res2.data.data,
                       files: [{ url: src }],
                       has_image: true
                     })

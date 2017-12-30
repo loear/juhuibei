@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -48,16 +48,10 @@
 					}
 				},
 				{
-					"id": -1,
-					"name": "wolf",
-					"pathName": "pages/wolf/wolf",
-					"query": ""
-				},
-				{
 					"id": 3,
 					"name": "聚会详情页",
 					"pathName": "pages/activity-detail/index",
-					"query": "user_id=1&activity_id=17",
+					"query": "user_id=1&activity_id=1",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",
