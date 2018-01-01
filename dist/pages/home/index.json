@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "example": "../../packages/@minui/wxc-example/dist/index",
     "example-demo": "../../packages/@minui/wxc-example-demo/dist/index",

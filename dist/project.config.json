@@ -20,8 +20,12 @@
 			"current": -1,
 			"list": []
 		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 3,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -48,10 +52,10 @@
 					}
 				},
 				{
-					"id": 3,
+					"id": 2,
 					"name": "聚会详情页",
 					"pathName": "pages/activity-detail/index",
-					"query": "user_id=1&activity_id=1",
+					"query": "user_id=1&activity_id=16",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",

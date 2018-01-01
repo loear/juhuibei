@@ -21,9 +21,16 @@
 
     <view class="section">
         <view class="section__changelog">
-            <view class="title--h3">v1.0.0（2017.12.27）</view>
+            <view class="title--h3">beta_v1.0.2（2018.1.2）</view>
+            <view class="section__p"> - 首页，详情页下拉刷新</view>
+            <view class="section__p"> - 报名姓名、手机号验证</view>
+            <view class="section__p"> - 取消上传图片限制</view>
+        </view>
+        <view class="section__changelog">
+            <view class="title--h3">beta_v1.0.1（2018.1.1）</view>
             <view class="section__p"> - 初始版本</view>
         </view>
+        
     </view>
     
 

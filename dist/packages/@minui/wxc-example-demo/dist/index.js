@@ -1,5 +1,8 @@
 'use strict';
 import api from '../../../../api/api_v1.js';
+import { $wuxToptips } from '../../../@wux/components/wux';
+import { $wuxDialog } from '../../../@wux/components/wux';
+import WxValidate from '../../../../common/assets/plugins/WxValidate';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -65,14 +68,55 @@ exports.default = Component({
       dialogComponent && dialogComponent.hide();
     },
     onConfirm: function (e) {
-
+      console.log('点击了确定按钮');
       this.hideDialog();
     },
     onCancel() {
       console.log('点击了取消按钮');
       this.hideDialog();
     },
+    /**
+    * 表单验证初始化
+    */
+    initValidate() {
+      this.WxValidate = new WxValidate({
+        username: {
+          required: true,
+        },
+        phone: {
+          required: true,
+          tel: true,
+        }
+      }, {
+          username: {
+            required: '还没有填写姓名',
+          },
+          phone: {
+            required: '还没有填写手机',
+            tel: '请输入正确的手机号',
+          }
+        })
+    },
+    /**
+     * 提示
+     */
+    showToptips(error) {
+      const hideToptips = $wuxToptips.show({
+        timer: 3000,
+        text: error.msg || '请填写正确的字段',
+        success: () => console.log('toptips', error)
+      })
+    },
+    /**
+     * 表单提交
+     */
     submitForm: function (e) {
+      this.initValidate();
+      if (!this.WxValidate.checkForm(e)) {
+        const error = this.WxValidate.errorList[0]
+        this.showToptips(error)
+        return false
+      }
       console.log(e);
       var that = this;
       api.saveUserComing({
@@ -102,6 +146,7 @@ exports.default = Component({
       })
       this.hideDialog();
     },
+   
   },
   attached: function attached() {}
 });

@@ -2,6 +2,9 @@ import {
   MUSIC_PALY_IMG,
   MUSIC_PAUSE_IMG
 } from '../../utils/constants.js'
+import { $wuxToptips } from '../../packages/@wux/components/wux';
+import { $wuxDialog } from '../../packages/@wux/components/wux';
+import WxValidate from '../../common/assets/plugins/WxValidate';
 import { Token } from '../../utils/token.js';
 import api from '../../api/api_v1.js'
 import util from '../../utils/util.js'
@@ -41,7 +44,7 @@ Page({
         that.getUserActivityInfo(cb.uid)
       });
     }
-    
+    this.initValidate();
     // 显示当前页面的转发按钮
     wx.showShareMenu({ withShareTicket: true })
   },
@@ -207,13 +210,19 @@ Page({
       this.buyPictureSpace();
     }
   },
+  /**
+   * 购买影集空间
+   */
   buyPictureSpace: function() {
     wx.showModal({
       title: '温馨提示',
-      content: '默认能上传1张照片，点击确定充值影集空间',
+      content: '默认能上传10张照片，点击确认反馈问题',
       success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          wx.navigateTo({
+            url: '/pages/about/index',
+          })
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
@@ -236,7 +245,47 @@ Page({
     console.log('点击了取消按钮');
     this.hideDialog();
   },
+  /**
+   * 表单验证初始化
+   */
+  initValidate() {
+    this.WxValidate = new WxValidate({
+      username: {
+        required: true,
+      },
+      phone: {
+        required: true,
+        tel: true,
+      }
+    }, {
+        username: {
+          required: '还没有填写姓名',
+        },
+        phone: {
+          required: '还没有填写手机',
+          tel: '请输入正确的手机号',
+        }
+      })
+  },
+  /**
+   * 提示
+   */
+  showToptips(error) {
+    const hideToptips = $wuxToptips.show({
+      timer: 3000,
+      text: error.msg || '请填写正确的字段',
+      success: () => console.log('toptips', error)
+    })
+  },
+  /**
+   * 提交表单
+   */
   submitForm: function(e) {
+    if (!this.WxValidate.checkForm(e)) {
+      const error = this.WxValidate.errorList[0]
+      this.showToptips(error)
+      return false
+    }
     var that = this;
     api.saveUserComing({
       method: 'post',
@@ -262,18 +311,6 @@ Page({
       }
     })
     this.hideDialog();
-  },
-  setUsername: function(e) {
-    // console.log('setUsername',e);
-    this.setData({
-      username:e.detail.value
-    })
-  },
-  setPhone: function (e) {
-    // console.log('setPhone', e);
-    this.setData({
-      phone: e.detail.value
-    })
   },
   /**
    * 保存更改的照片名
@@ -322,5 +359,10 @@ Page({
         // 转发失败
       }
     }
+  },
+  // 下拉刷新
+  onPullDownRefresh: function () {
+    this.getUserActivityInfo(this.data.uid);
+    wx.stopPullDownRefresh();
   }
 })

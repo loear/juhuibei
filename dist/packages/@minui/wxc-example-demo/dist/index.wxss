@@ -141,9 +141,10 @@
 
 .dialog-input {
   border: 1px solid #ebebeb;
-  padding:10rpx 30rpx;
-  border-radius: 5rpx;
+  padding:10rpx 40rpx;
+  border-radius: 16px;
   margin-bottom: 20rpx;
+  height: 22px;
 }
 
 .dialog-submit {

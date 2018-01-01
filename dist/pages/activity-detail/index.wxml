@@ -1,3 +1,6 @@
+<import src="../../packages/@wux/components/toptips/toptips.wxml"/>
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
 <view class="container">
   <swiper class="musics-swiper" current="{{current}}" bindchange="handleChange"
     autoplay="{{activity_info.activity_image.length>1?true:false }}"
@@ -22,23 +25,21 @@
       </view>
     </view>
     <block wx:if="{{is_coming}}">
-      <button open-type="share" class="share-btn">
-        <!-- <image class="music-play-control" src="/common/assets/images/activity/share.png" data-id="{{item.user_id}}"></image> -->
+      <button open-type="share" class="share-btn">        
         <view class='music-play-control'>分享</view>
       </button>
     </block>
     <block wx:else>
       <view class="music-play" bindtap="showDialog">
         <view class='music-play-control'>报名</view>
-        <!-- <image class="music-play-control" src="/common/assets/images/activity/coming.png" data-id="{{item.user_id}}"></image> -->
       </view>
       <wxc-dialog class="wxc-dialog" title="活动报名" content="请确认姓名和联系电话无误" _pid="{{_pid}}">
         <form bindsubmit="submitForm" report-submit="true" class="dialog-form">
           <view class="dialog-input">
-            <input name="username" placeholder="请输入您的姓名" value="{{info.user_info.username}}" bindblur="setUsername"></input>
+            <input name="username" placeholder="请输入您的姓名" value="{{info.user_info.username}}"></input>
           </view>
           <view class="dialog-input">
-            <input type="number" name="phone" placeholder="请输入您的手机" value="{{info.user_info.phone}}" bindblur="setPhone"></input>
+            <input type="number" name="phone" placeholder="请输入您的手机" value="{{info.user_info.phone}}"></input>
           </view>
           <button formType="submit" class="dialog-submit">立即报名</button>
         </form>

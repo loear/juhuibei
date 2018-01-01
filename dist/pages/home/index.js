@@ -14,7 +14,7 @@ exports.default = Page({
     uid: 0,
     maskStatus: 'hide'
   },
-  onLoad() {    
+  onLoad() {
     // 1. 初始化菜单按钮
     this.initButton();
     // 2. 载入用户的聚会列表
@@ -31,7 +31,6 @@ exports.default = Page({
         that.loadActivityList(cb.uid);
       });
     }
-    
   },
 
   // 初始化菜单按钮 默认在左下角
@@ -101,5 +100,11 @@ exports.default = Page({
         }
       } 
     })
+  },
+
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    this.loadActivityList(this.data.uid);
+    wx.stopPullDownRefresh();
   }
 });

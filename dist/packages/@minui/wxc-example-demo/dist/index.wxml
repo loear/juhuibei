@@ -1,3 +1,4 @@
+
 <block wx:for="{{avatar}}" wx:key="item">
   <block wx:if="{{item.user_id == uid}}">
     <view class="example--box">
@@ -20,10 +21,10 @@
                   <wxc-dialog class="wxc-dialog" title="活动报名" content="请确认姓名和联系电话无误" _pid="{{_pid}}">
                     <form bindsubmit="submitForm" report-submit="true" class="dialog-form">
                       <view class="dialog-input">
-                        <input name="username" placeholder="请输入您的姓名" value="{{item.user.username}}" bindblur="setUsername"></input>
+                        <input name="username" placeholder="请输入您的姓名" value="{{item.user.username}}"></input>
                       </view>
                       <view class="dialog-input">
-                        <input type="number" name="phone" placeholder="请输入您的手机" value="{{item.user.phone}}" bindblur="setPhone"></input>
+                        <input type="number" name="phone" placeholder="请输入您的手机" value="{{item.user.phone}}"></input>
                       </view>
                       <button formType="submit" class="dialog-submit" data-uid="{{item.user_id}}" data-activity_id="{{item.activity_id}}">立即报名</button>
                     </form>
