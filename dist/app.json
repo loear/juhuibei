@@ -13,7 +13,8 @@
     "pages/navigation_walk_detail/navigation",
     "pages/navigation_ride_detail/navigation",
     "pages/cut_image/index",
-    "pages/selectColor/index"
+    "pages/selectColor/index",
+    "pages/order/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
