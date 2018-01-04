@@ -12,7 +12,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
+  },
+
+  /**
+   * 生成订单
+   */
+  makeOrder: function () {
+    api.placeOrder({
+      method: 'post',
+      data: {
+        products: {
+          product_id: 1,
+          count: 1
+        }
+      },
+      success: (res) => {
+        
+      }
+    })
   },
 
   /**
