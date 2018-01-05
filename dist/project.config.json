@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
@@ -110,6 +110,12 @@
 						"shareName": "G_784qF15Y-vrjve_WvFfskVkSWmXWNCBT-Qavm0SLU@cr4dev",
 						"shareKey": "acnSXiNBf8nIhFZH9WmwVwG3bzAqjNHkeK871eIw9NjToXsp4803B-MyynYjeE7c2R8pF8jeGsPpGl5wZtw3ew~~"
 					}
+				},
+				{
+					"id": -1,
+					"name": "订单",
+					"pathName": "pages/order/index",
+					"query": ""
 				}
 			]
 		}

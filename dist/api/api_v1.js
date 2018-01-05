@@ -9,7 +9,8 @@ const wxRequest = (params, url) => {
     method: params.method || 'GET',
     data: params.data || {},
     header: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'token': wx.getStorageSync('token')
     },
     success: (res) => {
       params.success && params.success(res)
@@ -39,6 +40,7 @@ const saveUserComing      = (params) => wxRequest(params, host + 'save_coming')
 const enCryptedData       = (params) => wxRequest(params, host + 'activity/encrypt')
 const getGamesAll         = (params) => wxRequest(params, host + 'games')
 const placeOrder          = (params) => wxRequest(params, host + 'order')
+const getPreOrder         = (params) => wxRequest(params, host + 'pay/pre_order')
 
 module.exports = {
   getActivityList,
@@ -55,5 +57,6 @@ module.exports = {
   saveUserComing,
   enCryptedData,
   getGamesAll,
-  placeOrder
+  placeOrder,
+  getPreOrder
 }
