@@ -14,7 +14,8 @@
     "pages/navigation_ride_detail/navigation",
     "pages/cut_image/index",
     "pages/selectColor/index",
-    "pages/order/index"
+    "pages/order/index",
+    "pages/card/edit/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
