@@ -41,6 +41,7 @@ const enCryptedData       = (params) => wxRequest(params, host + 'activity/encry
 const getGamesAll         = (params) => wxRequest(params, host + 'games')
 const placeOrder          = (params) => wxRequest(params, host + 'order')
 const getPreOrder         = (params) => wxRequest(params, host + 'pay/pre_order')
+const getThemeModule      = (params) => wxRequest(params, host + 'theme_module/' + params.query.theme_id);
 
 module.exports = {
   getActivityList,
@@ -58,5 +59,6 @@ module.exports = {
   enCryptedData,
   getGamesAll,
   placeOrder,
-  getPreOrder
+  getPreOrder,
+  getThemeModule
 }
