@@ -1,21 +1,30 @@
-<wxc-tab bind:tabchange="onClick" default-index="{{activeKey}}" component-id="c3" animate="{{true}}" class="demo-tab" _pid="{{_pid}}">
-    <view slot="tablabel">
-        <wxc-tab-label wx:for="{{tabs}}" wx:for-item="tab" wx:key="" tab-index="{{index}}" component-id="c3" _pid="{{_pid}}">
-            <view class="demo-tab__label">              
-              
-                
-                <view class="demo-tab__text {{ activeKey === index ? 'demo-tab--active' : ''}}">
-                    {{tab.module.name}}
-                </view>
+
+  <view class="header-box"></view>
+
+  <view class="show-box">
+    <swiper class="show-swiper"
+      indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}"
+      vertical="{{vertical}}"
+    >
+      
+        <swiper-item class="show-swiper-item">
+          <form bindsubmit="submitForm" report-submit="true">
+            <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="聚会主题" name="title"/>
+                  </view>
+              </view>
             </view>
-        </wxc-tab-label>
-    </view>
-    <block wx:for="{{tabs}}" wx:for-item="tab" wx:key="">
-      <wxc-tab-panel tab-index="{{tab.index}}" component-id="c3" _pid="{{_pid}}">
-          {{tab.module.name}}
-      </wxc-tab-panel>
-    </block>
+          </form>
 
-</wxc-tab>
+        </swiper-item>
 
-<view>askdfa;</view>
+    </swiper>
+  </view>
+  <view class="submit-box" hover-class="submit-btn_active">
+      <view class="submit-btn">保存</view>
+  </view>

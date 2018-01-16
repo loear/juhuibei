@@ -1,65 +1,42 @@
-.demo-tab {}
-.demo-tab__label {
-    width: 100%;
-    margin: 20rpx 0;
-    display: flex;
-    justify-content: center;
-     align-items: center 
+.header-box{
+  height: 2%;
 }
-.demo-tab__text {
-    margin-left: 8rpx
+.show-box {
+  width: 94%;
+  height: 85%;
+  margin: 0 3%;
+  border-radius: 15rpx;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
 }
-.demo-tab--active {
-    color: #ff5777
-}
-
-.map_box{
-  position:absolute;
-  top: 50px;
-  bottom: 90px;
-  left: 0px;
-  right: 0px;
-}
-#navi_map{
-  width: 100%;
+.show-swiper {
   height: 100%;
+  width: calc(34%-20px);
+  padding: 10px;
 }
-.text_box{
-  position:absolute;
-  height: 90px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
+.show-swiper-item {
+  
+  
 }
-.text_box .text{
-  margin: 15px;
+.slide-image {
+  height: 100%;
+  width: 100%;
 }
-.detail_button{
-  position:absolute;
-  bottom: 30px;
-  right: 10px;
-  padding: 3px 5px;
-  color: #fff;
-  background: #ff4444;
-  width:50px;
-  text-align:center;
-  border-radius:5px;
-}
-
-.text_box_bus{
-  margin: 0 15px;
-  padding: 15px 0;
-  border-bottom: 1px solid #c3c3c3;
-  font-size: 13px;
-}
-.text_box_bus .text_item_bus{
-  display:inline-block;
-  line-height: 8px;
+.submit-box {
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  width: 94%;
+  height: 100rpx;
+  margin: 0 3%;
+  border-radius: 15rpx;
+  background: #8DC048;
+  text-align: center;
+  color: #FFF;
+  line-height: 100rpx;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
 }
 
-.icon {
-  display: inline-block;
-  width: 48rpx;
-  height: 48rpx;
-  margin-bottom: 10rpx;
+.submit-btn {
+  
 }

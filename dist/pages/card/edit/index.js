@@ -5,14 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {  
-    tabs: [
-      { title: '驾车', content: '内容一', url: 'car_' },
-      { title: '步行', content: '内容二', url: 'walk_' },
-      { title: '公交', content: '内容三', url: 'bus_' },
-      { title: '骑行', content: '内容四', url: 'ride_' },
-      { title: '骑行', content: '内容四', url: 'ride_' }
-    ],
-    activeKey: 0,
+    imgUrls: [],
+    indicatorDots: true,
+    autoplay: false,
+    interval: 5000,
+    duration: 500,
+    vertical: true,
   },
 
   /**
@@ -20,6 +18,13 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.theme_id);
+    this.setData({
+      imgUrls: [
+        { index: 1},
+        { index: 2},
+        { index: 3}
+      ]
+    })
     this.getThemeModule(options.theme_id);
   },
   /**
@@ -33,12 +38,31 @@ Page({
       },
       success: (res) => {
         if (res.data.res === 0) {
-          that.setData({
-              tabs: res.data.data.theme_module
-          })
+          
           console.log(res.data.data.theme_module);
         }
       }
+    })
+  },
+
+  changeIndicatorDots: function (e) {
+    this.setData({
+      indicatorDots: !this.data.indicatorDots
+    })
+  },
+  changeAutoplay: function (e) {
+    this.setData({
+      autoplay: !this.data.autoplay
+    })
+  },
+  intervalChange: function (e) {
+    this.setData({
+      interval: e.detail.value
+    })
+  },
+  durationChange: function (e) {
+    this.setData({
+      duration: e.detail.value
     })
   },
 
@@ -89,13 +113,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  onClick: function (e) {
-    console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
-    const idx = e.detail.key;
-    this.setData({
-      activeKey: idx
-    });
-  },
+  }
 })
