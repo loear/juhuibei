@@ -9,19 +9,15 @@
       duration="{{duration}}"
       vertical="{{vertical}}"
     >
-      
+      <form bindsubmit="submitForm" report-submit="true">
         <swiper-item class="show-swiper-item">
-          <form bindsubmit="submitForm" report-submit="true">
-            <view class="weui-cells weui-cells_after-title">
-              <view class="weui-cell weui-cell_input">
-                  <view class="weui-cell__bd">
-                      <input class="weui-input" placeholder="聚会主题" name="title"/>
-                  </view>
-              </view>
-            </view>
-          </form>
-
+          <input class="weui-input" placeholder="聚会主题1" name="title1"/>
         </swiper-item>
+        <swiper-item class="show-swiper-item">
+          <input class="weui-input" placeholder="聚会主题2" name="title2"/>
+        </swiper-item>
+
+      </form>
 
     </swiper>
   </view>
