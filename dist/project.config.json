@@ -121,7 +121,7 @@
 					"id": 9,
 					"name": "编辑卡",
 					"pathName": "pages/card/edit/index",
-					"query": "theme_id=1"
+					"query": "card_id=1"
 				}
 			]
 		}
