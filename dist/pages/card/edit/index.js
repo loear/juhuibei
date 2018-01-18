@@ -163,12 +163,11 @@ Page({
   },
 
   chooseImage: function (e) {
-    // wx.navigateTo({
-    //   url: '/pages/cut_image/index?user_id=' + this.data.uid
-    // })
-    console.log(e.target.dataset.img);
-    var url = e.target.dataset.url;
-   
+    var width = e.target.dataset.img.width;
+    var height = e.target.dataset.img.height;
+    wx.navigateTo({
+      url: '../cut/index?width=' + width + '&height=' + height
+    })   
   },
 
   /**

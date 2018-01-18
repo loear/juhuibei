@@ -15,7 +15,9 @@
     "pages/cut_image/index",
     "pages/selectColor/index",
     "pages/order/index",
-    "pages/card/edit/index"
+    "pages/card/edit/index",
+    "pages/card/cut/index",
+    "pages/card/theme/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

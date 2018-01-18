@@ -114,7 +114,7 @@
                           <image class="weui-uploader__img" src="{{wedding_video_cover.url}}" mode="aspectFill" bindtap="previewImage" data-url="{{wedding_video_cover.url}}"/>
                         </view>
                       </view>
-                      <view class="loear-uploder__tips" bindtap="chooseImage">
+                      <view class="loear-uploder__tips" bindtap="chooseImage" data-img="{{wedding_video_cover}}">
                         <text class="fa fa-refresh"></text> 更换视频截图
                       </view>
                     </block>
@@ -147,7 +147,7 @@
                             <image class="weui-uploader__img" src="{{item.value}}" mode="aspectFill" bindtap="previewImage" data-url="{{item.value}}"/>
                           </view>
                         </view>
-                        <view class="loear-uploder__tips" bindtap="chooseImage">
+                        <view class="loear-uploder__tips" bindtap="chooseImage" data-img="{{item.img}}">
                           <text class="fa fa-refresh"></text> 更换照片
                         </view>
                       </view>
