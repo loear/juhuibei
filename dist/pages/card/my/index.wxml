@@ -1,0 +1,27 @@
+<view class="container my-container" >
+  <view class="my-header">
+    <image src="{{userInfo.avatarUrl}}"></image>
+    <text class="name">{{userInfo.nickName}}1</text>
+  </view>
+  <view class="diy-box">
+    <block wx:for="{{diy}}" wx:key="" wx:for-item="item">
+      
+        <view class="diy-item" 
+          bindtap="updateInvitation" 
+          data-id="{{item.id}}" 
+          data-title="{{item.title}}" 
+          data-vip="{{item.vip}}"
+          hover-class="navigator-hover"
+        >
+          
+            <image class="diy-image" src="{{item.headimg}}">
+            </image>
+            <view class="diy-item-bottom">
+              <text class="title">{{item.vip}}</text>          
+            </view>
+          
+        </view>
+      
+    </block>
+  </view>
+</view>

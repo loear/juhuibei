@@ -1,4 +1,6 @@
 import { Config } from 'config.js';
+import { Cache } from 'cache.js';
+var cache = new Cache();
 
 class Token {
   constructor() {
@@ -9,15 +11,18 @@ class Token {
 
   verify() {
     var that = this;
-    var token = wx.getStorageSync('token');
+    // var token = wx.getStorageSync('token');
+    var token = cache.get('token')
     // console.log(token);
     if (!token) {
       // 获取用户ID
       this.getTokenFromServer((cb)=>{
-        wx.setStorageSync('token', cb.token);
-        wx.setStorageSync('uid', cb.uid);
+        // wx.setStorageSync('token', cb.token);
+        cache.set('token', cb.token, 7000);
+        // wx.setStorageSync('uid', cb.uid);
+        cache.set('uid', cb.uid, 7000);
         that.saveUserInfo(cb.uid)
-      });    
+      });
     }
     else {
       this._veirfyFromServer(token);

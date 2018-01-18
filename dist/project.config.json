@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 12,
 			"list": [
 				{
 					"id": 0,
@@ -128,6 +128,18 @@
 					"name": "主题",
 					"pathName": "pages/card/theme/index",
 					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "card订单",
+					"pathName": "pages/card/order/index",
+					"query": "theme_id=1&vip=vip2"
+				},
+				{
+					"id": -1,
+					"name": "我的邀请函",
+					"pathName": "pages/card/my/index",
+					"query": "user_id=1"
 				}
 			]
 		}

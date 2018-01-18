@@ -1,5 +1,7 @@
 import { Token } from 'token.js';
 import { Config } from 'config.js';
+import { Cache } from 'cache.js';
+var cache = new Cache();
 
 class Base{
   constructor () {
@@ -28,7 +30,7 @@ class Base{
       method: params.type,
       header: {
         'content-type':'application/json',
-        'token': wx.getStorageSync('token')
+        'token': cache.get('token')
       },
       success: function (res) {
         // 判断以2（2xx)开头的状态码为正确

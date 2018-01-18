@@ -17,7 +17,10 @@
     "pages/order/index",
     "pages/card/edit/index",
     "pages/card/cut/index",
-    "pages/card/theme/index"
+    "pages/card/theme/index",
+    "pages/card/view/index",
+    "pages/card/order/index",
+    "pages/card/my/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -1,24 +1,35 @@
+<import src="../../../packages/@wux/components/toast/toast.wxml"/>
+
+<template is="toast" data="{{ ...$wux.toast }}"/>
+<radio-group bindchange="radioChange">
 <wxc-flex class="wrap" cross="top" wrap="wrap">
-      
-      <view class="item">
-        <view class="item-photo-box">
-          <image class="item-photo" src="" mode="aspectFill" bindtap="openDetail" data-image_id="{{pic.image_id}}"></image>   
-          <input class="item-text" name="title" data-image_id="{{pic.image_id}}" data-image_name="{{pic.name}}" value="{{pic.name}}" bindblur="saveImageName" disabled="{{pic.user_id==uid ? false : true }}"></input>
-        </view>
-      </view>
+  
+  <block wx:for="{{themes}}" wx:key="">
 
-      <view class="item">
+    <view class="item">
+      <label class="weui-check__label">
         <view class="item-photo-box">
-          <image class="item-photo" src="" mode="aspectFill" bindtap="openDetail" data-image_id="{{pic.image_id}}"></image>   
-          <input class="item-text" name="title" data-image_id="{{pic.image_id}}" data-image_name="{{pic.name}}" value="{{pic.name}}" bindblur="saveImageName" disabled="{{pic.user_id==uid ? false : true }}"></input>
+          <view class="item-title">{{item.name}}</view>
+          <image class="item-photo" src="{{item.preview}}" mode="aspectFill"></image>
+          <view class="item-radio">
+            <radio class="weui-check" value="{{item.id}}" checked="{{item.checked}}"/>              
+            <icon class="item-checked" type="success" color="#F44" size="23" wx:if="{{item.checked}}"></icon>  
+          </view>
         </view>
-      </view>
+      </label>
+    </view>
 
-      <view class="item">
-        <view class="item-photo-box">
-          <image class="item-photo" src="" mode="aspectFill" bindtap="openDetail" data-image_id="{{pic.image_id}}"></image>   
-          <input class="item-text" name="title" data-image_id="{{pic.image_id}}" data-image_name="{{pic.name}}" value="{{pic.name}}" bindblur="saveImageName" disabled="{{pic.user_id==uid ? false : true }}"></input>
-        </view>
-      </view>
-     
-    </wxc-flex>
+  </block>
+  
+</wxc-flex>
+</radio-group>
+
+<view class="menu">
+  <view class="menu-btn menu-preview" bindtap="themePreview">
+    <text class="fa fa-eye"></text>  预览
+  </view>
+  <view class="menu-btn">全场29元</view>
+  <view class="menu-btn menu-make" bindtap="makeCard">
+    <text class="fa fa-file"></text>  制作
+  </view>
+</view>

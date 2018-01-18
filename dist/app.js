@@ -1,4 +1,6 @@
 import { Token } from 'utils/token.js';
+import { Cache } from 'utils/cache.js';
+var cache = new Cache();
 import api from './api/api_v1.js'
 'use strict';
 
@@ -10,7 +12,8 @@ exports.default = App({
   onLaunch: function onLaunch(e) {
     var token = new Token();
     token.verify();
-    var token = wx.getStorageSync('token');
+    // var token = wx.getStorageSync('token');
+    var token = cache.get('token')
     console.log('token', token);
     if (e.scene == 1044) {
       // console.log('onLaunch', e.shareTicket)
