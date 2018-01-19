@@ -1,0 +1,7 @@
+
+<image src="{{src}}"></image>
+<button bindtap='getImage'>获取网络图片</button>
+<button bindtap='setCanvas'>图绘制进入画布</button>
+<button bindtap='generateImage'>生成图片</button>
+<button bindtap='preview'>预览图片</button>
+<canvas canvas-id="myCanvas" style="height:{{height}}px"></canvas>
