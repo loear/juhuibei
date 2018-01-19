@@ -20,7 +20,9 @@
     "pages/card/theme/index",
     "pages/card/view/index",
     "pages/card/order/index",
-    "pages/card/my/index"
+    "pages/card/my/index",
+    "pages/my/index",
+    "pages/card/code/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

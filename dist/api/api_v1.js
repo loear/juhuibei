@@ -45,6 +45,7 @@ const getThemeModule      = (params) => wxRequest(params, host + 'theme_module/'
 const editCardInfo        = (params) => wxRequest(params, host + 'card_edit/' + params.query.card_id);
 const getThemeList        = (params) => wxRequest(params, host + 'theme_list');
 const getCardByUserId     = (params) => wxRequest(params, host + 'card_user/' + params.query.user_id);
+const wxCode              = (params) => wxRequest(params, host + 'wx_code');
 
 module.exports = {
   getActivityList,
@@ -66,5 +67,6 @@ module.exports = {
   getThemeModule,
   editCardInfo,
   getThemeList,
-  getCardByUserId
+  getCardByUserId,
+  wxCode
 }

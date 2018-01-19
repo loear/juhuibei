@@ -1,0 +1,51 @@
+<view class="container my-container" >
+  <view class="my-header" style="background-color:{{vip_info.color}}">
+    <view class="my-avatar">
+      <image class="my-avatar-img" src="{{user_info.avatar_url}}" mode="aspectFill"></image>
+      <text class="name">{{user_info.nickname}}</text>
+    </view>
+    <view class="my-vip">{{vip_info.name}}</view>
+  </view>
+</view>
+
+<block wx:if="{{uid}}">
+  <view class="weui-cells__title">聚会活动</view>
+  <view class="weui-cells weui-cells_after-title">
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">我发起的</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">我参加的</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">聚会说明</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+  </view>
+
+  <view class="weui-cells__title">邀请函</view>
+  <view class="weui-cells weui-cells_after-title">
+      <navigator url="../card/my/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">我制作的</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">小程序码</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">制作教程</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+  </view>
+
+  <view class="weui-cells__title">其他设置</view>
+  <view class="weui-cells weui-cells_after-title">
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">升级会员</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+  </view>
+</block>
