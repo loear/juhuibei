@@ -1,27 +1,34 @@
-<view class="container my-container" >
-  <view class="my-header">
-    <image src="{{userInfo.avatarUrl}}"></image>
-    <text class="name">{{userInfo.nickName}}1</text>
-  </view>
-  <view class="diy-box">
-    <block wx:for="{{diy}}" wx:key="" wx:for-item="item">
-      
-        <view class="diy-item" 
-          bindtap="updateInvitation" 
-          data-id="{{item.id}}" 
-          data-title="{{item.title}}" 
-          data-vip="{{item.vip}}"
-          hover-class="navigator-hover"
-        >
-          
-            <image class="diy-image" src="{{item.headimg}}">
-            </image>
-            <view class="diy-item-bottom">
-              <text class="title">{{item.vip}}</text>          
-            </view>
-          
+<swiper class="show-swiper"
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" 
+  interval="{{interval}}" 
+  duration="{{duration}}"
+>
+  <block wx:for="{{card_user}}" wx:key="">
+    <swiper-item>
+      <wxc-flex class="wrap" cross="top" wrap="wrap">
+        <view class="item">
+          <view class="item-photo-box">
+            <image class="item-photo" src="{{item.theme.preview}}" mode="aspectFill"></image>
+            <text class="item-text">{{info.name}}</text>
+            <view class="item-desc">
+              <text>{{info.description}}</text>
+            </view>        
+          </view>
+        </view> 
+      </wxc-flex>
+      <view class="date">
+        <view class="user-info">
+          <image class="avatar" src="{{item.user.avatar_url}}"></image>
+          <view class="user-info-text">
+            <view><text>{{item.bride_name}} vs {{item.bridegroom_name}}</text></view>
+            <view><text>{{item.wedding_time}}</text></view>
+          </view>
+          <view class="avatar change"><text class="fa fa-file"></text></view>
         </view>
-      
-    </block>
-  </view>
-</view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+

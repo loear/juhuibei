@@ -16,6 +16,16 @@ Page({
     if (options.url) {
       this.setData({ url: options.url })
     }
+    if (options.color) {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: options.color,
+        animation: {
+          duration: 400,
+          timingFunc: 'easeIn'
+        }
+      })
+    }
   },
 
   /**

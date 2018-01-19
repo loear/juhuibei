@@ -12,7 +12,7 @@
           <view class="item-title">{{item.name}}</view>
           <image class="item-photo" src="{{item.preview}}" mode="aspectFill"></image>
           <view class="item-radio">
-            <radio class="weui-check" value="{{item.id}}" checked="{{item.checked}}"/>              
+            <radio class="weui-check" value="{{item.id}}" checked="{{item.checked}}" data-color="{{item.bg_color}}"/>              
             <icon class="item-checked" type="success" color="#F44" size="23" wx:if="{{item.checked}}"></icon>  
           </view>
         </view>

@@ -14,6 +14,7 @@
   text-align: center;
   overflow: hidden;
 }
+
 .item-photo-box {
   position: relative;
   width:100%;
@@ -59,10 +60,10 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 90rpx;
-  background: #F8F8F8;
+  height: 160rpx;
   text-align: center;
   z-index: 10000;
+  background-image: linear-gradient(-180deg,rgba(236,236,234,.00) 0, #F8F8F8 46%);
 }
 
 .menu-btn {
@@ -72,20 +73,20 @@
   height: 60rpx;
   border-radius: 30rpx;
   line-height: 60rpx;
-  margin-top: 10rpx;
+  margin-top: 80rpx;
   color: #3E3E3E;
 }
 
 .menu-preview {
- position: absolute;
- left: 20rpx;
- top:0;
- box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
+  position: absolute;
+  left: 20rpx;
+  bottom: 20rpx;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
 }
 
 .menu-make {
   position: absolute;
   right: 20rpx;
-  top:0;
+  bottom: 20rpx;
   box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
 }

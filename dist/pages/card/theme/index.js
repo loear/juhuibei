@@ -7,7 +7,8 @@ Page({
    */
   data: {
     themes: [],
-    choose_id: 0
+    choose_id: 0,
+    choose_color: '#000000'
   },
 
   /**
@@ -33,12 +34,16 @@ Page({
 
   radioChange: function (e) {
     var that = this;
+    console.log(e);
     console.log('radio发生change事件，携带value值为：', e.detail.value);
     var themes = this.data.themes;
     for (var i = 0, len = themes.length; i < len; ++i) {
       themes[i].checked = themes[i].id == e.detail.value;
       if ( themes[i].checked ) {
-        that.setData({ choose_id: themes[i].id })
+        that.setData({ 
+          choose_id: themes[i].id,
+          choose_color: themes[i].bg_color
+        })
       }
     }
     this.setData({
@@ -58,7 +63,7 @@ Page({
     }
     var url = 'https://www.juhuibei.com/card/' + this.data.choose_id
     wx.navigateTo({
-      url: '../view/index?url=' + url,
+      url: '../view/index?url=' + url + '&color=' + this.data.choose_color,
     })
   },
   makeCard: function () {
@@ -73,7 +78,7 @@ Page({
       return false;
     }
     wx.navigateTo({
-      url: '../../order/index?theme_id=' + this.data.choose_id + '&vip=' + 'vip1',
+      url: '../order/index?theme_id=' + this.data.choose_id + '&vip=' + 'vip1',
     })
   },
 

@@ -44,6 +44,7 @@ const getPreOrder         = (params) => wxRequest(params, host + 'pay/pre_order'
 const getThemeModule      = (params) => wxRequest(params, host + 'theme_module/' + params.query.theme_id);
 const editCardInfo        = (params) => wxRequest(params, host + 'card_edit/' + params.query.card_id);
 const getThemeList        = (params) => wxRequest(params, host + 'theme_list');
+const getCardByUserId     = (params) => wxRequest(params, host + 'card_user/' + params.query.user_id);
 
 module.exports = {
   getActivityList,
@@ -64,5 +65,6 @@ module.exports = {
   getPreOrder,
   getThemeModule,
   editCardInfo,
-  getThemeList
+  getThemeList,
+  getCardByUserId
 }

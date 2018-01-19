@@ -1,50 +1,77 @@
-
-.my-header{
-    background-color: #EC5463;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 30rpx;
-    font-size: 28rpx;
+page {
+  background: #FFFFFF;
 }
-.my-header image{
-    height: 100rpx;
-    width: 100rpx;
-    border-radius: 100rpx;
-}
-.my-header text{
-    margin-left: 20rpx;
-}
-
-
-.diy-box{
-  margin:20rpx 20rpx 20rpx 20rpx;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:space-between;
-}
-.diy-item{
-  min-height:200rpx;
-  width: 50%;
-
-  margin-right: 0;
-  margin-bottom: 10rpx;
-
-  text-align: center;
-}
-.diy-image{
-  margin: 10rpx auto 0 auto;
-  width:80%;
-  height:400rpx;
+.wrap {
+    display: block;
+    padding: 1%;
+  }
+.item {
+  width: 90%;
+  height: 920rpx;
+  margin: 5%;
+  flex-grow: 0;
+  background: #ffffff;
+  box-shadow: 0 0 10rpx #ccc;
   border-radius: 10rpx;
+  text-align: center;
+}
+.item-photo-box {
+  width:100%;
+  height: 920rpx;
+  box-shadow: 0px 0px 10px #ccc inset;
+  background-image: url('https://www.juhuibei.com/images/add_photo.jpg');
+  background-size:100% 920rpx;
+}
+.item-photo {
+  width:100%;
+  height: 100%;
+  margin-bottom: 40rpx;
+}
+.item-text {
+  font-size: 36rpx;
+}
+.item-desc {
+  margin: 30rpx 0;
+  font-size: 24rpx;
+  color: #DDDDDD;
+}
+.date{
+  width:100%;
+  text-align: center;
+  color:#888;
+}
+.user-info {
+  display: inline-block;
+  height: 40px;
+  width: 210px;
+  border-radius: 20px;
+  /* background: #ccc; */
+  box-shadow:0 0 10rpx #ccc;
+}
+.user-info-text {
+  display: inline-block;
+  width: 120px;
+  font-size: 24rpx;
+  line-height: 20px;
+  height: 40px;
+  margin-right: 10px;
+  float: left;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  float: left;
+}
+.change {
+  display: inline-block;
+  line-height: 40px;
+  background: #ddd;
+  color: #5e5e5e;
 }
 
-.diy-item-bottom{
-  text-align: center;
-  margin-bottom:20rpx;
-  color: #333;
-}
-.diy-item-bottom .title{
-  font-size: 28rpx;
-  color:#8E8E8F;
+.show-swiper {
+  height: 100%;
+  width: 100%;
+  /* padding: 10px; */
 }
