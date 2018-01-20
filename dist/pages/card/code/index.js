@@ -7,28 +7,38 @@ Page({
    */
   data: {
     height: '',
-    src: '',
-    bg_img: 'https://www.juhuibei.com/images/wx_code/wx_code_bg.jpg',
-    img: ''
   },
-  wx_code_bg: '',
   temp: [],
   width: '',
   path_bg: '',
   path_code: '',
 
   onLoad: function () {
+    this.getSystemInfo();
+  },
+
+  setNavigationBarColor: function () {
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: '#FF6A7F',
+      animation: {
+        duration: 400,
+        timingFunc: 'easeIn'
+      }
+    })
+  },
+
+  getSystemInfo: function () {
     let that = this;
     wx.getSystemInfo({
       success: function (res) {
         console.log(res)
         that.width = res.screenWidth;
-        var height = Math.round(res.screenWidth * 1443 / 1080);
+        let height = Math.round(res.screenWidth * 1443 / 1080);
         that.setData({ height: height })
         that.wxCode();
       },
     })
-    
   },
 
   wxCode: function () {
@@ -43,9 +53,8 @@ Page({
       success: (res) => {
         console.log('wxCode', res);
         if (res.data.res === 0) {
-          that.setData({ src: res.data.data })
+          that.getCodeImage(res.data.data);
         }
-        that.getCodeImage(res.data.data);
       }
     })
   },
@@ -81,7 +90,7 @@ Page({
     const ctx = wx.createCanvasContext('myCanvas');
     ctx.drawImage(this.path_code_bg, 0, 0, this.width, this.data.height)
     var c_width = (this.width - 60) / 2;
-    var c_height = this.data.height - 115;
+    var c_height = this.data.height - 60 - Math.round(this.data.height * 160 / 1443);
     ctx.drawImage(this.path_code, c_width, c_height, 60, 60);
     // ctx.setFontSize(20)
     // ctx.fillText('文字在这里！！！文字在这里！！！', 0, 300)

@@ -2,9 +2,10 @@ page {
   background: #FFFFFF;
 }
 .wrap {
-    display: block;
-    padding: 1%;
-  }
+  display: block;
+  padding: 1%;
+}
+
 .item {
   width: 90%;
   height: 920rpx;
@@ -12,8 +13,9 @@ page {
   flex-grow: 0;
   background: #ffffff;
   box-shadow: 0 0 10rpx #ccc;
-  border-radius: 10rpx;
+  border-radius: 5px;
   text-align: center;
+  overflow: hidden;
 }
 .item-photo-box {
   width:100%;
@@ -39,6 +41,7 @@ page {
   width:100%;
   text-align: center;
   color:#888;
+  margin-top: 40rpx;
 }
 .user-info {
   display: inline-block;
@@ -50,28 +53,48 @@ page {
 }
 .user-info-text {
   display: inline-block;
-  width: 120px;
-  font-size: 24rpx;
-  line-height: 20px;
+  width: 130px;
+  font-size: 12px;
+  line-height: 40px;
   height: 40px;
-  margin-right: 10px;
   float: left;
 }
+
 .avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   float: left;
 }
+
 .change {
   display: inline-block;
   line-height: 40px;
-  background: #ddd;
-  color: #5e5e5e;
+  color: #FFFFFF;
 }
 
 .show-swiper {
   height: 100%;
   width: 100%;
   /* padding: 10px; */
+}
+
+.share-btn {
+  position: static;
+  padding: 0;
+  display: inline-block;
+  width:40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+  border-radius: 20px;
+  line-height: 40px;
+  color: #FFFFFF;
+}
+
+.share-btn:after {
+  position: static;
+  border: none;
+  background-color: transparent;
 }

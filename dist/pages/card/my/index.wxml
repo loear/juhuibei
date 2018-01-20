@@ -13,18 +13,29 @@
             <text class="item-text">{{info.name}}</text>
             <view class="item-desc">
               <text>{{info.description}}</text>
-            </view>        
+            </view>
           </view>
         </view> 
       </wxc-flex>
       <view class="date">
         <view class="user-info">
-          <image class="avatar" src="{{item.user.avatar_url}}"></image>
-          <view class="user-info-text">
-            <view><text>{{item.bride_name}} vs {{item.bridegroom_name}}</text></view>
-            <view><text>{{item.wedding_time}}</text></view>
+          <view class="avatar change" style="background:{{item.theme.bg_color}}" bindtap="openCode" data-card_id="{{item.id}}">
+            <text class="fa fa-qrcode"></text>
           </view>
-          <view class="avatar change"><text class="fa fa-file"></text></view>
+          <view class="user-info-text">
+            小程序码 <text class="fa fa-circle-o"></text> 点击分享
+          </view>
+          <view class="avatar change" style="background:{{item.theme.bg_color}}">            
+            <button 
+              open-type="share"
+              data-card_id="{{item.id}}"
+              data-color="{{item.theme.bg_color}}"
+              data-title="{{item.bridegroom_name}} vs {{item.bride_name}}邀请您"
+              class="share-btn"
+            >
+              <text class="fa fa-share-square-o"></text>
+            </button>
+          </view>
         </view>
       </view>
     </swiper-item>
