@@ -6,6 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    indicatorDots: false,
+    autoplay: false,
+    interval: 5000,
+    duration: 500,
     card_user: []
   },
 
