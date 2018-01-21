@@ -9,7 +9,7 @@ Page({
   data: {
     user_info: {},
     vip: [
-      { name: "普通会员", color: "#313538" },
+      { name: "普通用户", color: "#313538" },
       { name: "黄金会员", color: "#FFAAA6" },
       { name: "钻石会员", color: "#FF8C94" },
       { name: "至尊会员", color: "#FF4444" }

@@ -1,5 +1,8 @@
 import api from '../../../api/api_v1.js'
 import { $wuxToast } from '../../../packages/@wux/components/wux'
+import { $wuxDialog } from '../../../packages/@wux/components/wux'
+import { Cache } from '../../../utils/cache.js';
+var cache = new Cache();
 Page({
 
   /**
@@ -10,6 +13,9 @@ Page({
     choose_id: 0,
     choose_color: '#000000'
   },
+
+  uid: 0,
+  card_id: 0,
 
   /**
    * 生命周期函数--监听页面加载
@@ -56,8 +62,8 @@ Page({
         type: 'text',
         timer: 1500,
         color: '#fff',
-        text: '请先选择好主题哦',
-        success: () => console.log('请先选择好主题哦')
+        text: '请选择一套主题',
+        success: () => console.log('请选择一套主题')
       })
       return false;
     }
@@ -66,19 +72,140 @@ Page({
       url: '../view/index?url=' + url + '&color=' + this.data.choose_color,
     })
   },
+
   makeCard: function () {
+    this.showDialog();return;
     if (this.data.choose_id === 0) {
       $wuxToast.show({
         type: 'text',
         timer: 1500,
         color: '#fff',
-        text: '请先选择好主题哦',
-        success: () => console.log('请先选择好主题哦')
+        text: '请选择一套主题',
+        success: () => console.log('请选择一套主题')
       })
       return false;
+    } else { // 选择了主题 1 检查是是否登录，2 检查会员等级 3 为符合条件的会员创建邀请卡
+      this.getVipInfo();
     }
+    
+  },
+
+  getVipInfo: function () {
+    let that = this;
+    let uid = cache.get('uid');
+    if (uid) {
+      that.uid = uid;
+      api.getVip({
+        query: {
+          user_id: uid
+        },
+        success: (res) => {
+          if (res.data.res === 0) {
+            let vip = res.data.data.vip;
+            let card_count = res.data.data.card_count;
+            that.card_id = res.data.data.card_id;
+
+            if (vip < 1) { // 进入支付升级vip1
+              that.toPayOrder(1);
+
+            } else if (vip === 1 && card_count === 1) { // 先提示 升级或更新card_id的关联theme_id和module_data数据
+
+              if (res.data.data.theme_id === this.data.choose_id) { // 已经有了一套选择的主题的请柬，跳转到我的请柬页面
+                that.toCardMy();
+              } else { // 与创建的不同的请柬
+                that.showDialog();
+              }
+              
+            } else { // 创建一个card
+              that.createCard();
+            }
+          }
+        }
+      })
+
+    }
+  },
+
+  /**
+   * 跳转到我的请柬
+   */
+  toCardMy: function () {
     wx.navigateTo({
-      url: '../order/index?theme_id=' + this.data.choose_id + '&vip=' + 'vip1',
+      url: '../my/index?user_id=' + that.uid,
+    })
+  },
+
+  /**
+   * 转到支付订单 并创建一个card
+   */
+  toPayOrder: function (vip) {
+    wx.navigateTo({
+      url: '../order/index?theme_id=' + this.data.choose_id + '&vip=' + vip,
+    })
+  },
+
+  showDialog() {
+    let dialogComponent = this.selectComponent('.wxc-dialog');
+    dialogComponent && dialogComponent.show();
+  },
+
+  hideDialog() {
+    let dialogComponent = this.selectComponent('.wxc-dialog');
+    dialogComponent && dialogComponent.hide();
+  },
+
+  /**
+   * 覆盖制作
+   */
+  onCoverMake: function () {
+    let that = this;
+    let card_id = this.card_id;
+    let theme_id = this.data.choose_id;
+    if (card_id !== 0 && theme_id !== 0) {
+      api.coverMakeCard({
+        method: 'post',
+        data: {
+          card_id: card_id,
+          theme_id: theme_id,
+        },
+        success: (res) => {
+          if (res.data.res === 0) {
+            that.toCardMy();
+          }
+        }
+      })
+    }
+    this.hideDialog();
+  },
+
+  /**
+   * 升级制作
+   */
+  onUpdateMake: function () {
+    this.toPayOrder();
+    this.hideDialog();
+  },
+
+  /**
+   * 取消
+   */
+  onCancel: function() {
+    console.log('点击了取消按钮');
+    this.hideDialog();
+  },
+
+  createCard : function () {
+    api.createCard({
+      method: 'post',
+      data: {
+        user_id: that,uid,
+        theme_id: that.data.choose_id
+      },
+      success: (res) => {
+        if (res.data.res === 0) {
+          that.toCardMy();
+        }
+      }
     })
   },
 
@@ -121,13 +248,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
   
   }
 })

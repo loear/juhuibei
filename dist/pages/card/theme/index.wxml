@@ -1,6 +1,17 @@
 <import src="../../../packages/@wux/components/toast/toast.wxml"/>
-
 <template is="toast" data="{{ ...$wux.toast }}"/>
+<wxc-dialog 
+  class="wxc-dialog" 
+  title="温馨提示！"
+  content="您当前仅可制作一份请柬，覆盖制作将初始化请柬"
+>
+  <view class="dialog-box">
+    <view class="dialog-btn dialog-btn-left" bindtap='onCoverMake'>覆盖制作</view>
+    <view class="dialog-btn dialog-btn-center" bindtap='onUpdateMake'>升级制作</view>
+    <view class="dialog-btn dialog-btn-right" bindtap='onCancel'>取消</view>
+  </view>
+</wxc-dialog>
+
 <radio-group bindchange="radioChange">
 <wxc-flex class="wrap" cross="top" wrap="wrap">
   
@@ -28,7 +39,7 @@
   <view class="menu-btn menu-preview" bindtap="themePreview">
     <text class="fa fa-eye"></text>  预览
   </view>
-  <view class="menu-btn">全场29元</view>
+  <view class="menu-btn">会员任选</view>
   <view class="menu-btn menu-make" bindtap="makeCard">
     <text class="fa fa-file"></text>  制作
   </view>

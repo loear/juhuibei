@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "选择婚礼请柬主题",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "wxc-flex": "../../../packages/@minui/wxc-flex/dist/index",
