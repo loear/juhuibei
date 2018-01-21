@@ -3,7 +3,8 @@
     width: 100%;
     height: 92rpx;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    margin-bottom: 40rpx;
 }
 .loadmore__line {
     width: 100rpx;

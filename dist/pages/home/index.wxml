@@ -1,10 +1,10 @@
 <import src="../../packages/@wux/components/toptips/toptips.wxml"/>
 <template is="toptips" data="{{ ...$wux.toptips }}"/>
 <view>
-    <import src="../../packages/@wux/components/button/button.wxml"/>
+    <!-- <import src="../../packages/@wux/components/button/button.wxml"/>
     <template is="button" data="{{ ...$wux.button.br }}"/>
-    <wxc-mask status="{{maskStatus}}" opacity="0.5"></wxc-mask>
-    <layout-head>
+    <wxc-mask status="{{maskStatus}}" opacity="0.5"></wxc-mask> -->
+    <!-- <layout-head>
       
         <view class="header">
           <navigator url="/pages/activity/index">
@@ -15,7 +15,7 @@
         </view>
         <view class="header-position"></view>
       
-    </layout-head>
+    </layout-head> -->
 
     <!-- wxp template -->
     <example title="" desc="" _pid="{{_pid}}">
@@ -33,12 +33,36 @@
           latitude="{{item.latitude}}"
           longitude="{{item.longitude}}"
           uid="{{uid}}"
+          avatar_url="{{item._master.user.avatar_url}}"
         >
         </example-demo>
         </block>
         
     </example>
-
-    <!--<layout-foot></layout-foot>-->
+    
     <wxc-loadmore is-end="{{true}}"  text="我是有底线的"></wxc-loadmore>
+
+    <layout-foot>
+      <view class="menu">
+        <navigator url="/pages/card/theme/index">
+          <view class="menu-btn menu-card">
+            <text class="fa fa-eye"></text> 邀请函
+          </view>
+        </navigator>
+        
+        <navigator url="/pages/activity/index">
+          <view class="menu-btn menu-active">
+            发布活动
+          </view>
+        </navigator>
+        
+        <navigator url="/pages/my/index">
+          <view class="menu-btn menu-user">
+            <text class="fa fa-user"></text> 我的
+          </view>
+        </navigator>
+        
+      </view>
+    </layout-foot>
+    
 </view>

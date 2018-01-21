@@ -47,6 +47,10 @@ exports.default = Component({
     uid:{
       type: String,
       value: ''
+    },
+    avatar_url: {
+      type:String,
+      value: ''
     }
   },
   data: {
