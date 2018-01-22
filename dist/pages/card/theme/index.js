@@ -11,7 +11,10 @@ Page({
   data: {
     themes: [],
     choose_id: 0,
-    choose_color: '#000000'
+    choose_color: '#000000',
+    audioAction: {
+      method: 'pause'
+    }
   },
   card_id: 0,
 

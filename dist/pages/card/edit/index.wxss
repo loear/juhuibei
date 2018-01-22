@@ -76,3 +76,38 @@
   width:100%;
   overflow:auto;
 }
+
+.audio-box {
+  width: 100%;
+  overflow: hidden;
+}
+
+audio {
+
+}
+
+.cells-loear:after {
+  border: 0;
+}
+
+.cell-loear {
+  padding: 0;  
+  padding-left: 5px;
+  padding-top: 5px;
+  border: 0;
+}
+
+.cell-loear::before {
+  border: 0;
+}
+
+.radio-loear {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 0;
+  height: 0;
+  border-top: 22px solid #FF4444;
+  border-right: 22px solid transparent;
+  padding-left: 0;
+}

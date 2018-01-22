@@ -161,19 +161,30 @@
 
         <swiper-item class="show-swiper-item">
           <view class="weui-cells__title">选择背景音乐</view>
-          <view class="weui-cells weui-cells_after-title">              
+          <view class="weui-cells weui-cells_after-title cells-loear">              
             <radio-group bindchange="radioChange">
-              <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+              <label class="weui-cell weui-check__label cell-loear" wx:for="{{radioItems}}" wx:key="value">
                   <radio class="weui-check" name="music_id" value="{{item.id}}" checked="{{item.checked}}"/>
-                  <view class="weui-cell__bd" bindtap="playMusic" data-url="{{item.url}}">背景音乐{{item.id}}.mp3</view>
-                  <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
-                      <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                  <!-- <view class="weui-cell__bd" bindtap="playMusic" data-url="{{item.url}}">{{item.name}}.mp3</view> -->
+                  <view class="page-section page-section-gap" style="text-align: center;display:flex;">
+                    <audio 
+                      style="text-align: left"
+                      src="{{item.url}}" 
+                      poster="http://qiniu.juhuibei.com/card_2018/music/music_bg.jpg"
+                      name="{{item.name}}"
+                      author=""
+                      action="{{audioAction}}"
+                      controls
+                    >
+                    </audio>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-radio radio-loear" wx:if="{{item.checked}}">
+                      <!-- <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon> -->
                   </view>
               </label>
             </radio-group>
           </view>
         </swiper-item>
-        
       
     </swiper>
   </view>

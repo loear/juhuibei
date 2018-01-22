@@ -121,7 +121,7 @@
 					"id": 9,
 					"name": "编辑请柬",
 					"pathName": "pages/card/edit/index",
-					"query": "card_id=1"
+					"query": "card_id=96"
 				},
 				{
 					"id": 10,
