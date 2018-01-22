@@ -1,5 +1,6 @@
-import api from '../../../api/api_v1.js'
-var title = '聚会呗';
+import api from '../../../api/api_v1.js';
+import { Cache } from '../../../utils/cache.js';
+var cache = new Cache();
 Page({
 
   /**
@@ -10,38 +11,27 @@ Page({
     autoplay: false,
     interval: 5000,
     duration: 500,
-    card_user: []
+    user_card: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
-    let card_id = options.card_id;
-    if (card_id) {
-      let url = 'https://www.juhuibei.com/card/' + card_id;
-      let color = options.color;
-      wx.redirectTo({
-        url: '../view/index?url' + encodeURIComponent(url) + '&color=' + color,
-      })
+    let uid = cache.get('uid');
+    if (uid) {
+      this.getUserCardAll();
     }
-    
-    var that = this;
-    this.getCardByUserId(1);
   },
 
-  getCardByUserId: function (user_id) {
+  getUserCardAll: function () {
     var that = this;
-    api.getCardByUserId({
-      query: {
-        user_id: user_id
-      },
+    api.getUserCardAll({
       success: (res) => {
-        console.log('getCardByUserId', res.data.data);
+        console.log('getUserCardAll', res.data.data);
         if (res.data.res === 0) {
           that.setData({
-            card_user: res.data.data
+            user_card: res.data.data
           })
         }
       }
@@ -62,6 +52,27 @@ Page({
       withShareTicket: true
     })
     this.onShareAppMessage();
+  },
+
+  toView: function (e) {
+    console.log('点击', e);
+    let card_id = e.target.dataset.card_id;
+    if (card_id) {
+      let url = 'https://www.juhuibei.com/card/' + card_id;
+      wx.navigateTo({
+        url: '../view/index?url=' + url + '&color=' + e.target.dataset.color
+      })
+    }
+  },
+
+  toEdit: function (e) {
+    console.log('长按', e);
+    let card_id = e.target.dataset.card_id;
+    if (card_id) {
+      wx.navigateTo({
+        url: '../edit/index?card_id=' + card_id
+      })
+    }
   },
 
   /**

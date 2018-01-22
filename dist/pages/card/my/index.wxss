@@ -29,20 +29,23 @@ page {
   height: 100%;
   margin-bottom: 40rpx;
 }
-.item-text {
-  font-size: 36rpx;
+
+.item-tigs {
+  font-size: 10px;
+  color: #ccc;
+  text-align: center;
+  position: relative;
+  top: -30rpx;
+  left: 0;
 }
-.item-desc {
-  margin: 30rpx 0;
-  font-size: 24rpx;
-  color: #DDDDDD;
-}
+
 .date{
   width:100%;
   text-align: center;
   color:#888;
-  margin-top: 40rpx;
+  margin-top: 20rpx;
 }
+
 .user-info {
   display: inline-block;
   height: 40px;
@@ -51,6 +54,7 @@ page {
   /* background: #ccc; */
   box-shadow:0 0 10rpx #ccc;
 }
+
 .user-info-text {
   display: inline-block;
   width: 130px;

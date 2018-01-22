@@ -46,7 +46,7 @@ const getPreOrder         = (params) => wxRequest(params, host + 'pay/pre_order'
 const getThemeModule      = (params) => wxRequest(params, host + 'theme_module/' + params.query.theme_id);
 const editCardInfo        = (params) => wxRequest(params, host + 'card_edit/' + params.query.card_id);
 const getThemeList        = (params) => wxRequest(params, host + 'theme_list');
-const getCardByUserId     = (params) => wxRequest(params, host + 'card_user/' + params.query.user_id);
+const getUserCardAll      = (params) => wxRequest(params, host + 'user_card');
 const wxCode              = (params) => wxRequest(params, host + 'wx_code');
 const getVipInfo          = (params) => wxRequest(params, host + 'vip_info');
 const coverMakeCard       = (params) => wxRequest(params, host + 'cover_make');
@@ -72,7 +72,7 @@ module.exports = {
   getThemeModule,
   editCardInfo,
   getThemeList,
-  getCardByUserId,
+  getUserCardAll,
   wxCode,
   getVipInfo,
   coverMakeCard,
