@@ -74,7 +74,6 @@ Page({
   },
 
   makeCard: function () {
-    this.showDialog();return;
     if (this.data.choose_id === 0) {
       $wuxToast.show({
         type: 'text',
@@ -95,11 +94,12 @@ Page({
     let uid = cache.get('uid');
     if (uid) {
       that.uid = uid;
-      api.getVip({
+      api.getVipInfo({
         query: {
           user_id: uid
         },
         success: (res) => {
+          console.log('getVipInfo', res.data.data);
           if (res.data.res === 0) {
             let vip = res.data.data.vip;
             let card_count = res.data.data.card_count;

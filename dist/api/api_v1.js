@@ -46,6 +46,9 @@ const editCardInfo        = (params) => wxRequest(params, host + 'card_edit/' + 
 const getThemeList        = (params) => wxRequest(params, host + 'theme_list');
 const getCardByUserId     = (params) => wxRequest(params, host + 'card_user/' + params.query.user_id);
 const wxCode              = (params) => wxRequest(params, host + 'wx_code');
+const getVipInfo          = (params) => wxRequest(params, host + 'vip_info/' + params.query.user_id);
+const coverMakeCard       = (params) => wxRequest(params, host + 'cover_make');
+const createCard          = (params) => wxRequest(params, host + 'create_card');
 
 module.exports = {
   getActivityList,
@@ -68,5 +71,8 @@ module.exports = {
   editCardInfo,
   getThemeList,
   getCardByUserId,
-  wxCode
+  wxCode,
+  getVipInfo,
+  coverMakeCard,
+  createCard
 }
