@@ -1,4 +1,7 @@
 {
   "enablePullDownRefresh": false,
-  "navigationBarTitleText": "支付"
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "wxc-price": "../../../packages/@minui/wxc-price/dist/index"
+  }
 }

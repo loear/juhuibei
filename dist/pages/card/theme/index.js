@@ -13,8 +13,6 @@ Page({
     choose_id: 0,
     choose_color: '#000000'
   },
-
-  uid: 0,
   card_id: 0,
 
   /**
@@ -93,11 +91,7 @@ Page({
     let that = this;
     let uid = cache.get('uid');
     if (uid) {
-      that.uid = uid;
       api.getVipInfo({
-        query: {
-          user_id: uid
-        },
         success: (res) => {
           console.log('getVipInfo', res.data.data);
           if (res.data.res === 0) {
@@ -130,9 +124,7 @@ Page({
    * 跳转到我的请柬
    */
   toCardMy: function () {
-    wx.navigateTo({
-      url: '../my/index?user_id=' + that.uid,
-    })
+    wx.navigateTo({ url: '../my/index' })
   },
 
   /**
@@ -182,7 +174,7 @@ Page({
    * 升级制作
    */
   onUpdateMake: function () {
-    this.toPayOrder();
+    this.toPayOrder(2);
     this.hideDialog();
   },
 
@@ -195,10 +187,10 @@ Page({
   },
 
   createCard : function () {
+    let that = this;
     api.createCard({
       method: 'post',
       data: {
-        user_id: that,uid,
         theme_id: that.data.choose_id
       },
       success: (res) => {

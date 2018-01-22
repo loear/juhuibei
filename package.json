@@ -14,6 +14,7 @@
     "@minui/wxc-loadmore": "^1.0.3",
     "@minui/wxc-mask": "^1.0.3",
     "@minui/wxc-popup": "^1.0.3",
+    "@minui/wxc-price": "^1.0.6",
     "@minui/wxc-tab": "^1.0.3"
   },
   "devDependencies": {

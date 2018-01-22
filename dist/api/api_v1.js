@@ -1,4 +1,6 @@
 const host = 'https://www.juhuibei.com/api/v1/'
+import { Cache } from '../utils/cache.js';
+var cache = new Cache();
 const wxRequest = (params, url) => {
   wx.showToast({
     title: '加载中',
@@ -10,7 +12,7 @@ const wxRequest = (params, url) => {
     data: params.data || {},
     header: {
       'Content-Type': 'application/json',
-      'token': wx.getStorageSync('token')
+      'token': cache.get('token')
     },
     success: (res) => {
       params.success && params.success(res)
@@ -46,7 +48,7 @@ const editCardInfo        = (params) => wxRequest(params, host + 'card_edit/' + 
 const getThemeList        = (params) => wxRequest(params, host + 'theme_list');
 const getCardByUserId     = (params) => wxRequest(params, host + 'card_user/' + params.query.user_id);
 const wxCode              = (params) => wxRequest(params, host + 'wx_code');
-const getVipInfo          = (params) => wxRequest(params, host + 'vip_info/' + params.query.user_id);
+const getVipInfo          = (params) => wxRequest(params, host + 'vip_info');
 const coverMakeCard       = (params) => wxRequest(params, host + 'cover_make');
 const createCard          = (params) => wxRequest(params, host + 'create_card');
 

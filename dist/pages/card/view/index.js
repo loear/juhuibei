@@ -16,6 +16,7 @@ Page({
     if (options.url) {
       this.setData({ url: options.url })
     }
+
     if (options.color) {
       wx.setNavigationBarColor({
         frontColor: '#ffffff',
