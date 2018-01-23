@@ -4,26 +4,31 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {  
-    imgUrls: [],
-    indicatorDots: true,
-    autoplay: false,
-    interval: 5000,
-    duration: 500,
-    vertical: false,
-    bride_name: '',
-    bride_phone: '',
-    bridegroom_name: '',
-    bridegroom_phone: '',
-    date: "2018-5-20",
-    time: "12:00",
-    latitude: '',
-    longitude: '',
-    wedding_address: '地图选择',
-    cover: {},
-    has_video: 0,
-    wedding_video: '',
-    wedding_video_cover: {},
+  data: {
+    swiper: {
+      indicatorDots: true,  // 是否显示面板指示点
+      autoplay: false,      // 是否自动切换
+      interval: 5000,       // 自动切换时间间隔
+      duration: 500,        // 滑动动画时长
+      vertical: false,      // 滑动方向是否为纵向
+    },
+    form: {
+      bride_name: '',         // 新娘姓名
+      bride_phone: '',        // 新娘手机
+      bridegroom_name: '',    // 新郎姓名
+      bridegroom_phone: '',   // 新郎手机
+      date: "2018-5-20",      // 婚礼日期
+      time: "12:00",          // 婚礼时间
+      latitude: '',           // 纬度
+      longitude: '',          // 经度
+      wedding_address: '选择',// 婚礼地址
+      cover: {},              // cover页小图
+      has_video: 0,           // 是否有视频
+      wedding_video: '',      // 视频地址
+      wedding_video_cover: {},// 视频截图
+      music_id: 0,            // 背景音乐
+    },
+    music_list: [],
     tag: []
   },
 
@@ -31,7 +36,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.theme_id);
     this.setData({
       imgUrls: [
         { index: 1},
@@ -44,57 +48,49 @@ Page({
     })
     this.editCardInfo(options.card_id);
   },
+
   editCardInfo: function (card_id) {
-    var that = this;
+    let that = this;
     api.editCardInfo({
       query: {
         card_id: card_id
       },
       success: (res) => {
-        if (res.data.res === 0) {
+        console.log('editCardInfo', res.data.data);
+        if (res.data.res === 0) {         
           that.setData({
-            bride_name: res.data.data.bride_name,
-            bride_phone: res.data.data.bride_phone,
-            bridegroom_name: res.data.data.bridegroom_name,
-            bridegroom_phone: res.data.data.bridegroom_phone,
-            date: res.data.data.date,
-            time: res.data.data.time,
-            cover: res.data.data.cover,
-            wedding_address: res.data.data.wedding_address,
-            radioItems: res.data.data.music_list,
+            form: res.data.data.form,
+            music_list: res.data.data.music_list,
             tag: res.data.data.tag
-          })
-          if (res.data.data.has_video === 1) {
-            that.setData({
-              has_video: 1,
-              wedding_video: res.data.data.wedding_video,
-              wedding_video_cover: res.data.data.wedding_video_cover,
-            });
-          }
-          
-          console.log(res.data.data);
+          });
         }
       }
     })
   },
+
+  /**
+   * 预览图片
+   */
   previewImage: function(e) {
-    console.log(e.target.dataset.url);
     wx.previewImage({
       current: e.target.dataset.url, // 当前显示图片的http链接
       urls: [e.target.dataset.url] // 需要预览的图片http链接列表
     })
   },
+
+  /**
+   * 切换 音乐
+   */
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
-
-    var radioItems = this.data.radioItems;
-    for (var i = 0, len = radioItems.length; i < len; ++i) {
-      radioItems[i].checked = radioItems[i].id == e.detail.value;
+    this.data.form.music_id = e.detail.value;
+    let music_list = this.data.music_list;
+    for (let i = 0, len = music_list.length; i < len; ++i) {
+      music_list[i].checked = music_list[i].id == e.detail.value;
     }
-    this.setData({
-      radioItems: radioItems
-    });
+    this.setData({ music_list: music_list });
   },
+
   playMusic: function(e) {
     wx.playBackgroundAudio({
       dataUrl: e.target.dataset.url,
@@ -102,59 +98,18 @@ Page({
       coverImgUrl: ''
     })
   },
+
   /**
-   * 获取主题模板
+   * 更换地址
    */
-  getThemeModule(theme_id) {
-    var that = this;
-    api.getThemeModule({
-      query: {
-        theme_id: theme_id
-      },
-      success: (res) => {
-        if (res.data.res === 0) {
-          
-          console.log(res.data.data.theme_module);
-        }
-      }
-    })
-  },
-
-  changeIndicatorDots: function (e) {
-    this.setData({
-      indicatorDots: !this.data.indicatorDots
-    })
-  },
-  changeAutoplay: function (e) {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
-  },
-  intervalChange: function (e) {
-    this.setData({
-      interval: e.detail.value
-    })
-  },
-  durationChange: function (e) {
-    this.setData({
-      duration: e.detail.value
-    })
-  },
-
   chooseLocation: function () {
-    var that = this;
+    let that = this;
     wx.chooseLocation({
       success: function (ret) {
         console.log('chooseLocation', ret)
-        var gourmet_address = ret.address
-        var latitude = +ret.latitude //数值
-        var longitude = +ret.longitude //数值
-        // 前端展示选择的地址标题
-        that.setData({
-          wedding_address: ret.name,
-          latitude: latitude,
-          longitude: longitude
-        })
+        this.data.form.latitude        = +ret.latitude;
+        this.data.form.longitude       = +ret.longitude;
+        this.data.form.wedding_address = ret.address;
       },
       cancel: function () {
         console.log('chooseLocation', '取消了选择');
@@ -162,6 +117,9 @@ Page({
     })
   },
 
+  /**
+   * 上传图片
+   */
   chooseImage: function (e) {
     var width = e.target.dataset.img.width;
     var height = e.target.dataset.img.height;
@@ -209,13 +167,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
   
   }
 })
