@@ -56,6 +56,18 @@
   font-size: 14px;
 }
 
+.weui-cells:after {
+  border-bottom:1rpx solid #f8f8f8;
+}
+
+.weui-cells:before {
+  border-top:1rpx solid #f8f8f8;
+}
+
+.weui-cell:before {
+  border-top:1rpx solid #f8f8f8;
+}
+
 .weui-uploader__input-box {
   border-radius:5px;
   width: 50px;
@@ -80,7 +92,7 @@
 .loear-time{
   text-align: right;
   padding-left:20px;
-  border-left:1px dashed #ddd;
+  border-left:1px solid #f8f8f8;
   margin-left:20px;
 }
 .loear-right{

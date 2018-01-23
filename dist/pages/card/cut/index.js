@@ -116,6 +116,7 @@ Page({
             console.log('qiniuUploader', res.imageURL);
             let url = res.imageURL;
             if (url) { // 直接调用上一个页面的setData()方法
+              url = 'http://' + url;
               let pages = getCurrentPages();
               let currPage = pages[pages.length - 1];   //当前页面
               let prevPage = pages[pages.length - 2];  //上一个页面
@@ -132,11 +133,12 @@ Page({
               } else { // 页面照片
                 let tag = prevPage.data.tag;
                 for (let i = 0, len = tag.length; i < len; ++i) {
-                  if (tag[i].tag_name == name) {
+                  if (tag[i].tag_id === +name) {
+                    tag[i].value = url;
                     tag[i].img.url = url;
                   }
                 }
-                prevPage.setData({ form: form });
+                prevPage.setData({ tag: tag, tag_change: 1 });
               }
               wx.navigateBack({ delta: 1 }) // 返回上一页
             }

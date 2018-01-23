@@ -26,16 +26,18 @@ Page({
       latitude: '',           // 纬度
       longitude: '',          // 经度
       wedding_address: '选择',// 婚礼地址
-      cover: {},              // cover页小图
+      cover: '',              // cover页小图
       has_video: 0,           // 是否有视频
       wedding_video: '',      // 视频地址
-      wedding_video_cover: {},// 视频截图
+      wedding_video_cover: '',// 视频截图
       music_id: 0,            // 背景音乐
     },
     music_list: [],
-    tag: []
+    tag: [],
+    tag_change: 0, // 是否更新tag数据
   },
   music_id: 0,
+  card_id: 0,
 
   /**
    * 生命周期函数--监听页面加载
@@ -43,9 +45,9 @@ Page({
   onLoad: function (options) {
     this.initValidate();  // 先初始化验证器
     let uid = cache.get('uid');
-    let card_id = options.card_id;
-    if (uid && card_id) {
-      this.editCardInfo(card_id);
+    this.card_id = +options.card_id;
+    if (uid && this.card_id) {
+      this.editCardInfo(this.card_id);
     }
   },
 
@@ -118,6 +120,11 @@ Page({
       return false
     }
     
+    let wedding_video_cover = '';
+    if (this.data.form.has_video === 1) {
+      wedding_video_cover = this.data.form.wedding_video_cover.url
+    }
+
     let data = {
       form_id: e.detail.formId,
       bride_name: params.bride_name,
@@ -129,33 +136,32 @@ Page({
       wedding_video: params.wedding_video,
       latitude: this.data.form.latitude,
       longitude: this.data.form.longitude,
-      longitude: this.data.form.longitude,
-      wedding_address: this.data.form.wedding_address
+      wedding_address: this.data.form.wedding_address,
+      cover: this.data.form.cover.url,
+      wedding_video_cover: wedding_video_cover,
+      tag: this.data.tag,
+      tag_change: this.data.tag_change, // 是否更新tag数据
+      music_id: this.music_id,  // 如果music_id = 0 说明没有切换音乐
+      card_id: this.card_id
     }
     console.log(data);
 
-    // api.saveCard({
-    //   method: 'post',
-    //   data: data,
-    //   success: (res) => {
-    //     console.log('saveCard', res);
-    //     wx.showToast({
-    //       title: '提交成功',
-    //       icon: 'success',
-    //       duration: 1000,
-    //       success: function () {
-    //         wx.redirectTo({
-    //           url: '/pages/home/index'
-    //         });
-    //       }
-    //     });
-    //   }
-    // })
-
-    $wuxToptips.success({
-      hidden: !0,
-      text: '提交成功'
+    api.saveCard({
+      method: 'post',
+      data: data,
+      success: (res) => {
+        console.log('saveCard', res);
+        if (res.data.res === 0) {
+          $wuxToptips.success({
+            hidden: !0,
+            text: '提交成功'
+          });
+          wx.redirectTo({ url: '/pages/card/my/index' });
+        }
+      }
     })
+
+    
   },
 
   /**
@@ -232,7 +238,18 @@ Page({
         url: '../cut/index?width=' + width + '&height=' + height + '&name=' + name 
       })
     }
-    
+  },
+
+  bindDateChange: function (e) {
+    let form = this.data.form;
+    form.date = e.detail.value
+    this.setData({ form: form })
+  },
+
+  bindTimeChange: function (e) {
+    let form = this.data.form;
+    form.time = e.detail.value
+    this.setData({ form: form })
   },
 
   /**

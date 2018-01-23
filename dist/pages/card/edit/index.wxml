@@ -84,7 +84,7 @@
                   value="{{form.date}}"
                   start="2018-01-01"
                   end="2020-01-01"
-                  bindchange="bindEndDateChange"
+                  bindchange="bindDateChange"
                   name="date"
                 >
                   <view class="weui-input">{{form.date}}</view>
@@ -95,7 +95,7 @@
                   mode="time"
                   value="{{form.time}}"
                   start="7:00" end="23:59"
-                  bindchange="bindEndTimeChange"
+                  bindchange="bindTimeChange"
                   name="time"
                   style='margin-right:10px;'
                 >
@@ -139,23 +139,23 @@
             </block>
           </view>          
           <!-- 视频区域 -->
-          <view class="weui-cells__title">视频</view>
-          <view class="weui-cells weui-cells_after-title">
-            <!-- 视频链接  -->
-            <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                <view class="weui-label">视频链接</view>
+          <block wx:if="{{form.wedding_video_cover}}">
+            <view class="weui-cells__title">视频</view>
+            <view class="weui-cells weui-cells_after-title">
+              <!-- 视频链接  -->
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">视频链接</view>
+                </view>
+                <input
+                  class="weui-input loear-right"
+                  placeholder="请填写视频链接"
+                  placeholder-class='loear-right'
+                  name="wedding_video"
+                  value="{{form.wedding_video}}"
+                />
               </view>
-              <input
-                class="weui-input loear-right"
-                placeholder="请填写视频链接"
-                placeholder-class='loear-right'
-                name="wedding_video"
-                value="{{form.wedding_video}}"
-              />
-            </view>
-            <!-- 视频截图  -->
-            <block wx:if="{{form.wedding_video_cover}}">
+              <!-- 视频截图  -->
               <view class="weui-cell">
                 <view class="weui-cell__bd">
                   <view class="weui-uploader">
@@ -185,8 +185,8 @@
                   </view>
                 </view>
               </view>
-            </block>
-          </view>
+            </view>
+          </block>
         </swiper-item>
 
         <swiper-item class="show-swiper-item">
@@ -212,7 +212,7 @@
                         class="loear-uploder__tips"
                         bindtap="chooseImage"
                         data-img="{{item.img}}"
-                        data-name="{{item.tag_name}}"
+                        data-name="{{item.tag_id}}"
                       >
                         <text class="fa fa-refresh"></text> 更换照片
                       </view>
