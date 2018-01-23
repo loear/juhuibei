@@ -37,7 +37,19 @@
 }
 
 .submit-btn {
-  
+  color: #FFFFFF;
+  background: #8DC048;
+  display: inline-block;
+  width:100%;
+  height:100rpx;
+}
+
+.submit-btn::after {
+  border: 0;
+}
+
+.submit-active {
+  opacity: .7;
 }
 
 .weui-cells {

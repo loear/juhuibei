@@ -24,11 +24,62 @@ Page({
         width: 320,
         height: 160
       },
-      uid: 0,
-      activity_id: 0,
-      disabled: true
+      disabled: true,
+      name: '',
     }
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({ disabled: true });
+    console.log('options', options);
+    if (options.name) {
+      this.setData({ name: options.name });
+      // 初始化宽高 
+      let o_width = +options.width;
+      let o_height = +options.height;
+      if (o_width > 300) {
+        o_height = o_height * 300 / o_width;
+        o_width = 300;
+      }
+      let cropperOpt = this.data.cropperOpt;
+      cropperOpt.cut = {
+        x: (width - o_width) / 2,
+        y: (height - o_height) / 2,
+        width: o_width,
+        height: o_height,
+      }
+      this.setData({ cropperOpt: cropperOpt });
+      new WeCropper(cropperOpt)
+        .on('ready', (ctx) => {
+          console.log(`wecropper is ready for work!`)
+        })
+        .on('beforeImageLoad', (ctx) => {
+          console.log(`before picture loaded, i can do something`)
+          console.log(`current canvas context:`, ctx)
+          wx.showToast({
+            title: '上传中',
+            icon: 'loading',
+            duration: 20000
+          })
+        })
+        .on('imageLoad', (ctx) => {
+          console.log(`picture loaded`)
+          console.log(`current canvas context:`, ctx)
+          wx.hideToast()
+        })
+        .on('beforeDraw', (ctx, instance) => {
+          console.log(`before canvas draw,i can do something`)
+          console.log(`current canvas context:`, ctx)
+        })
+        .updateCanvas()
+    } else {
+      wx.navigateBack({ delta: 1 });
+    }
+  },
+
   touchStart(e) {
     this.wecropper.touchStart(e)
   },
@@ -49,8 +100,12 @@ Page({
       }
     })
   },
+
+  /**
+   * 将图片保存到七牛
+   */
   saveQiniu: function (src) {
-    var that = this;
+    let that = this;
     // 先获取上传TOKEN
     api.getUploadToken({
       success: (res_token) => {
@@ -58,47 +113,34 @@ Page({
           console.log('token', res_token.data.data)
           // 上传到七牛
           qiniuUploader.upload(src, (res) => {
-            // 插入images表
-            api.saveImage({
-              method: 'post',
-              data: {
-                url: res.imageURL
-              },
-              success: (res2) => {
-                console.log('saveImage', res2);
-                if (res2.data.res === 0) {
-                  // console.log('image_id', res.data.data)
-                  // 直接调用上一个页面的setData()方法，把数据存到上一个页面中去
-                  var pages = getCurrentPages();
-                  var currPage = pages[pages.length - 1];   //当前页面
-                  var prevPage = pages[pages.length - 2];  //上一个页面
-                  if (that.data.activity_id) {
-                    api.saveActivityImage({
-                      method: 'post',
-                      data: {
-                        image_id: res2.data.data,
-                        user_id: that.data.uid,
-                        activity_id: that.data.activity_id
-                      },
-                      success: (save_res) => {
-                        console.log('save_res', save_res.data.data);
-                        prevPage.setData({
-                          activity_info: save_res.data.data,
-                          is_uploading: save_res.data.data._is_uploading
-                        })
-                      }
-                    })
-                  } else {
-                    prevPage.setData({
-                      image_id: res2.data.data,
-                      files: [{ url: src }],
-                      has_image: true
-                    })
+            console.log('qiniuUploader', res.imageURL);
+            let url = res.imageURL;
+            if (url) { // 直接调用上一个页面的setData()方法
+              let pages = getCurrentPages();
+              let currPage = pages[pages.length - 1];   //当前页面
+              let prevPage = pages[pages.length - 2];  //上一个页面
+              // 将上传的地址根据name值，对应存放于上一个页面
+              let name = this.data.name;
+              if (name == 'cover') { // 加载页小图
+                let form = prevPage.data.form;
+                form.cover.url = url;
+                prevPage.setData({ form: form });
+              } else if (name == 'wedding_video_cover') { // 视频截图
+                let form = prevPage.data.form;
+                form.wedding_video_cover.url = url;
+                prevPage.setData({ form: form });
+              } else { // 页面照片
+                let tag = prevPage.data.tag;
+                for (let i = 0, len = tag.length; i < len; ++i) {
+                  if (tag[i].tag_name == name) {
+                    tag[i].img.url = url;
                   }
-                  wx.navigateBack({ delta: 1 }) // 返回上一页
                 }
+                prevPage.setData({ form: form });
               }
-            })
+              wx.navigateBack({ delta: 1 }) // 返回上一页
+            }
+
           }, (error) => {
             console.log('error: ' + error);
           }, {
@@ -107,17 +149,19 @@ Page({
               // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
               uptoken: res_token.data.data,
             });
-
         }
       }
     })
   },
+
+  /**
+   * 选择照片
+   */
   uploadTap: function () {
     const self = this
-
     wx.chooseImage({
       count: 1, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success(res) {
         self.setData({ disabled: false })
@@ -127,56 +171,8 @@ Page({
       }
     })
   },
-  onLoad: function (options) {
-    console.log('options', options);
-    this.setData({ disabled: true })
-    // this.data.cropperOpt.cut.width = options.width;
-    // this.data.cropperOpt.cut.height = options.height;
-    // this.data.cropperOpt.cut.x = (this.data.cropperOpt.width - options.width) / 2
-    // this.data.cropperOpt.cut.y = (this.data.cropperOpt.height - options.height) / 2;
-    // if (options.activity_id) this.setData({ activity_id: options.activity_id })
-    var o_width = +options.width;
-    var o_height = +options.height;
-    if (o_width > 300) {
-      o_height = o_height * 300 / o_width;
-      o_width = 300;
-    }
-    this.data.cropperOpt.cut = {
-      x: (width - o_width) / 2,
-      y: (height - o_height) / 2,
-      width: o_width,
-      height: o_height,
-    }
-    if (options.user_id) {
-      // this.setData({ uid: options.user_id });
-      // this.uploadTap();
-    }
-    const { cropperOpt } = this.data
 
-    new WeCropper(cropperOpt)
-      .on('ready', (ctx) => {
-        console.log(`wecropper is ready for work!`)
-      })
-      .on('beforeImageLoad', (ctx) => {
-        console.log(`before picture loaded, i can do something`)
-        console.log(`current canvas context:`, ctx)
-        wx.showToast({
-          title: '上传中',
-          icon: 'loading',
-          duration: 20000
-        })
-      })
-      .on('imageLoad', (ctx) => {
-        console.log(`picture loaded`)
-        console.log(`current canvas context:`, ctx)
-        wx.hideToast()
-      })
-      .on('beforeDraw', (ctx, instance) => {
-        console.log(`before canvas draw,i can do something`)
-        console.log(`current canvas context:`, ctx)
-      })
-      .updateCanvas()
-  },
+
   onShow: function () {
 
   }

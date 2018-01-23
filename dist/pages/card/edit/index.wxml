@@ -1,3 +1,6 @@
+<import src="../../../packages/@wux/components/toptips/toptips.wxml"/>
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
 <form bindsubmit="submitForm" report-submit="true">
   <view class="header-box"></view>
   <view class="show-box">
@@ -93,7 +96,7 @@
                   value="{{form.time}}"
                   start="7:00" end="23:59"
                   bindchange="bindEndTimeChange"
-                  name="end_time"
+                  name="time"
                   style='margin-right:10px;'
                 >
                   <view class="weui-input">{{form.time}}</view>
@@ -121,7 +124,12 @@
                                 data-url="{{form.cover.url}}"/>
                             </view>
                           </view>
-                          <view class="loear-uploder__tips" bindtap="chooseImage" data-img="{{form.cover}}">
+                          <view 
+                            class="loear-uploder__tips" 
+                            bindtap="chooseImage" 
+                            data-img="{{form.cover}}"
+                            data-name="cover"
+                          >
                             <text class="fa fa-refresh"></text> 更换加载页图片
                           </view>
                       </view>
@@ -164,11 +172,15 @@
                             />
                           </view>
                         </view>
-                        <view class="loear-uploder__tips" bindtap="chooseImage" data-img="{{form.wedding_video_cover}}">
+                        <view 
+                          class="loear-uploder__tips"
+                          bindtap="chooseImage"
+                          data-img="{{form.wedding_video_cover}}"
+                          data-name="wedding_video_cover"
+                        >
                           <text class="fa fa-refresh"></text> 更换视频截图
                         </view>
-                      
-                      
+
                     </view>
                   </view>
                 </view>
@@ -200,7 +212,7 @@
                         class="loear-uploder__tips"
                         bindtap="chooseImage"
                         data-img="{{item.img}}"
-                        data-tag_name="{{item.tag_name}}"
+                        data-name="{{item.tag_name}}"
                       >
                         <text class="fa fa-refresh"></text> 更换照片
                       </view>
@@ -217,7 +229,7 @@
           <view class="weui-cells weui-cells_after-title cells-loear">              
             <radio-group bindchange="radioChange">
               <label class="weui-cell weui-check__label cell-loear" wx:for="{{music_list}}" wx:key="value">
-                  <radio class="weui-check" name="music_id" value="{{item.id}}" checked="{{item.checked}}"/>
+                  <radio class="weui-check" name="music_id" value="{{item.id}}" checked="{{ item.checked }}"/>
                   <!-- <view class="weui-cell__bd" bindtap="playMusic" data-url="{{item.url}}">{{item.name}}.mp3</view> -->
                   <view class="page-section page-section-gap" style="text-align: center;display:flex;">
                     <audio 
@@ -225,7 +237,7 @@
                       src="{{item.url}}" 
                       poster="http://qiniu.juhuibei.com/card_2018/music/music_bg.jpg"
                       name="{{item.name}}"
-                      author=""
+                      author="{{item.checked}}"
                       action="{{audioAction}}"
                       controls
                     >
@@ -243,6 +255,8 @@
   </view>
 
   <view class="submit-box" hover-class="submit-btn_active">
-    <view class="submit-btn">保存</view>
+    <button class="submit-btn" formType="submit" hover-class="submit-active">
+      保存
+    </button>
   </view>
 </form>

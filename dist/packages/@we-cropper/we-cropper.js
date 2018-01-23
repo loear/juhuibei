@@ -317,8 +317,10 @@ function methods () {
           y: y,
           width: width,
           height: height,
-          destWidth: width / deviceRadio,
-          destHeight: height / deviceRadio,
+          // destWidth: width / deviceRadio,
+          // destHeight: height / deviceRadio,
+          destWidth: width,
+          destHeight: height,
           success: function success (res) {
             isFunction(fn) && fn.call(self, res.tempFilePath);
           },

@@ -1,4 +1,8 @@
+import { $wuxToptips } from '../../../packages/@wux/components/wux';
+import WxValidate from '../../../common/assets/plugins/WxValidate';
 import api from '../../../api/api_v1.js'
+import { Cache } from '../../../utils/cache.js';
+var cache = new Cache();
 Page({
 
   /**
@@ -31,24 +35,23 @@ Page({
     music_list: [],
     tag: []
   },
+  music_id: 0,
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      imgUrls: [
-        { index: 1},
-        { index: 2},
-        { index: 3}
-      ],
-      date: "2018-5-20",
-      time: "12:00",
-      address: "选择",
-    })
-    this.editCardInfo(options.card_id);
+    this.initValidate();  // 先初始化验证器
+    let uid = cache.get('uid');
+    let card_id = options.card_id;
+    if (uid && card_id) {
+      this.editCardInfo(card_id);
+    }
   },
 
+  /**
+   * 获取卡信息 | api
+   */
   editCardInfo: function (card_id) {
     let that = this;
     api.editCardInfo({
@@ -69,6 +72,104 @@ Page({
   },
 
   /**
+   * 初始化验证器
+   */
+  initValidate: function() {
+    this.WxValidate = new WxValidate({
+      bride_name: { required: true },
+      bride_phone: { tel: true },
+      bridegroom_name: { required: true },
+      bridegroom_phone: { tel: true },
+      wedding_video: { url: true }
+    }, {
+        bride_name: {
+          required: '需输入新娘姓名',
+        },
+        bride_phone: {
+          tel: '请输入正确的手机号',
+        },
+        bridegroom_name: {
+          required: '需输入新娘姓名',
+        },
+        bridegroom_phone: {
+          tel: '请输入正确的手机号',
+        },
+        wedding_video: {
+          url: '请输入正确的视频链接',
+        }
+      })
+  },
+
+  /**
+   * 表单提交
+   */
+  submitForm: function (e) {
+    console.log('submitForm', e);
+    console.log(this.music_id, e);
+    let that = this;
+    const params = e.detail.value;
+    if (!this.WxValidate.checkForm(e)) {
+      const error = this.WxValidate.errorList[0]
+      this.showToptips(error)
+      return false
+    }
+    if (this.data.form.wedding_address == '选择') {
+      this.showToptips({ msg: '请选择婚礼地址' })
+      return false
+    }
+    
+    let data = {
+      form_id: e.detail.formId,
+      bride_name: params.bride_name,
+      bride_phone: params.bride_phone,
+      bridegroom_name: params.bridegroom_name,
+      bridegroom_phone: params.bridegroom_phone,
+      date: params.date,
+      time: params.time,
+      wedding_video: params.wedding_video,
+      latitude: this.data.form.latitude,
+      longitude: this.data.form.longitude,
+      longitude: this.data.form.longitude,
+      wedding_address: this.data.form.wedding_address
+    }
+    console.log(data);
+
+    // api.saveCard({
+    //   method: 'post',
+    //   data: data,
+    //   success: (res) => {
+    //     console.log('saveCard', res);
+    //     wx.showToast({
+    //       title: '提交成功',
+    //       icon: 'success',
+    //       duration: 1000,
+    //       success: function () {
+    //         wx.redirectTo({
+    //           url: '/pages/home/index'
+    //         });
+    //       }
+    //     });
+    //   }
+    // })
+
+    $wuxToptips.success({
+      hidden: !0,
+      text: '提交成功'
+    })
+  },
+
+  /**
+   * 错误提示
+   */
+  showToptips(error) {
+    const hideToptips = $wuxToptips.show({
+      timer: 3000,
+      text: error.msg || '请填写正确的字段',
+      success: () => console.log('toptips', error)
+    })
+  },
+
+  /**
    * 预览图片
    */
   previewImage: function(e) {
@@ -83,7 +184,7 @@ Page({
    */
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
-    this.data.form.music_id = e.detail.value;
+    this.music_id = e.detail.value;
     let music_list = this.data.music_list;
     for (let i = 0, len = music_list.length; i < len; ++i) {
       music_list[i].checked = music_list[i].id == e.detail.value;
@@ -103,13 +204,15 @@ Page({
    * 更换地址
    */
   chooseLocation: function () {
+    let form = this.data.form;
     let that = this;
     wx.chooseLocation({
       success: function (ret) {
         console.log('chooseLocation', ret)
-        this.data.form.latitude        = +ret.latitude;
-        this.data.form.longitude       = +ret.longitude;
-        this.data.form.wedding_address = ret.address;
+        form.latitude        = +ret.latitude;
+        form.longitude       = +ret.longitude;
+        form.wedding_address = ret.name;
+        that.setData({ form: form });
       },
       cancel: function () {
         console.log('chooseLocation', '取消了选择');
@@ -121,11 +224,15 @@ Page({
    * 上传图片
    */
   chooseImage: function (e) {
-    var width = e.target.dataset.img.width;
-    var height = e.target.dataset.img.height;
-    wx.navigateTo({
-      url: '../cut/index?width=' + width + '&height=' + height
-    })   
+    let width = e.target.dataset.img.width;
+    let height = e.target.dataset.img.height;
+    let name = e.target.dataset.name;
+    if (width && height && name) {
+      wx.navigateTo({
+        url: '../cut/index?width=' + width + '&height=' + height + '&name=' + name 
+      })
+    }
+    
   },
 
   /**
