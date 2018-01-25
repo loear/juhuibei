@@ -22,7 +22,8 @@
     "pages/card/order/index",
     "pages/card/my/index",
     "pages/my/index",
-    "pages/card/code/index"
+    "pages/card/code/index",
+    "pages/card/bless/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -152,16 +152,18 @@ Page({
       success: (res) => {
         console.log('saveCard', res);
         if (res.data.res === 0) {
-          $wuxToptips.success({
-            hidden: !0,
-            text: '提交成功'
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success',
+            duration: 1000,
+            success: function () {
+              wx.redirectTo({ url: '/pages/card/my/index' });
+            }
           });
-          wx.redirectTo({ url: '/pages/card/my/index' });
         }
       }
     })
 
-    
   },
 
   /**

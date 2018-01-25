@@ -52,6 +52,7 @@ const getVipInfo          = (params) => wxRequest(params, host + 'vip_info');
 const coverMakeCard       = (params) => wxRequest(params, host + 'cover_make');
 const createCard          = (params) => wxRequest(params, host + 'create_card');
 const saveCard            = (params) => wxRequest(params, host + 'save_card');
+const saveBless           = (params) => wxRequest(params, host + 'save_bless');
 
 module.exports = {
   getActivityList,
@@ -78,5 +79,6 @@ module.exports = {
   getVipInfo,
   coverMakeCard,
   createCard,
-  saveCard
+  saveCard,
+  saveBless
 }
