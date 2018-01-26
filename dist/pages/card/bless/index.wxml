@@ -2,6 +2,8 @@
 <template is="toptips" data="{{ ...$wux.toptips }}"/>
 <import src="../../../packages/@wux/components/dialog/dialog.wxml"/>
 <template is="dialog" data="{{ ...$wux.dialog }}"/>
+<import src="../../../packages/@wux/components/toast/toast.wxml"/>
+<template is="toast" data="{{ ...$wux.toast }}"/>
 
 <form bindsubmit="submitForm" report-submit="true">
   <view class="header-box"></view>
@@ -95,13 +97,11 @@
           </view>
         </view>
       </block>
-      <block wx:else>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell">
-              <view class="weui-cell__bd">
-                  <textarea class="weui-textarea loear-textarea" placeholder="写下祝福的话语" name="content" />
-              </view>
-          </view>
+      <block wx:else>       
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea loear-textarea" placeholder="写下祝福的话语" name="content" />
+            </view>
         </view>
       </block>
       

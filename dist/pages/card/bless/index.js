@@ -1,5 +1,6 @@
 import { $wuxToptips } from '../../../packages/@wux/components/wux';
 import { $wuxDialog } from '../../../packages/@wux/components/wux';
+import { $wuxToast } from '../../../packages/@wux/components/wux'
 import WxValidate from '../../../common/assets/plugins/WxValidate';
 import { Token } from '../../../utils/token.js';
 import api from '../../../api/api_v1.js'
@@ -100,7 +101,8 @@ Page({
         this.showToptips({msg:'录一段祝福的话吧'})
         return false;
       }
-      this.saveQiniu(this.data.tempFilePath, data);
+      // this.saveQiniu(this.data.tempFilePath, data);
+      this.saveVoice(this.data.tempFilePath, data);
     } else {  // 文字祝福
       if (!params.content) {
         this.showToptips({msg:'请输入祝福的话语'})
@@ -108,36 +110,58 @@ Page({
       }
       data.cate_id = 1;
       data.content = params.content;
-      this.saveBless(data);``
+      this.saveBless(data);
     }
 
   },
 
+  saveVoice: function (url, data) {
+    let that = this;
+    wx.uploadFile({
+      url: 'https://www.juhuibei.com/api/v1/save_voice',
+      filePath: url,
+      name: 'voice',
+      formData: data,
+      success: function (res) {
+        console.log('saveVoice', res.data);
+        let url_df = res.data.replace("\\", "");
+        url_df = "https://www.juhuibei.com/card/voice/" + url_df;
+        url_df = url_df.replace("\"", "");
+        url_df = url_df.replace("\"", "");
+        if (url_df) {
+          data.cate_id = 2;
+          data.content = url_df;
+          that.saveBless(data);
+        }
+      }
+    })
+  },
+
   saveBless: function (data) {
+    let that = this;
     console.log('saveBless', data);
     api.saveBless({
       method: 'post',
       data: data,
       success: (res) => {
         console.log('saveBless', res);
+        let url = 'https://www.juhuibei.com/card/' + that.card_id;
         if (res.data.res === 0) {
-          wx.showToast({
-            title: '提交成功',
-            icon: 'success',
-            duration: 1000,
-            complete: function () {
-              wx.navigateBack({ delta: 1 });
-            }
-          });
+          $wuxToast.show({
+            type: 'text',
+            timer: 1000,
+            color: '#FFFFF',
+            text: '提交成功',
+            success: () => wx.redirectTo({ url: '../view/index?url=' + url })
+          })
         } else if (res.data.res === 1) {
-          wx.showToast({
-            title: '您已经祝福过了',
-            icon: 'none',
-            duration: 1000,
-            complete: function () {
-              wx.navigateBack({ delta: 1 });
-            }
-          });
+          $wuxToast.show({
+            type: 'text',
+            timer: 2000,
+            color: '#FF4444',
+            text: '您已经祝福过了',
+            success: () => wx.redirectTo({ url: '../view/index?url=' + url })
+          })
         }
       }
     })
@@ -270,6 +294,7 @@ Page({
   * 将录音保存到七牛
   */
   saveQiniu: function (src, data) {
+    console.log(1);
     let that = this;
     // 先获取上传TOKEN
     api.getUploadToken({
