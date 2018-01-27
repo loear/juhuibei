@@ -51,6 +51,10 @@ exports.default = Component({
     avatar_url: {
       type:String,
       value: ''
+    },
+    start_date: {
+      type: String,
+      value: ''
     }
   },
   data: {

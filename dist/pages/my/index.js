@@ -57,14 +57,14 @@ Page({
             vip_info: that.data.vip[index]
           })
 
-          wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: that.data.vip[index].color,
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
-          })
+          // wx.setNavigationBarColor({
+          //   frontColor: '#ffffff',
+          //   backgroundColor: that.data.vip[index].color,
+          //   animation: {
+          //     duration: 400,
+          //     timingFunc: 'easeIn'
+          //   }
+          // })
 
         }
 

@@ -1,5 +1,5 @@
 <view class="container my-container" >
-  <view class="my-header" style="background-color:{{vip_info.color}}">
+  <view class="my-header">
     <view class="my-avatar">
       <image class="my-avatar-img" src="{{user_info.avatar_url}}" mode="aspectFill"></image>
       <text class="name">{{user_info.nickname}}</text>
@@ -9,6 +9,7 @@
 </view>
 
 <block wx:if="{{uid}}">
+  <view class="scroll">
   <view class="weui-cells__title">聚会活动</view>
   <view class="weui-cells weui-cells_after-title">
       <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
@@ -48,4 +49,26 @@
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
   </view>
+  </view>
 </block>
+<view style="height:160rpx"></view>
+<view class="menu">
+  <navigator url="/pages/card/theme/index">
+    <view class="menu-btn menu-card">
+      <text class="fa fa-eye"></text> 婚礼请柬
+    </view>
+  </navigator>
+  
+  <navigator url="/pages/activity/index">
+    <view class="menu-btn menu-active">
+      发布活动
+    </view>
+  </navigator>
+  
+  <navigator url="/pages/my/index">
+    <view class="menu-btn menu-user">
+      <text class="fa fa-user"></text> 个人中心
+    </view>
+  </navigator>
+  
+</view>

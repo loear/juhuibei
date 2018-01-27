@@ -1,8 +1,23 @@
+.example--date {
+  width:100%;
+  text-align:center;
+  font-size:10px;
+}
+
+.example--date-text {
+  display: inline-block;
+  margin: 20rpx 0;
+  padding: 5rpx 15rpx;
+  background: #D4D4D4;
+  color: #FFFFFF;
+  border-radius: 2px;
+}
+
 .example--box {
   overflow: hidden;
   /* border: 1rpx solid #e0e0e0; */
   border-radius: 4px;
-  margin: 30rpx 0 0;
+  margin-bottom: 30rpx;
   transition: all .2s ease;
   box-shadow: 0 0 1rpx rgba(0, 0, 0, .15); 
   z-index: 10;
@@ -31,7 +46,7 @@
 
 .label-coming {
   position: relative;
-  left:20rpx;
+  left:10rpx;
   top:0rpx;
 }
 
@@ -45,12 +60,11 @@
 .label-coming-btn {
   display: inline-block;
   margin-top: 70px;
-  width: 100px;
+  width: 120px;
   height: 40px;
   border-radius: 20px;
-  background: #FF4444;
-  /* opacity:0.9;   */
-  color: #fadd9d;
+  background: #FF7777;
+  color: #FFFFFF;
   line-height: 40px; 
   box-shadow:0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(255, 119, 119, 0.28);
 }
@@ -81,7 +95,7 @@
 
 .meta-desc {
   /* margin-top: 20rpx; */
-  color: #777;
+  color: #969696;
   font-size: 10px;
 }
 

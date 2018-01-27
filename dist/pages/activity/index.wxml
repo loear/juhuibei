@@ -1,46 +1,57 @@
 <import src="../../packages/@wux/components/toptips/toptips.wxml"/>
-
 <template is="toptips" data="{{ ...$wux.toptips }}"/>
-
 <import src="../../packages/@wux/components/dialog/dialog.wxml"/>
-
 <template is="dialog" data="{{ ...$wux.dialog }}"/>
-
-<view class="page">
-  <view class="page__bd">
+<view class="header-box"></view>
+<view class="show-box">
     <form bindsubmit="submitForm" report-submit="true">
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="聚会主题" name="title"/>
-            </view>
+      <view class="weui-cells weui-cells_after-title ">
+        <!-- 聚会主题 -->
+        <view class="weui-cell weui-cell_input loear-title">
+          <view class="weui-cell__bd">
+            <input 
+              class="weui-input" 
+              placeholder="聚会主题"
+              name="title"
+            />
+          </view>
         </view>
+        <!-- 活动详情  -->
         <view class="weui-cell">
-            <view class="weui-cell__bd">
-              <view class="textarea-wrp">
-                <textarea bindblur="bindTextAreaBlur" auto-height class="weui-textarea" placeholder="活动详情" style="height: 3.3em" placeholder-class="placeholder" name="description"/>
-              </view>
-              <view class="weui-uploader">
-                <view class="weui-uploader__bd">
-                  <view class="weui-uploader__files" id="uploaderFiles">
-                      <block wx:for="{{files}}" wx:key="item">
-                        <view class="weui-uploader__file" bindtap="previewImage" id="{{item.url}}">
-                          <image class="weui-uploader__img" src="{{item.url}}" mode="aspectFill" />
-                        </view>
-                      </block>
-                  </view>
-                  <view wx:if="{{has_image}}">
-                    <view class="loear-uploder__tips" bindtap="chooseImage">更换图片</view>
-                  </view>
-                  <view wx:else>
-                    <view class="weui-uploader__input-box">
-                      <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          <view class="weui-cell__bd">
+            <view class="textarea-wrp">
+              <textarea 
+                bindblur="bindTextAreaBlur" 
+                auto-height 
+                class="weui-textarea" 
+                placeholder="活动详情" 
+                style="height: 3.3em" 
+                placeholder-class="placeholder" 
+                name="description"
+              />
+            </view>
+            <!-- 背景图片  -->
+            <view class="weui-uploader">
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{files}}" wx:key="item">
+                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item.url}}">
+                      <image class="weui-uploader__img" src="{{item.url}}" mode="aspectFill" />
                     </view>
-                    <view class="loear-uploder__tips">背景图片</view>
+                  </block>
+                </view>
+                <view wx:if="{{has_image}}">
+                  <view class="loear-uploder__tips" bindtap="chooseImage">更换图片</view>
+                </view>
+                <view wx:else>
+                  <view class="weui-uploader__input-box">
+                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
                   </view>
+                  <view class="loear-uploder__tips">背景图片</view>
                 </view>
               </view>
             </view>
+          </view>
         </view>
         <!-- 时间 -->
         <view class="weui-cell weui-cell_input" hover-class="weui-cell_active">
@@ -48,12 +59,27 @@
             <view class="weui-label">聚会时间</view>
           </view>
           <view class="weui-cell__bd loear-data">
-            <picker mode="date" value="{{start_date}}" start="2018-01-01" end="2019-01-01" bindchange="bindStartDateChange" name="start_date">
+            <picker 
+              mode="date" 
+              value="{{start_date}}" 
+              start="2018-01-01" 
+              end="2020-01-01" 
+              bindchange="bindStartDateChange" 
+              name="start_date"
+            >
               <view class="weui-input">{{start_date}}</view>
             </picker>
           </view>
           <view class="loear-time">
-            <picker mode="time" value="{{start_time}}" start="07:01" end="23:59" bindchange="bindStartTimeChange" name="start_time">
+            <picker 
+              mode="time" 
+              value="{{start_time}}" 
+              start="07:00" 
+              end="23:59" 
+              bindchange="bindStartTimeChange" 
+              name="start_time"
+              style='margin-right:10px;'
+            >
               <view class="weui-input">{{start_time}}</view>
             </picker>
           </view>
@@ -110,33 +136,37 @@
             </picker>
           </view>
           <view class="loear-time">
-            <picker mode="time" value="{{end_time}}" start="7:01" end="23:59" bindchange="bindEndTimeChange" name="end_time">
+            <picker 
+              mode="time" 
+              value="{{end_time}}" 
+              start="7:00" 
+              end="23:59" 
+              bindchange="bindEndTimeChange" 
+              name="end_time"
+              style='margin-right:10px;'
+            >
               <view class="weui-input">{{end_time}}</view>
             </picker>
           </view>
         </view>
       </view>
-      
-       <checkbox-group bindchange="bindAgreeChange">
-            <label class="weui-agree" for="weuiAgree">
-                <view class="weui-agree__text">
-                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
-                    <view class="weui-agree__checkbox-icon">
-                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
-                    </view>
-                    关于<navigator url="/pages/about/index" class="weui-agree__link">《聚会呗》</navigator>
-                </view>
-            </label>
-        </checkbox-group>
 
-      <view class="loear-submit-space"></view>
-      <view class="loear-submit">
-        <view class="button-sp-area">
-          <button class="loear-btn" formType="submit" hover-class="active-state">
-            <image src="/common/assets/images/icon_tj.png" class="loear-icon"></image>
-          </button>
-        </view>
-      </view>
+      <checkbox-group bindchange="bindAgreeChange">
+        <label class="weui-agree" for="weuiAgree">
+          <view class="weui-agree__text">
+            <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+            <view class="weui-agree__checkbox-icon">
+                <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+            </view>
+            关于<navigator url="/pages/about/index" class="weui-agree__link">《聚会呗》</navigator>
+          </view>
+        </label>
+      </checkbox-group>
+
+      <view class="submit-box" hover-class="submit-btn_active">
+        <button class="submit-btn" formType="submit" hover-class="submit-active">
+          立即发布
+        </button>
+      </view>      
     </form>
-  </view>
 </view>

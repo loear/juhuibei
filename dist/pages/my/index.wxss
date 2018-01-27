@@ -24,6 +24,10 @@
   border-radius: 50%;
 }
 
+.my-header {
+  background: #FF7777;
+}
+
 .my-header text{
   margin-top: 20rpx;
   display: inline-block;
@@ -42,4 +46,71 @@
   text-align: center;
   line-height: 40rpx;
   opacity: 0.4;
+}
+
+.weui-cells:after {
+  border-bottom: none;
+}
+
+.weui-cells:before {
+   border-top:none;
+}
+
+.weui-cell:before {
+  border-top:1rpx solid #F8F8F8;
+}
+
+.weui-cells {
+  font-size: 14px;
+}
+
+.menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160rpx;
+  text-align: center;
+  z-index: 10000;
+  background-image: linear-gradient(-180deg,rgba(236,236,234,.00) 0, #FFFFFF 50%);
+}
+
+.menu-btn {
+  font-size: 12px;
+  display: inline-block;
+  width: 140rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  margin-top: 80rpx;
+  color: #FFFFFF;
+  background: #FF7777;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(255, 119, 119, 0.28);
+}
+
+.menu-card {
+  position: absolute;
+  left: 120rpx;
+  bottom: 50rpx;
+  font-size: 10px;
+}
+
+.menu-active {
+  width: 150rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  border-radius: 50%;
+  margin-top: 0;
+}
+
+.menu-user {
+  position: absolute;
+  right: 120rpx;
+  bottom: 50rpx;
+  font-size: 10px;
+}
+
+.scroll {
+  height: calc(100% - 420rpx);
+  overflow: scroll;
 }

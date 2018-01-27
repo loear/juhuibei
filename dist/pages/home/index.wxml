@@ -34,6 +34,7 @@
           longitude="{{item.longitude}}"
           uid="{{uid}}"
           avatar_url="{{item._master.user.avatar_url}}"
+          start_date="{{item._start_date}}"
         >
         </example-demo>
         </block>
@@ -46,7 +47,7 @@
       <view class="menu">
         <navigator url="/pages/card/theme/index">
           <view class="menu-btn menu-card">
-            <text class="fa fa-eye"></text> 邀请函
+            <text class="fa fa-eye"></text> 婚礼请柬
           </view>
         </navigator>
         
@@ -58,7 +59,7 @@
         
         <navigator url="/pages/my/index">
           <view class="menu-btn menu-user">
-            <text class="fa fa-user"></text> 我的
+            <text class="fa fa-user"></text> 个人中心
           </view>
         </navigator>
         

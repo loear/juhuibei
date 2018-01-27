@@ -28,7 +28,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "backgroundColor": "#FFFFFF",
-    "navigationBarBackgroundColor": "#313538",
+    "navigationBarBackgroundColor": "#ff7777",
     "navigationBarTitleText": "聚会呗",
     "navigationBarTextStyle": "#FFFFFF"
   },

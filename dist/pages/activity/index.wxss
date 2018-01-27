@@ -30,9 +30,9 @@
 }
 .loear-time{
   text-align: right;
-  padding-left:10px;
-  border-left:1px dashed #ddd;
-  margin-left:10px;
+  padding-left:20px;
+  border-left:1px solid #f8f8f8;
+  margin-left:20px;
 }
 .loear-right{
   text-align: right;
@@ -78,4 +78,65 @@
   line-height: 200rpx;
   text-align: center;
   background: #fff;
+}
+
+.weui-cells:after {
+  border-bottom: none;
+}
+
+.weui-cells:before {
+   border-top:none;
+}
+
+.weui-cell:before {
+  border-top:1rpx solid #F8F8F8;
+}
+
+.weui-cells {
+  font-size: 14px;
+}
+
+.loear-title {
+  font-size: 17px;
+}
+
+.header-box{
+  height: 2%;
+}
+
+.show-box {
+  width: 94%;
+  height: 85%;
+  margin: 0 3%;
+  border-radius: 15rpx;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
+  overflow: scroll;
+}
+
+.submit-box {
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  width: 94%;
+  height: 100rpx;
+  margin: 0 3%;
+  border-radius: 15rpx;
+  background: #8DC048;
+  text-align: center;
+  color: #FFF;
+  line-height: 100rpx;
+  box-shadow:0 0 4px rgba(255, 119, 119, 0.14),0 4px 8px rgba(255, 119, 119, 0.28);
+}
+
+.submit-btn {
+  color: #FFFFFF;
+  background: #FF7777;
+  display: inline-block;
+  width:100%;
+  height:100rpx;
+  line-height: 100rpx;
+}
+
+.submit-btn::after {
+  border: 0;
 }
