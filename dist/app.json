@@ -23,7 +23,9 @@
     "pages/card/my/index",
     "pages/my/index",
     "pages/card/code/index",
-    "pages/card/bless/index"
+    "pages/card/bless/index",
+    "pages/my/act-created/index",
+    "pages/my/act-joined/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

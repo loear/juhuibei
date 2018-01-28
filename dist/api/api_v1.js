@@ -53,6 +53,8 @@ const coverMakeCard       = (params) => wxRequest(params, host + 'cover_make');
 const createCard          = (params) => wxRequest(params, host + 'create_card');
 const saveCard            = (params) => wxRequest(params, host + 'save_card');
 const saveBless           = (params) => wxRequest(params, host + 'save_bless');
+const getActivityCreated  = (params) => wxRequest(params, host + 'activity_created');
+const getActivityjoined   = (params) => wxRequest(params, host + 'activity_joined');
 
 module.exports = {
   getActivityList,
@@ -80,5 +82,7 @@ module.exports = {
   coverMakeCard,
   createCard,
   saveCard,
-  saveBless
+  saveBless,
+  getActivityCreated,
+  getActivityjoined
 }

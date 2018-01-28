@@ -51,7 +51,7 @@
           </view>
         </navigator>
         
-        <navigator url="/pages/activity/index">
+        <navigator url="/pages/activity/index" style="width: 150rpx;height: 150rpx;border-radius: 50%;display: inline-block">
           <view class="menu-btn menu-active">
             发布活动
           </view>
