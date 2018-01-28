@@ -106,5 +106,9 @@ exports.default = Page({
   onPullDownRefresh: function() {
     this.loadActivityList(this.data.uid);
     wx.stopPullDownRefresh();
+  },
+
+  onRefresh: function () {
+    this.loadActivityList(this.data.uid);
   }
 });

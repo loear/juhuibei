@@ -96,18 +96,35 @@
   box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(255, 119, 119, 0.28);
 }
 
+.menu-home {
+  position: absolute;
+  left: 30rpx;
+  bottom: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #FF7777;
+  background: #FFFFFF;
+}
+
+.menu-refresh {
+  position: absolute;
+  right: 30rpx;
+  bottom: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #FF7777;
+  background: #FFFFFF;
+}
+
 .menu-card {
   position: absolute;
   left: 120rpx;
   bottom: 50rpx;
   font-size: 10px;
-}
-
-.menu-home {
-  width: 150rpx;
-  height: 150rpx;
-  border-radius: 50%;
-  display: inline-block;
 }
 
 .menu-active {

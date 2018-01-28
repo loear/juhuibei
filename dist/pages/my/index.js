@@ -120,5 +120,9 @@ Page({
    */
   onShareAppMessage: function () {
     return false;
+  },
+  
+  onRefresh: function () {
+    this._onLoad();
   }
 })

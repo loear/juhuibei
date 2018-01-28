@@ -45,9 +45,16 @@
 
     <layout-foot>
       <view class="menu">
+
+        <navigator url="/pages/home/index" open-type="reLaunch">
+          <view class="menu-btn menu-home">
+            <text class="fa fa-home fa-fw"></text>
+          </view>
+        </navigator>
+
         <navigator url="/pages/card/theme/index">
           <view class="menu-btn menu-card">
-            <text class="fa fa-eye"></text> 婚礼请柬
+            <text class="fa fa-eye fa-fw"></text> 婚礼请柬
           </view>
         </navigator>
         
@@ -59,9 +66,13 @@
         
         <navigator url="/pages/my/index">
           <view class="menu-btn menu-user">
-            <text class="fa fa-user"></text> 个人中心
+            <text class="fa fa-user fa-fw"></text> 个人中心
           </view>
         </navigator>
+
+        <view class="menu-btn menu-refresh" bindtap="onRefresh">
+          <text class="fa fa-refresh fa-fw"></text>
+        </view>
         
       </view>
     </layout-foot>
