@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 16,
 			"list": [
 				{
 					"id": 0,
@@ -158,6 +158,18 @@
 					"name": "祝福",
 					"pathName": "pages/card/bless/index",
 					"query": "card_id=96"
+				},
+				{
+					"id": -1,
+					"name": "视频",
+					"pathName": "pages/card/video/index",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "G_784qF15Y-vrjve_WvFfskVkSWmXWNCBT-Qavm0SLU@cr4dev",
+						"shareKey": "acnSXiNBf8nIhFZH9WmwVwG3bzAqjNHkeK871eIw9NjToXsp4803B-MyynYjeE7c2R8pF8jeGsPpGl5wZtw3ew~~"
+					}
 				}
 			]
 		}

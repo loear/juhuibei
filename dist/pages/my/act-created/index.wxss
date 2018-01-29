@@ -251,7 +251,7 @@
   position: absolute;
   left: 120rpx;
   bottom: 50rpx;
-  font-size: 10px;
+  font-size: 20rpx;
 }
 
 .menu-active {
@@ -266,5 +266,5 @@
   position: absolute;
   right: 120rpx;
   bottom: 50rpx;
-  font-size: 10px;
+  font-size: 20rpx;
 }

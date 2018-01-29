@@ -27,7 +27,8 @@
     "pages/my/act-created/index",
     "pages/my/act-joined/index",
     "pages/my/act-book/index",
-    "pages/my/card-book/index"
+    "pages/my/card-book/index",
+    "pages/card/video/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
