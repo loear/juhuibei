@@ -25,7 +25,9 @@
     "pages/card/code/index",
     "pages/card/bless/index",
     "pages/my/act-created/index",
-    "pages/my/act-joined/index"
+    "pages/my/act-joined/index",
+    "pages/my/act-book/index",
+    "pages/my/card-book/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

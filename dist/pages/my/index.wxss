@@ -68,8 +68,12 @@
 }
 
 .weui-cells {
-  font-size: 34rpx;
+  font-size: 28rpx;
   color: #777;
+}
+
+.weui-cell {
+  padding:15px 15px;
 }
 
 .menu {
@@ -145,4 +149,20 @@
 .scroll {
   height: calc(100% - 420rpx);
   overflow: scroll;
+}
+
+.cantact-btn {
+  border-radius: 0;
+  width: 100%;
+  background: #FFFFFF;
+  font-size:28rpx;
+  text-align:left;
+  color:inherit;
+  padding:10px 15px;
+}
+
+.cantact-btn::after{
+  border-radius:0;
+  border: 0;
+  font-size:28rpx;
 }

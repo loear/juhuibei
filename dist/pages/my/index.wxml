@@ -17,10 +17,10 @@
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       <navigator url="act-joined/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd"><text class="fa fa-group fa-fw" style="margin-right: 20rpx"/>我参加的</view>
+        <view class="weui-cell__bd"><text class="fa fa-check-square fa-fw" style="margin-right: 20rpx"/>我参加的</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <navigator url="act-book/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd"><text class="fa fa-question-circle fa-fw" style="margin-right: 20rpx"/>聚会锦囊</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
@@ -40,7 +40,7 @@
         <view class="weui-cell__bd"><text class="fa fa-envelope fa-fw" style="margin-right: 20rpx"/>请柬回执</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <navigator url="card-book/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd"><text class="fa fa-question-circle fa-fw" style="margin-right: 20rpx"/>制作教程</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
@@ -52,6 +52,14 @@
         <view class="weui-cell__bd"><text class="fa fa-level-up fa-fw" style="margin-right: 20rpx"/>升级会员</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
+      <!-- <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd"><text class="fa fa-pencil-square fa-fw" style="margin-right: 20rpx"/>意见反馈</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator> -->
+      <button class="cantact-btn weui-cell weui-cell_access" open-type="contact">
+        <view class="weui-cell__bd"><text class="fa fa-comments fa-fw" style="margin-right: 20rpx"/>联系客服</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </button>
     </view>
   </view>
 </block>

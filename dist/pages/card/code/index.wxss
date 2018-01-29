@@ -10,7 +10,7 @@ canvas{
 .show-box {
   width: 94%;
   margin: 0 3%;
-  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
+  box-shadow:0 0 4px rgba(255, 119, 119, 0.14),0 4px 8px rgba(255, 119, 119, 0.28);
   overflow: hidden;
 }
 
@@ -21,10 +21,10 @@ canvas{
   width: 94%;
   height: 100rpx;
   margin: 0 3%;
-  border-radius: 15rpx;
-  background: #8DC048;
+  border-radius: 10rpx;
+  background: #FF7777;
   text-align: center;
   color: #FFF;
   line-height: 100rpx;
-  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
+  box-shadow:0 0 4px rgba(255, 119, 119, 0.14),0 4px 8px rgba(255, 119, 119, 0.28);
 }

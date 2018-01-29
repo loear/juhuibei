@@ -91,27 +91,29 @@
         </view>
       </view>
 
-      <view class="weui-cells__title">方便成员联系您</view>
+      <view class="weui-cells__title"> </view>
       <view class="weui-cells weui-cells_after-title">
         <!--人数上限-->
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-            <view class="weui-label">姓名</view>
+            <view class="weui-label">发起人</view>
           </view>
           <input class="weui-input loear-right" placeholder="请输入您的姓名" placeholder-class='loear-right' name="username" value="{{username}}"/>
         </view>
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-            <view class="weui-label">手机</view>
+            <view class="weui-label">手机号</view>
           </view>
           <input class="weui-input loear-right" type="number" placeholder="请输入您的手机号" placeholder-class='loear-right' name="phone" value="{{phone}}"/>
         </view>
-      </view>
-
-      <view class="weui-cells__title">限制条件(可不填)</view>
-      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">限制条件</view>
+            <view class="weui-cell__ft">
+                <switch bindchange='showOrHide' color="#FF7777"/>
+            </view>
+        </view>
         <!--人数上限-->
-        <view class="weui-cell weui-cell_input">
+        <view class="weui-cell weui-cell_input {{show ? 'show' : 'hide'}}">
           <view class="weui-cell__hd">
             <view class="weui-label">人数上限</view>
           </view>
@@ -126,7 +128,7 @@
           </view>
         </view> -->
         <!-- 时间 -->
-        <view class="weui-cell weui-cell_input" hover-class="weui-cell_active">
+        <view class="weui-cell weui-cell_input {{show ? 'show' : 'hide'}}" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
             <view class="weui-label">截止报名时间</view>
           </view>
@@ -150,15 +152,15 @@
           </view>
         </view>
       </view>
-
       <checkbox-group bindchange="bindAgreeChange">
         <label class="weui-agree" for="weuiAgree">
           <view class="weui-agree__text">
-            <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+            <!-- <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
             <view class="weui-agree__checkbox-icon">
                 <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
-            </view>
-            关于<navigator url="/pages/about/index" class="weui-agree__link">《聚会呗》</navigator>
+            </view> -->
+            
+            <navigator url="/pages/my/act-book/index" class="weui-agree__link" style='color:#999999'><text class="fa fa-question-circle"/>《聚会锦囊》</navigator>
           </view>
         </label>
       </checkbox-group>

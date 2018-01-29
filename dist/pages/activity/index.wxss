@@ -96,6 +96,7 @@
   font-size: 14px;
 }
 
+
 .loear-title {
   font-size: 17px;
 }
@@ -139,4 +140,13 @@
 
 .submit-btn::after {
   border: 0;
+}
+
+.hide {
+  height:0;
+  overflow:hidden;
+}
+
+.show {
+  height:auto;
 }

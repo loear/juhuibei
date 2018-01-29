@@ -31,7 +31,8 @@ Page({
     image_id: 0,
     uid: 0,
     title: '地图定位',
-    isAgree: true
+    isAgree: true,
+    show: false
   },
   onLoad() {
     var that = this;
@@ -235,5 +236,10 @@ Page({
         console.log('我知道了')
       },
     })
+  },
+  showOrHide: function () {
+    let show = this.data.show;
+    this.setData({ show: !show });
+    console.log(this.data.show);
   }
 })
