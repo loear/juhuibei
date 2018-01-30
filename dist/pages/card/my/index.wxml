@@ -22,7 +22,7 @@
           </view>
         </view>
       </wxc-flex>
-      <view class="item-tigs">点击预览 长按编辑</view>
+      <view class="item-tigs" style="color:{{item.theme.bg_color}}">点击预览 长按编辑</view>
       <view class="date">
         <view class="user-info">
           <view class="avatar change" style="background:{{item.theme.bg_color}}" bindtap="openCode" data-card_id="{{item.id}}">

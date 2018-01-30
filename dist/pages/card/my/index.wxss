@@ -37,6 +37,13 @@ page {
   position: relative;
   top: -30rpx;
   left: 0;
+  animation: 3s opacity2 0s infinite; 
+}
+
+@keyframes opacity2{
+    0%{opacity:0}
+    50%{opacity:.8;}
+    100%{opacity:0;}
 }
 
 .date{
