@@ -7,7 +7,10 @@ function getRandomColor() {
   }
   return '#' + rgb.join('')
 }
-
+const device = wx.getSystemInfoSync();
+const width = device.windowWidth;
+const height = device.windowWidth * 225 / 320;
+import { $wuxToast } from '../../../packages/@wux/components/wux'
 Page({
   onReady: function (res) {
     this.videoContext = wx.createVideoContext('myVideo')
@@ -17,19 +20,38 @@ Page({
     src: '',
     danmuList: [
       {
-        text: '第 1s 出现的弹幕',
-        color: '#ff0000',
+        text: '祝福你们白头到老',
+        color: '#ff7777',
         time: 1
       },
       {
-        text: '第 3s 出现的弹幕',
-        color: '#ff00ff',
+        text: '祝永结同疏',
+        color: '#ff7777',
         time: 3
-      }]
+      }],
+      width: width,
+      height: height,
+      input: '',
+      url: ''
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let url = options.url;
+    if (url) {
+      this.setData({ url: url })
+    }
+  },
+
   bindInputBlur: function (e) {
-    this.inputValue = e.detail.value
+    this.inputValue = e.detail.value,
+    this.setData({
+      input: ''
+    })
   },
+
   bindButtonTap: function () {
     var that = this
     wx.chooseVideo({
@@ -43,10 +65,22 @@ Page({
       }
     })
   },
+
   bindSendDanmu: function () {
+    if (!this.inputValue) {
+      $wuxToast.show({
+        type: 'text',
+        timer: 1500,
+        color: '#fff',
+        text: '请输入弹幕内容',
+        success: () => console.log('请输入弹幕内容')
+      })
+      return false;
+    }
     this.videoContext.sendDanmu({
       text: this.inputValue,
-      color: getRandomColor()
+      color: '#FF7777'
     })
+    this.inputValue = '';
   }
 })

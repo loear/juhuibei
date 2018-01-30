@@ -160,10 +160,10 @@
 					"query": "card_id=96"
 				},
 				{
-					"id": -1,
+					"id": 16,
 					"name": "视频",
 					"pathName": "pages/card/video/index",
-					"query": "",
+					"query": "url=https://oh6qekcx4.qnssl.com/system-20161224-cardvideo.mp4",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",

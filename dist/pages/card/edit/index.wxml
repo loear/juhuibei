@@ -155,6 +155,33 @@
                   value="{{form.wedding_video}}"
                 />
               </view>
+              <!-- 视频  -->
+              <view class="weui-cell">
+                <view class="weui-cell__bd">
+                  <view class="weui-uploader">
+                    <view class="weui-uploader__bd">                    
+                      
+                        <view class="weui-uploader__file">
+                          <image
+                            class="weui-uploader__img"
+                            src="/common/assets/images/video.jpg"
+                            mode="aspectFill"
+                            bindtap="previewVideo"
+                            data-url="{{form.wedding_video}}"
+                          />
+                        </view>
+                        
+                        <view 
+                          class="loear-uploder__tips"
+                          bindtap="chooseImage"
+                        >
+                          <text class="fa fa-refresh"></text> 更换视频
+                        </view>
+
+                    </view>
+                  </view>
+                </view>
+              </view>
               <!-- 视频截图  -->
               <view class="weui-cell">
                 <view class="weui-cell__bd">
