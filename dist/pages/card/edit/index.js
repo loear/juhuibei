@@ -1,6 +1,7 @@
 import { $wuxToptips } from '../../../packages/@wux/components/wux';
 import WxValidate from '../../../common/assets/plugins/WxValidate';
 import api from '../../../api/api_v1.js'
+const qiniuUploader = require("../../../libs/qiniuUploader");
 import { Cache } from '../../../utils/cache.js';
 var cache = new Cache();
 Page({
@@ -31,14 +32,15 @@ Page({
       wedding_video: '',      // 视频地址
       wedding_video_cover: '',// 视频截图
       music_id: 0,            // 背景音乐
+      video_switch: true
     },
     music_list: [],
     tag: [],
     tag_change: 0, // 是否更新tag数据
+    has_video_ori: 0
   },
   music_id: 0,
   card_id: 0,
-  has_video_ori: 0,
 
   /**
    * 生命周期函数--监听页面加载
@@ -67,9 +69,9 @@ Page({
           that.setData({
             form: res.data.data.form,
             music_list: res.data.data.music_list,
-            tag: res.data.data.tag
+            tag: res.data.data.tag,
+            has_video_ori: res.data.data.form.has_video
           });
-          that.has_video_ori = res.data.data.form.has_video
         }
       }
     })
@@ -125,7 +127,6 @@ Page({
     let wedding_video = ''
     let wedding_video_cover = '';
     let has_video = this.data.form.has_video;
-    let has_video_ori = 
     if (has_video) { // 说明开关是开着的
       wedding_video = this.data.form.wedding_video;
       wedding_video_cover = this.data.form.wedding_video_cover.url;
@@ -149,7 +150,8 @@ Page({
       tag_change: this.data.tag_change, // 是否更新tag数据
       music_id: this.music_id,  // 如果music_id = 0 说明没有切换音乐
       card_id: this.card_id,
-      has_video: has_video
+      has_video: has_video,
+      has_video_ori: this.data.has_video_ori
     }
     console.log(data);
 
@@ -265,6 +267,7 @@ Page({
     let form = this.data.form;
     let has_video = form.has_video;
     form.has_video = !form.has_video;
+    form.video_switch = !form.video_switch;
     this.setData({ form: form })
   },
 
@@ -283,6 +286,40 @@ Page({
       camera: 'back',
       success: function (res) {
         console.log(res.tempFilePath);
+        that.saveQiniu(res.tempFilePath);
+      }
+    })
+  },
+
+  /**
+ * 将视频保存到七牛
+ */
+  saveQiniu: function (src) {
+    let that = this;
+    // 先获取上传TOKEN
+    api.getUploadToken({
+      success: (res_token) => {
+        if (res_token.data.res === 0) {
+          console.log('token', res_token.data.data)
+          // 上传到七牛
+          qiniuUploader.upload(src, (res) => {
+            console.log('qiniuUploader', res.imageURL);
+            if (res.imageURL) {
+              let url = 'http://' + res.imageURL;
+              let form = that.data.form;
+              form.wedding_video = url;
+              that.setData({ form: form })
+            }
+            
+          }, (error) => {
+            console.log('error: ' + error);
+          }, {
+              region: 'SCN',
+              domain: 'qiniu.juhuibei.com', // bucket 域名，下载资源时用到。
+              // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+              uptoken: res_token.data.data,
+            });
+        }
       }
     })
   },

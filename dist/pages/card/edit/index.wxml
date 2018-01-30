@@ -139,7 +139,7 @@
             </block>
           </view>          
           <!-- 视频区域 -->
-          <block wx:if="{{form.wedding_video_cover}}">
+          <block wx:if="{{has_video_ori}}">
             <view class="weui-cells__title">视频</view>
             <view class="weui-cells weui-cells_after-title">
               <!-- 视频链接  -->
@@ -151,10 +151,10 @@
                   class="weui-input loear-right"
                   color='#FF7777'
                   bindchange='switchVideo'
-                  checked="{{form.has_video}}"
+                  checked="{{form.video_switch}}"
                 />
               </view>
-              <block wx:if="{{form.has_video}}">
+              <block wx:if="{{form.video_switch}}">
                 <!-- 视频链接  -->
                 <!-- <view class="weui-cell weui-cell_input">
                   <view class="weui-cell__hd">
