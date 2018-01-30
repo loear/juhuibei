@@ -38,6 +38,7 @@ Page({
   },
   music_id: 0,
   card_id: 0,
+  has_video_ori: 0,
 
   /**
    * 生命周期函数--监听页面加载
@@ -68,6 +69,7 @@ Page({
             music_list: res.data.data.music_list,
             tag: res.data.data.tag
           });
+          that.has_video_ori = res.data.data.form.has_video
         }
       }
     })
@@ -120,9 +122,13 @@ Page({
       return false
     }
     
+    let wedding_video = ''
     let wedding_video_cover = '';
-    if (this.data.form.has_video === 1) {
-      wedding_video_cover = this.data.form.wedding_video_cover.url
+    let has_video = this.data.form.has_video;
+    let has_video_ori = 
+    if (has_video) { // 说明开关是开着的
+      wedding_video = this.data.form.wedding_video;
+      wedding_video_cover = this.data.form.wedding_video_cover.url;
     }
 
     let data = {
@@ -133,7 +139,7 @@ Page({
       bridegroom_phone: params.bridegroom_phone,
       date: params.date,
       time: params.time,
-      wedding_video: params.wedding_video,
+      wedding_video: wedding_video,
       latitude: this.data.form.latitude,
       longitude: this.data.form.longitude,
       wedding_address: this.data.form.wedding_address,
@@ -142,7 +148,8 @@ Page({
       tag: this.data.tag,
       tag_change: this.data.tag_change, // 是否更新tag数据
       music_id: this.music_id,  // 如果music_id = 0 说明没有切换音乐
-      card_id: this.card_id
+      card_id: this.card_id,
+      has_video: has_video
     }
     console.log(data);
 
@@ -253,6 +260,33 @@ Page({
     form.time = e.detail.value
     this.setData({ form: form })
   },
+
+  switchVideo: function () {
+    let form = this.data.form;
+    let has_video = form.has_video;
+    form.has_video = !form.has_video;
+    this.setData({ form: form })
+  },
+
+  previewVideo: function (e) {
+    let url = e.target.dataset.url;
+    wx.navigateTo({
+      url: '../video/index?url=' + url
+    })
+  },
+
+  chooseVideo: function () {
+    var that = this
+    wx.chooseVideo({
+      sourceType: ['album', 'camera'],
+      maxDuration: 60,
+      camera: 'back',
+      success: function (res) {
+        console.log(res.tempFilePath);
+      }
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

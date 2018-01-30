@@ -143,24 +143,37 @@
             <view class="weui-cells__title">视频</view>
             <view class="weui-cells weui-cells_after-title">
               <!-- 视频链接  -->
-              <view class="weui-cell weui-cell_input">
+              <view class="weui-cell weui-cell_switch">
                 <view class="weui-cell__hd">
-                  <view class="weui-label">视频链接</view>
+                  <view class="weui-label">视频开关</view>
                 </view>
-                <input
+                <switch
                   class="weui-input loear-right"
-                  placeholder="请填写视频链接"
-                  placeholder-class='loear-right'
-                  name="wedding_video"
-                  value="{{form.wedding_video}}"
+                  color='#FF7777'
+                  bindchange='switchVideo'
+                  checked="{{form.has_video}}"
                 />
               </view>
-              <!-- 视频  -->
-              <view class="weui-cell">
-                <view class="weui-cell__bd">
-                  <view class="weui-uploader">
-                    <view class="weui-uploader__bd">                    
-                      
+              <block wx:if="{{form.has_video}}">
+                <!-- 视频链接  -->
+                <!-- <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">视频链接</view>
+                  </view>
+                  <input
+                    class="weui-input loear-right"
+                    placeholder="请填写视频链接"
+                    placeholder-class='loear-right'
+                    name="wedding_video"
+                    value="{{form.wedding_video}}"
+                  />
+                </view> -->
+                <!-- 视频  -->
+                <view class="weui-cell">
+                  <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                      <view class="weui-uploader__bd">                    
+                        
                         <view class="weui-uploader__file">
                           <image
                             class="weui-uploader__img"
@@ -171,47 +184,48 @@
                           />
                         </view>
                         
-                        <view 
+                        <view
                           class="loear-uploder__tips"
-                          bindtap="chooseImage"
+                          bindtap="chooseVideo"
                         >
-                          <text class="fa fa-refresh"></text> 更换视频
+                          <text class="fa fa-refresh"></text> 上传新的视频【60s内】
                         </view>
 
+                      </view>
                     </view>
                   </view>
                 </view>
-              </view>
-              <!-- 视频截图  -->
-              <view class="weui-cell">
-                <view class="weui-cell__bd">
-                  <view class="weui-uploader">
-                    <view class="weui-uploader__bd">                    
-                      
-                        <view class="weui-uploader__files" id="uploaderFiles">
-                          <view class="weui-uploader__file">
-                            <image
-                              class="weui-uploader__img"
-                              src="{{form.wedding_video_cover.url}}"
-                              mode="aspectFill"
-                              bindtap="previewImage"
-                              data-url="{{form.wedding_video_cover.url}}"
-                            />
+                <!-- 视频截图  -->
+                <view class="weui-cell">
+                  <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                      <view class="weui-uploader__bd">                    
+                        
+                          <view class="weui-uploader__files" id="uploaderFiles">
+                            <view class="weui-uploader__file">
+                              <image
+                                class="weui-uploader__img"
+                                src="{{form.wedding_video_cover.url}}"
+                                mode="aspectFill"
+                                bindtap="previewImage"
+                                data-url="{{form.wedding_video_cover.url}}"
+                              />
+                            </view>
                           </view>
-                        </view>
-                        <view 
-                          class="loear-uploder__tips"
-                          bindtap="chooseImage"
-                          data-img="{{form.wedding_video_cover}}"
-                          data-name="wedding_video_cover"
-                        >
-                          <text class="fa fa-refresh"></text> 更换视频截图
-                        </view>
+                          <view 
+                            class="loear-uploder__tips"
+                            bindtap="chooseImage"
+                            data-img="{{form.wedding_video_cover}}"
+                            data-name="wedding_video_cover"
+                          >
+                            <text class="fa fa-refresh"></text> 更换视频截图
+                          </view>
 
+                      </view>
                     </view>
                   </view>
                 </view>
-              </view>
+              </block>
             </view>
           </block>
         </swiper-item>
