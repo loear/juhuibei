@@ -74,19 +74,19 @@
 
   <navigator url="/pages/card/theme/index">
     <view class="menu-btn menu-card">
-      <text class="fa fa-eye"></text> 婚礼请柬
+      婚礼请柬
     </view>
   </navigator>
   
   <navigator url="/pages/activity/index" style="width: 150rpx;height: 150rpx;border-radius: 50%;display: inline-block">
     <view class="menu-btn menu-active">
-      发布活动
+      <image src='/common/assets/images/finger_mark.png' mode='aspectFill' style='width:140rpx;height:140rpx;margin-top:5rpx;opacity:.7'></image>
     </view>
   </navigator>
   
   <navigator url="/pages/my/index" open-type="reLaunch">
     <view class="menu-btn menu-user">
-      <text class="fa fa-user fa-fw"></text> 个人中心
+      个人中心
     </view>
   </navigator>
 
