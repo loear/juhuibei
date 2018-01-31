@@ -1,5 +1,7 @@
 <import src="../../../packages/@wux/components/toptips/toptips.wxml"/>
 <template is="toptips" data="{{ ...$wux.toptips }}"/>
+<import src="../../../packages/@wux/components/toast/toast.wxml"/>
+<template is="toast" data="{{ ...$wux.toast }}"/>
 
 <form bindsubmit="submitForm" report-submit="true">
   <view class="header-box"></view>
@@ -139,13 +141,13 @@
             </block>
           </view>          
           <!-- 视频区域 -->
-          <block wx:if="{{has_video_ori}}">
+          <block wx:if="{{has_video_ori && video_switch_ori}}">
             <view class="weui-cells__title">视频</view>
             <view class="weui-cells weui-cells_after-title">
               <!-- 视频链接  -->
               <view class="weui-cell weui-cell_switch">
                 <view class="weui-cell__hd">
-                  <view class="weui-label">视频开关</view>
+                  <view class="weui-label">视频开关 <text class="fa fa-info-circle" bindtap='showInfo'></text></view>
                 </view>
                 <switch
                   class="weui-input loear-right"

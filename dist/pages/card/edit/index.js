@@ -1,4 +1,5 @@
 import { $wuxToptips } from '../../../packages/@wux/components/wux';
+import { $wuxToast } from '../../../packages/@wux/components/wux'
 import WxValidate from '../../../common/assets/plugins/WxValidate';
 import api from '../../../api/api_v1.js'
 const qiniuUploader = require("../../../libs/qiniuUploader");
@@ -37,7 +38,8 @@ Page({
     music_list: [],
     tag: [],
     tag_change: 0, // 是否更新tag数据
-    has_video_ori: 0
+    has_video_ori: 0,
+    video_switch_ori: true
   },
   music_id: 0,
   card_id: 0,
@@ -70,7 +72,8 @@ Page({
             form: res.data.data.form,
             music_list: res.data.data.music_list,
             tag: res.data.data.tag,
-            has_video_ori: res.data.data.form.has_video
+            has_video_ori: res.data.data.form.has_video,
+            video_switch_ori: res.data.data.form.video_switch
           });
         }
       }
@@ -263,7 +266,16 @@ Page({
     this.setData({ form: form })
   },
 
-  switchVideo: function () {
+  switchVideo: function (e) {
+    if (!e.detail.value) {
+      $wuxToast.show({
+        type: 'text',
+        timer: 3000,
+        color: '#fff',
+        text: '关闭并保存后将移除视频页',
+        success: () => console.log('关闭并保存后将移除视频页')
+      })
+    }
     let form = this.data.form;
     let has_video = form.has_video;
     form.has_video = !form.has_video;
@@ -324,6 +336,15 @@ Page({
     })
   },
 
+  showInfo: function () {
+    $wuxToast.show({
+      type: 'text',
+      timer: 3000,
+      color: '#fff',
+      text: '关闭并保存后将移除视频页',
+      success: () => console.log('关闭并保存后将移除视频页')
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 13,
 			"list": [
 				{
 					"id": 0,
@@ -164,6 +164,18 @@
 					"name": "视频",
 					"pathName": "pages/card/video/index",
 					"query": "url=https://oh6qekcx4.qnssl.com/system-20161224-cardvideo.mp4",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "G_784qF15Y-vrjve_WvFfskVkSWmXWNCBT-Qavm0SLU@cr4dev",
+						"shareKey": "acnSXiNBf8nIhFZH9WmwVwG3bzAqjNHkeK871eIw9NjToXsp4803B-MyynYjeE7c2R8pF8jeGsPpGl5wZtw3ew~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "回执",
+					"pathName": "pages/card/receipt/index",
+					"query": "card_id=96",
 					"scene": "1044",
 					"shareInfo": {
 						"groupName": "测试模拟群0",

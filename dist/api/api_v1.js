@@ -55,6 +55,7 @@ const saveCard            = (params) => wxRequest(params, host + 'save_card');
 const saveBless           = (params) => wxRequest(params, host + 'save_bless');
 const getActivityCreated  = (params) => wxRequest(params, host + 'activity_created');
 const getActivityjoined   = (params) => wxRequest(params, host + 'activity_joined');
+const getWeddingList      = (params) => wxRequest(params, host + 'wedding_list/' + params.query.card_id)
 
 module.exports = {
   getActivityList,
@@ -84,5 +85,6 @@ module.exports = {
   saveCard,
   saveBless,
   getActivityCreated,
-  getActivityjoined
+  getActivityjoined,
+  getWeddingList
 }

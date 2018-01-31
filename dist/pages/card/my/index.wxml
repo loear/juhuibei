@@ -29,7 +29,11 @@
             <text class="fa fa-qrcode"></text>
           </view>
           <view class="user-info-text">
-            小程序码 <text class="fa fa-circle-o"></text> 点击分享
+            小程序码 
+              <navigator url="../receipt/index?card_id={{item.id}}" style='display:inline-block'>        
+                <text class="fa fa-envelope" style='margin:0 10rpx;color:#FF7777'></text>
+              </navigator> 
+            点击分享
           </view>
           <view class="avatar change" style="background:{{item.theme.bg_color}}">            
             <button 

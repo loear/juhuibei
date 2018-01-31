@@ -1,38 +1,40 @@
-import { Cache } from '../../../utils/cache.js';
-var cache = new Cache();
+import api from '../../../api/api_v1.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    wedding_list: [],
+    sum: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('options', options)
-    if (options.url) {
-      let url = options.url;
-      let uid = cache.get('uid');
-      if (uid) {
-        url = url + '?user_id=' + uid;
-      }
-      this.setData({ url: url });
+    let card_id = options.card_id;
+    if (card_id) {
+      this.getWeddingList(card_id);
     }
+    
+  },
 
-    if (options.color) {
-      wx.setNavigationBarColor({
-        frontColor: '#ffffff',
-        backgroundColor: options.color,
-        animation: {
-          duration: 400,
-          timingFunc: 'easeIn'
+  getWeddingList: function (card_id) {
+    var that = this;
+    api.getWeddingList({
+      query: {
+        card_id: card_id
+      },
+      success: (res) => {
+        if (res.data.res === 0) {
+          that.setData({
+            wedding_list: res.data.data.wedding_list,
+            sum: res.data.data.sum
+          })
         }
-      })
-    }
+      }
+    })
   },
 
   /**
