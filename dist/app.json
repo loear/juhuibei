@@ -29,7 +29,8 @@
     "pages/my/act-book/index",
     "pages/my/card-book/index",
     "pages/card/video/index",
-    "pages/card/receipt/index"
+    "pages/card/receipt/index",
+    "pages/my/feedback/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -59,7 +59,7 @@ page {
 
 .music-author-username {
   padding: 5px;
-  color: #ff4444;
+  color: #ff7777;
 }
 
 .music-author-desc {
@@ -73,7 +73,7 @@ page {
 .share-btn {
   position: static;
   padding: 0;
-  display: inline;
+
   float: right;
   border: none;
   background-color: #fff;
@@ -99,7 +99,7 @@ page {
   line-height: 40px;
   text-align: center;
   font-size: 14px;
-  background-color: #FF4444;
+  background-color: #FF7777;
   border: 5px solid #FFC7C7;
 }
 
@@ -109,7 +109,7 @@ page {
 }
 
 .music-maketime {
-  color: #ff4444;
+  color: #ff7777;
   font-size: 24rpx;
   text-align: right;
   position: absolute;
@@ -228,7 +228,7 @@ page {
 }
 
 .navigator-hover {
-  color:#ff4444;
+  color:#ff7777;
 }
 
 /* callbook */
@@ -243,7 +243,7 @@ page {
 .weui-badge {
   margin-left: 5px;
   font-size:10px;
-  background:#ff4444;
+  background:#ff7777;
 }
 
 .dialog-form {
@@ -262,7 +262,7 @@ page {
   position: relative;
   width: 100%;
   background-color: #FFFFFF;
-  color: #FF4444;
+  color: #FF7777;
   margin-bottom: 20rpx;
 }
 
@@ -284,6 +284,18 @@ page {
   text-align: center;
   opacity: 0.7;
   font-size: 16px;
-  color: #FF4444;
+  color: #FF7777;
   box-shadow:0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+}
+
+.weui-cells:before {
+  border-top: none;
+}
+
+.weui-cell:before {
+  border-top: 1px dashed #eee;
+}
+
+.weui-cells:after {
+  border-bottom: 1px solid #eee;
 }

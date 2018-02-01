@@ -95,6 +95,10 @@ Page({
       form_id: e.detail.formId,
       nickname: params.nickname,
       card_id: this.card_id
+    } 
+    if (data.card_id < 96) {
+      this.showToptips({ msg: '主题测试，不保存数据！' });
+      return false;
     }
     if (this.data.is_voice) {  // 语音祝福
       if (!this.data.tempFilePath) {

@@ -12,7 +12,7 @@
                 <slot></slot>
                 <view class="countdown">
                   <block wx:if="{{countdown}}">
-                    <wxc-label class="label-countdown" type="fill" type-color="#ff4444">
+                    <wxc-label class="label-countdown" type="fill" type-color="#ff7777">
                       <wxc-countdown countdown="{{countdown}}"></wxc-countdown>
                     </wxc-label>
                   </block>

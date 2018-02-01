@@ -280,7 +280,7 @@
                       src="{{item.url}}" 
                       poster="http://qiniu.juhuibei.com/card_2018/music/music_bg.jpg"
                       name="{{item.name}}"
-                      author="{{item.checked}}"
+                      author="{{item.checked?'已选中':''}}"
                       action="{{audioAction}}"
                       controls
                     >

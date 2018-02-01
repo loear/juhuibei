@@ -46,7 +46,7 @@
 
 .label-coming {
   position: relative;
-  left:10rpx;
+  left:20rpx;
   top:0rpx;
 }
 

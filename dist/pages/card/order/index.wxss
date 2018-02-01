@@ -48,9 +48,17 @@
   width: 94%;
   height: 85%;
   margin: 0 3%;
-  border-radius: 15rpx;
-  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
+  border-radius: 15rpx; 
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28); 
   overflow: hidden;
+}
+
+.weui-form-preview:after {
+  border-bottom: none;
+}
+
+.weui-form-preview:before {
+  border-top: none;
 }
 
 .submit-box {
@@ -61,9 +69,9 @@
   height: 100rpx;
   margin: 0 3%;
   border-radius: 15rpx;
-  background: #8DC048;
+  background: #FF7777;
   text-align: center;
   color: #FFF;
   line-height: 100rpx;
-  box-shadow:0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
+  box-shadow:0 0 4px rgba(255, 119, 119, 0.14),0 4px 8px rgba(255, 119, 119, 0.28);
 }
